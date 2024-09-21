@@ -72,7 +72,7 @@
           },
           "legend": {
             "title": "Heritage Site Count",
-            "values": [0.1, 1, 5, 10, 20, 50, 60],
+            "values": [0.1, 1, 5, 50],
             "format": ".0f"
           }
         },
