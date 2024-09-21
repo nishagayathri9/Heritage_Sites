@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "UNESCO World Heritage Sites",
+  "title": "UNESCO World Heritage Sites as of 2024",
   "width": 800,
   "height": 400,
   "layer": [
