@@ -350,7 +350,7 @@
       "bind": {
         "input": "select",
         "options": ["Asia", "Europe"],
-        "name": "Select a Region"
+        "name": "Select a Region  "
       }
     }
   ],
