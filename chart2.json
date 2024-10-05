@@ -1,0 +1,365 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple radial chart with embedded data and conditional colors.",
+  "title": {
+    "text": "Contribution of Tourism to GDP by Region",
+    "anchor": "middle",
+    "fontSize": 20,
+    "offset": 20
+  },
+  "width": 900,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/scatter_data.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50,  
+        "stroke": "#fff"
+      },
+      "encoding": {
+        "theta": {
+          "field": "percentage_of_gdp",
+          "type": "quantitative",
+          "stack": true
+        },
+        "radius": {
+          "field": "percentage_of_gdp",
+          "scale": {
+            "type": "sqrt",
+            "zero": true,
+            "rangeMin": 50
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.percentage_of_gdp > 2.5",
+            "field": "country",
+            "legend": null,
+            "type": "nominal",
+            "scale": {
+              "scheme": "category20b"
+            }
+          },
+          "value": "lightgray"
+        },
+        "tooltip": [
+          {
+            "field": "country",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "percentage_of_gdp",
+            "type": "quantitative",
+            "title": "Percentage of GDP"
+          },
+          {
+            "field": "Passport Score",
+            "type": "quantitative",
+            "title": "Passport Score"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dx": 200,
+        "dy": 200,
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "text": {
+          "value": "Croatia"
+        }
+      },
+      "transform": [
+        {
+          "filter": "region_select == 'Europe'"
+        }
+      ]
+    },
+    {
+      "layer": [
+        {
+          "mark": {
+            "type": "rect",
+            "color": "lightblue",
+            "opacity": 0.05
+          },
+          "encoding": {
+            "x": {"value": 640},    
+            "x2": {"value": 890},
+            "y": {"value": 260},    
+            "y2": {"value": 290}
+          },
+          "transform": [
+            {
+              "filter": "region_select == 'Europe'"
+            }
+          ]
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "baseline": "middle",
+            "fontSize": 15,
+            "color": "black",
+            "fontWeight": "normal"
+          },
+          "encoding": {
+            "text": {
+              "value": "Croatia has over 1,000 islands!"
+            },
+            "x": {"value": 765},
+            "y": {"value": 275} 
+          },
+          "transform": [
+            {
+              "filter": "region_select == 'Europe'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dx": -65,
+        "dy": 200,
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "text": {
+          "value": "Greece"
+        }
+      },
+      "transform": [
+        {
+          "filter": "region_select == 'Europe'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dx": -250,
+        "dy": 70,
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "text": {
+          "value": "Luxembourg"
+        }
+      },
+      "transform": [
+        {
+          "filter": "region_select == 'Europe'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dx": -200,
+        "dy": -30,
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "text": {
+          "value": "Moldova"
+        }
+      },
+      "transform": [
+        {
+          "filter": "region_select == 'Europe'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dx": -165,
+        "dy": -150,
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "text": {
+          "value": "Portugal"
+        }
+      },
+      "transform": [
+        {
+          "filter": "region_select == 'Europe'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dx": 160,
+        "dy": -200,
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "text": {
+          "value": "Albania"
+        }
+      },
+      "transform": [
+        {
+          "filter": "region_select == 'Europe'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dx": 190,
+        "dy": -80,
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "text": {
+          "value": "Austria"
+        }
+      },
+      "transform": [
+        {
+          "filter": "region_select == 'Europe'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dx": 300,
+        "dy": 30,
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "text": {
+          "value": "Hong Kong"
+        }
+      },
+      "transform": [
+        {
+          "filter": "region_select == 'Asia'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dx": 100,
+        "dy": -180,
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "text": {
+          "value": "Cambodia"
+        }
+      },
+      "transform": [
+        {
+          "filter": "region_select == 'Asia'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dx": -260,
+        "dy": -140,
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "text": {
+          "value": "United Arab Emirates"
+        }
+      },
+      "transform": [
+        {
+          "filter": "region_select == 'Asia'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dx": -210,
+        "dy": 180,
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      "encoding": {
+        "text": {
+          "value": "Qatar"
+        }
+      },
+      "transform": [
+        {
+          "filter": "region_select == 'Asia'"
+        }
+      ]
+    }
+  ],
+  "params": [
+    {
+      "name": "region_select",
+      "value": "Europe",
+      "bind": {
+        "input": "select",
+        "options": ["Asia", "Europe"],
+        "name": "Select a Region"
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "(datum.region == region_select)"
+    }
+  ],
+  "view": {
+    "align": "center"
+  }
+}
