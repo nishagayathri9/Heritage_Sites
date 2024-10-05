@@ -1,9 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "UNESCO World Heritage Sites as of 2024",
-  "width": 800,
-  "height": 400,
-  "layer": [
+  "title": {
+    "text": "UNESCO World Heritage Sites as of 2024",
+    "anchor": "middle",
+    "fontSize": 20,
+    "offset": 20
+  },
+    "width": 800,
+    "height": 400,
+    "layer": [
     {
       "mark": {
         "type": "geoshape",
