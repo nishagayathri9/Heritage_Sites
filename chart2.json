@@ -69,10 +69,10 @@
     },
     {
       "mark": {
-        "type": "text",  // Add text mark for labels
+        "type": "text",  
         "align": "center",
         "baseline": "middle",
-        "radius": 120,  // Adjust the distance of the label from the center
+        "radius": 120, 
         "fontSize": 12,
         "fontWeight": "lighter"
       },
