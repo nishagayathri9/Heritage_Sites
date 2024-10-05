@@ -43,7 +43,7 @@
             "legend": null,
             "type": "nominal",
             "scale": {
-              "scheme": "category20b"
+              "scheme": "tableau20"
             }
           },
           "value": "lightgray"
@@ -69,53 +69,35 @@
     },
     {
       "mark": {
-        "type": "text",
+        "type": "text",  // Add text mark for labels
         "align": "center",
-        "baseline": "bottom",
-        "dx": 200,
-        "dy": 200,
-        "fontSize": 15,
-        "fontWeight": "normal"
+        "baseline": "middle",
+        "radius": 120,  // Adjust the distance of the label from the center
+        "fontSize": 12,
+        "fontWeight": "lighter"
       },
       "encoding": {
         "text": {
-          "value": "Croatia"
+          "condition": {
+            "test": "datum.percentage_of_gdp > 2.5",
+            "field": "country",
+            "type": "nominal"
+          }
+        },
+        "theta": {
+          "field": "percentage_of_gdp",
+          "type": "quantitative",
+          "stack": true
         }
-      },
-      "transform": [
-        {
-          "filter": "region_select == 'Europe'"
-        }
-      ]
+      }
     },
     {
       "layer": [
         {
           "mark": {
-            "type": "rect",
-            "color": "lightblue",
-            "opacity": 0.05
-          },
-          "encoding": {
-            "x": {"value": 640},    
-            "x2": {"value": 890},
-            "y": {"value": 260},    
-            "y2": {"value": 290}
-          },
-          "transform": [
-            {
-              "filter": "region_select == 'Europe'"
-            }
-          ]
-        },
-        {
-          "mark": {
             "type": "text",
-            "align": "center",
-            "baseline": "middle",
             "fontSize": 15,
-            "color": "black",
-            "fontWeight": "normal"
+            "fontWeight": 100
           },
           "encoding": {
             "text": {
@@ -131,216 +113,6 @@
           ]
         }
       ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "bottom",
-        "dx": -65,
-        "dy": 200,
-        "fontSize": 15,
-        "fontWeight": "normal"
-      },
-      "encoding": {
-        "text": {
-          "value": "Greece"
-        }
-      },
-      "transform": [
-        {
-          "filter": "region_select == 'Europe'"
-        }
-      ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "bottom",
-        "dx": -250,
-        "dy": 70,
-        "fontSize": 15,
-        "fontWeight": "normal"
-      },
-      "encoding": {
-        "text": {
-          "value": "Luxembourg"
-        }
-      },
-      "transform": [
-        {
-          "filter": "region_select == 'Europe'"
-        }
-      ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "bottom",
-        "dx": -200,
-        "dy": -30,
-        "fontSize": 15,
-        "fontWeight": "normal"
-      },
-      "encoding": {
-        "text": {
-          "value": "Moldova"
-        }
-      },
-      "transform": [
-        {
-          "filter": "region_select == 'Europe'"
-        }
-      ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "bottom",
-        "dx": -165,
-        "dy": -150,
-        "fontSize": 15,
-        "fontWeight": "normal"
-      },
-      "encoding": {
-        "text": {
-          "value": "Portugal"
-        }
-      },
-      "transform": [
-        {
-          "filter": "region_select == 'Europe'"
-        }
-      ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "bottom",
-        "dx": 160,
-        "dy": -200,
-        "fontSize": 15,
-        "fontWeight": "normal"
-      },
-      "encoding": {
-        "text": {
-          "value": "Albania"
-        }
-      },
-      "transform": [
-        {
-          "filter": "region_select == 'Europe'"
-        }
-      ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "bottom",
-        "dx": 190,
-        "dy": -80,
-        "fontSize": 15,
-        "fontWeight": "normal"
-      },
-      "encoding": {
-        "text": {
-          "value": "Austria"
-        }
-      },
-      "transform": [
-        {
-          "filter": "region_select == 'Europe'"
-        }
-      ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "bottom",
-        "dx": 300,
-        "dy": 30,
-        "fontSize": 15,
-        "fontWeight": "normal"
-      },
-      "encoding": {
-        "text": {
-          "value": "Hong Kong"
-        }
-      },
-      "transform": [
-        {
-          "filter": "region_select == 'Asia'"
-        }
-      ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "bottom",
-        "dx": 100,
-        "dy": -180,
-        "fontSize": 15,
-        "fontWeight": "normal"
-      },
-      "encoding": {
-        "text": {
-          "value": "Cambodia"
-        }
-      },
-      "transform": [
-        {
-          "filter": "region_select == 'Asia'"
-        }
-      ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "bottom",
-        "dx": -260,
-        "dy": -140,
-        "fontSize": 15,
-        "fontWeight": "normal"
-      },
-      "encoding": {
-        "text": {
-          "value": "United Arab Emirates"
-        }
-      },
-      "transform": [
-        {
-          "filter": "region_select == 'Asia'"
-        }
-      ]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "bottom",
-        "dx": -210,
-        "dy": 180,
-        "fontSize": 15,
-        "fontWeight": "normal"
-      },
-      "encoding": {
-        "text": {
-          "value": "Qatar"
-        }
-      },
-      "transform": [
-        {
-          "filter": "region_select == 'Asia'"
-        }
-      ]
     }
   ],
   "params": [
@@ -350,7 +122,7 @@
       "bind": {
         "input": "select",
         "options": ["Asia", "Europe"],
-        "name": "Select a Region  "
+        "name": "Select a Region   "
       }
     }
   ],
@@ -358,8 +130,5 @@
     {
       "filter": "(datum.region == region_select)"
     }
-  ],
-  "view": {
-    "align": "center"
-  }
+  ]
 }
