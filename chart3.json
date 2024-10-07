@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "A word cloud visualization depicting countries based on the number of tourists.",
+  "width": 800,
+  "height": 400,
+  "padding": 0,
+
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        "france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france france mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico mexico united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states united_states italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy italy hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary hungary croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia croatia turkey turkey turkey turkey turkey turkey turkey turkey turkey turkey turkey turkey turkey turkey turkey turkey austria austria austria austria austria austria austria austria austria austria austria austria austria austria austria germany germany germany germany germany germany germany germany germany germany germany germany virgin_islands virgin_islands virgin_islands virgin_islands virgin_islands virgin_islands virgin_islands virgin_islands virgin_islands united_arab_emirates united_arab_emirates united_arab_emirates united_arab_emirates united_arab_emirates united_arab_emirates united_arab_emirates united_arab_emirates greece greece greece greece greece greece greece netherlands netherlands netherlands netherlands netherlands netherlands netherlands russia russia russia russia russia russia macao macao macao macao macao macao romania romania romania romania romania bulgaria bulgaria bulgaria bulgaria bulgaria malaysia malaysia malaysia malaysia portugal portugal portugal portugal japan japan japan japan indonesia indonesia indonesia indonesia south_africa south_africa south_africa south_africa puerto_rico puerto_rico puerto_rico puerto_rico vietnam vietnam vietnam vietnam belarus belarus belarus belarus hong_kong hong_kong hong_kong hong_kong ukraine ukraine ukraine morocco morocco morocco albania albania albania belgium belgium belgium south_korea south_korea south_korea australia australia philippines philippines norway cambodia qatar luxembourg ethiopia serbia bermuda"
+      ],
+      "transform": [
+        {
+          "type": "countpattern",
+          "field": "data",
+          "case": "upper",
+          "pattern": "[\\w']{3,}",
+          "stopwords": ""
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "table", "field": "text"},
+      "range":  {"scheme": "viridis"}
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "text",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "text": {"field": "text"},
+          "align": {"value": "center"},
+          "baseline": {"value": "alphabetic"},
+          "fill": {"scale": "color", "field": "text"}
+        },
+        "update": {
+          "fillOpacity": {"value": 1},
+          "tooltip": {"signal": "{'Country': datum.text, 'Tourists in millions': datum.count}"}
+        },
+        "hover": {
+          "fillOpacity": {"value": 0.5}
+        }
+      },
+      "transform": [
+        {
+          "type": "wordcloud",
+          "size": [800, 400],
+          "text": {"field": "text"},
+          "rotate": {"field": "datum.angle"},
+          "font": "Helvetica Neue, Arial",
+          "fontSize": {"field": "datum.count"},
+          "fontSizeRange": [10, 80],
+          "padding": 2
+        }
+      ]
+    }
+  ]
+}
