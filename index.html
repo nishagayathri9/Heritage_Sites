@@ -38,7 +38,7 @@
       margin: 0;
       padding: 0;
       width: 90vw; /* Slightly smaller than full width */
-      height: 90vh; /* Slightly smaller than full height */
+      height: 50vh; /* Reduce height to make room for the containers */
       margin: 20px auto;
       background-color: black; /* Make sure the chart background is black */
     }
@@ -46,6 +46,32 @@
     #chart > iframe {
       background-color: black; /* Force the iframe background to black */
       border: none; /* Remove any borders from the iframe */
+    }
+
+    /* New Container Styles */
+    .container-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 90vw; /* Keep containers within the viewport width */
+      margin: 20px auto; /* Center the containers */
+      height: 40vh; /* Use remaining space */
+    }
+
+    .container {
+      background-color: #1a1a1a; /* Dark gray background */
+      border: 2px solid #fff; /* White borders for contrast */
+      width: 48%; /* Containers take up half of the width each, with a small gap */
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .container h2 {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    .container p {
+      color: #ddd;
     }
   </style>
 </head>
@@ -66,6 +92,18 @@
       "height": window.innerHeight * 0.79 
     }).catch(console.error);
   </script>
+
+  <!-- New Containers After the Chart -->
+  <div class="container-wrapper">
+    <div class="container" id="container1">
+      <h2>Container 1</h2>
+      <p>This is the content of container 1.</p>
+    </div>
+    <div class="container" id="container2">
+      <h2>Container 2</h2>
+      <p>This is the content of container 2.</p>
+    </div>
+  </div>
 
 </body>
 </html>
