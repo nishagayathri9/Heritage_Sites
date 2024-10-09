@@ -34,53 +34,66 @@
       font-weight: bold;
     }
     
-    /* Main grid container for charts */
-    .grid-container {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 10px;
-      width: 90vw;
-      height: 90vh;
-      margin: 20px auto;
-    }
-
-    /* Define areas for charts */
-    .chart1 {
-      grid-area: 1 / 1 / 2 / 2; /* First row, first column */
-    }
-    
-    .chart2 {
-      grid-area: 1 / 2 / 2 / 3; /* First row, second column */
-    }
-    
-    .chart3 {
-      grid-area: 2 / 1 / 3 / 2; /* Second row, first column */
-    }
-    
-    .chart4 {
-      grid-area: 2 / 2 / 3 / 3; /* Second row, second column */
-    }
-    
-    .chart5 {
-      grid-area: 2 / 3 / 3 / 4; /* Second row, third column */
-    }
-
-    /* Style for chart containers */
     .chart-container {
+      margin: 0;
+      padding: 0;
+      width: 90vw;
+      height: 60vh;
+      margin: 20px auto;
+      background-color: black;
+    }
+
+    #mapChart > iframe {
+      background-color: black;
+      border: none;
+    }
+
+    .container-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 90vw;
+      margin: 20px auto;
+      min-height: 40vh;
+    }
+
+    .container {
       background-color: #1a1a1a;
       border: 2px solid #fff;
+      padding: 0;
+      box-sizing: border-box;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
     }
 
-    .chart-container iframe {
+    #container1 {
+      width: 35%;
+    }
+
+    #container2 {
+      width: 65%;
+    }
+
+    .container h2 {
+      color: #fff;
+      font-size: 24px;
+      margin: 10px;
+    }
+
+    /* Chart embedded into the containers */
+    #chart5, #container1Chart {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    /* Ensure iframes within charts fill the container */
+    #chart5 > iframe, #container1Chart > iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
-
   </style>
 </head>
 <body>
@@ -90,67 +103,52 @@
     <h1>HERITAGE SITES</h1>
   </header>
   
-  <!-- Grid container for the charts -->
-  <div class="grid-container">
-    <!-- Chart 4 (left part) -->
-    <div class="chart-container chart1" id="chart1">
-      <div>Chart 4 (Part 1)</div>
-    </div>
+  <!-- Container for the Vega Chart (Map Chart) -->
+  <div class="chart-container" id="mapChart"></div>
+  
+  <script type="text/javascript">
+    // Embed the Vega chart from your GitHub JSON file (Map Chart)
+    vegaEmbed('#mapChart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json', {
+      "width": window.innerWidth * 0.79,  
+      "height": window.innerHeight * 0.79 
+    }).catch(console.error);
+  </script>
 
-    <!-- Chart 4 (right part) -->
-    <div class="chart-container chart2" id="chart2">
-      <div>Chart 4 (Part 2)</div>
+  <!-- Container 1 and Container 2 -->
+  <div class="container-wrapper">
+    <!-- Container 1 -->
+    <div class="container" id="container1">
+      <h2>Container 1</h2>
+      <div id="container1Chart"></div>
     </div>
-
-    <!-- Chart 5 -->
-    <div class="chart-container chart3" id="chart3">
-      <div>Chart 5</div>
-    </div>
-
-    <!-- Smaller chart (right of Chart 5) -->
-    <div class="chart-container chart4" id="chart4">
-      <div>Chart 5 (Right part 1)</div>
-    </div>
-
-    <!-- Smaller chart (right of Chart 5) -->
-    <div class="chart-container chart5" id="chart5">
-      <div>Chart 5 (Right part 2)</div>
+    
+    <!-- Container 2 -->
+    <div class="container" id="container2">
+      <h2>Chart 5</h2>
+      <div id="chart5"></div>
     </div>
   </div>
 
   <script>
-    // Embed charts into their respective containers using Vega/Vega-Lite
-    
-    // Example for embedding Chart 1
-    vegaEmbed('#chart1', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
-      "width": window.innerWidth * 0.2,
-      "height": window.innerHeight * 0.2
-    }).catch(console.error);
-    
-    // Example for embedding Chart 2
-    vegaEmbed('#chart2', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
-      "width": window.innerWidth * 0.4,
-      "height": window.innerHeight * 0.2
+    // Embed the chart into Container 1
+    vegaEmbed('#container1Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json', {
+      "width": window.innerWidth * 0.45,
+      "height": window.innerHeight * 0.45,
+      "autosize": { "type": "fit", "contains": "padding" },
+      renderer: 'canvas',
+      actions: false
     }).catch(console.error);
 
-    // Example for embedding Chart 3
-    vegaEmbed('#chart3', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
-      "width": window.innerWidth * 0.6,
-      "height": window.innerHeight * 0.4
-    }).catch(console.error);
-
-    // Example for embedding Chart 4
-    vegaEmbed('#chart4', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
-      "width": window.innerWidth * 0.2,
-      "height": window.innerHeight * 0.2
-    }).catch(console.error);
-
-    // Example for embedding Chart 5
+    // Embed chart5.json into Container 2
     vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
-      "width": window.innerWidth * 0.2,
-      "height": window.innerHeight * 0.2
+      "width": window.innerWidth * 0.45,
+      "height": window.innerHeight * 0.45,
+      "autosize": { "type": 'fit', "contains": 'padding' },
+      renderer: 'canvas',
+      actions: false
     }).catch(console.error);
 
+    // Removed Chart 4 embedding script
   </script>
 
 </body>
