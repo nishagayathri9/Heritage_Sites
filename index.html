@@ -85,11 +85,17 @@
       background-color: #333;
       border: 1px solid #fff;
       text-align: center;
-      transition: background-color 0.3s;
+      color: white;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     .tab.active {
-      background-color: #555;
+      background-color: #39ff14; /* Neon green for active tab */
+      color: black; /* Black text for contrast on neon green */
+    }
+
+    .tab:hover {
+      background-color: #555; /* Slightly lighter hover state for inactive tabs */
     }
 
     .tab-content {
