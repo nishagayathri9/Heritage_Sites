@@ -66,11 +66,11 @@
     }
 
     #container1 {
-      width: 35%;  /* Container 1 width set to 45% */
+      width: 35%;
     }
 
     #container2 {
-      width: 65%;  /* Container 2 width set to 53% */
+      width: 65%;
     }
 
     .container h2 {
@@ -98,12 +98,12 @@
     }
 
     .tab.active {
-      background-color: #F5F5DC; /* for active tab */
-      color: black; /* Black text for contrast */
+      background-color: #F5F5DC;
+      color: black;
     }
 
     .tab:hover {
-      background-color: #555; /* Slightly lighter hover state for inactive tabs */
+      background-color: #555;
     }
 
     .tab-content {
@@ -148,10 +148,19 @@
   
   <script type="text/javascript">
     // Embed the Vega chart from your GitHub JSON file (Map Chart)
-    vegaEmbed('#mapChart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json', {
-      "width": window.innerWidth * 0.79,  
-      "height": window.innerHeight * 0.79 
-    }).catch(console.error);
+    fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json')
+      .then(response => response.json())
+      .then(spec => {
+        spec.width = 'container';
+        spec.height = 'container';
+        spec.autosize = { type: 'fit', contains: 'padding' };
+        
+        vegaEmbed('#mapChart', spec, {
+          renderer: 'canvas',
+          actions: false
+        }).catch(console.error);
+      })
+      .catch(console.error);
   </script>
 
   <!-- Container 1 and Container 2 -->
@@ -181,58 +190,50 @@
   </div>
 
   <script>
-    // Embed the chart into Container 1 if needed
-    vegaEmbed('#container1Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json', {
-      "width": window.innerWidth * 0.45,
-      "height": window.innerHeight * 0.45,
-      "autosize": { "type": "fit", "contains": "padding" },
-      renderer: 'canvas',
-      actions: false
-    }).catch(console.error);
+    // Embed the chart into Container 1
+    fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json')
+      .then(response => response.json())
+      .then(spec => {
+        spec.width = 'container';
+        spec.height = 'container';
+        spec.autosize = { type: 'fit', contains: 'padding' };
+
+        vegaEmbed('#container1Chart', spec, {
+          renderer: 'canvas',
+          actions: false
+        }).catch(console.error);
+      })
+      .catch(console.error);
 
     // Load the chart for Tab 1 on page load
     window.addEventListener('DOMContentLoaded', () => {
-      const chartContainer = document.getElementById('chart5');
-      vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
-        "width": window.innerWidth * 0.45,
-        "height": window.innerHeight * 0.45,
-        "autosize": { "type": 'fit', "contains": 'padding' },
-        renderer: 'canvas',
-        actions: false
-      }).catch(console.error);
+      fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json')
+        .then(response => response.json())
+        .then(spec => {
+          spec.width = 'container';
+          spec.height = 'container';
+          spec.autosize = { type: 'fit', contains: 'padding' };
+
+          vegaEmbed('#chart5', spec, {
+            renderer: 'canvas',
+            actions: false
+          }).catch(console.error);
+        })
+        .catch(console.error);
     });
 
     function openTab(tabId, event) {
       // Hide all tab content
       const tabContents = document.querySelectorAll('.tab-content');
       tabContents.forEach(content => content.classList.remove('active'));
-      
+
       // Remove active class from all tabs
       const tabs = document.querySelectorAll('.tab');
       tabs.forEach(tab => tab.classList.remove('active'));
-      
+
       // Show the clicked tab content and activate the tab
       document.getElementById(tabId).classList.add('active');
       event.target.classList.add('active');
-
-      // Load chart5.json into Tab 1 when it is clicked
-      if (tabId === 'tab5') {
-        const chartContainer = document.getElementById('chart5');
-
-        // Clear container to prevent any previous content from interfering
-        while (chartContainer.firstChild) {
-          chartContainer.removeChild(chartContainer.firstChild);
-        }
-
-        // Embed chart
-        vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
-          "width": window.innerWidth * 0.45,
-          "height": window.innerHeight * 0.45,
-          "autosize": { "type": 'fit', "contains": 'padding' },
-          renderer: 'canvas',
-          actions: false
-        }).catch(console.error);
-      }
 
       // Load chart4.json into Tab 2 when it is clicked
       if (tabId === 'tab4') {
@@ -243,14 +244,44 @@
           chartContainer.removeChild(chartContainer.firstChild);
         }
 
-        // Embed chart
-        vegaEmbed('#chart4', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
-          "width": window.innerWidth * 0.53,
-          "height": window.innerHeight * 0.53,
-          "autosize": { "type": 'fit', "contains": 'padding' },
-          renderer: 'canvas',
-          actions: false
-        }).catch(console.error);
+        // Fetch the chart specification and modify it
+        fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json')
+          .then(response => response.json())
+          .then(spec => {
+            // Modify the spec to include autosize and width/height settings
+            spec.width = 'container';
+            spec.height = 'container';
+            spec.autosize = { type: 'fit', contains: 'padding' };
+
+            // Embed the chart with the modified spec
+            vegaEmbed('#chart4', spec, {
+              renderer: 'canvas',
+              actions: false
+            }).catch(console.error);
+          })
+          .catch(console.error);
+      }
+
+      // Load chart5.json into Tab 1 when it is clicked (if needed)
+      if (tabId === 'tab5') {
+        const chartContainer = document.getElementById('chart5');
+
+        // Check if the chart is already loaded to prevent reloading
+        if (!chartContainer.hasChildNodes()) {
+          fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json')
+            .then(response => response.json())
+            .then(spec => {
+              spec.width = 'container';
+              spec.height = 'container';
+              spec.autosize = { type: 'fit', contains: 'padding' };
+
+              vegaEmbed('#chart5', spec, {
+                renderer: 'canvas',
+                actions: false
+              }).catch(console.error);
+            })
+            .catch(console.error);
+        }
       }
     }
   </script>
