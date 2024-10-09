@@ -5,7 +5,7 @@
     "anchor": "middle"
   },
   "width": 400,
-  "height": 80,
+  "height": 200,  
   "data": {
     "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/beeswarm.csv",
     "format": {"type": "csv"}
@@ -27,23 +27,15 @@
     "y": {
       "field": "density",
       "type": "quantitative",
-      "stack": "zero",
-      "axis": {
-        "title": null,
-        "labelExpr": "datum.label === 'Cultural' || datum.label === 'Natural' ? '' : datum.label"  // Remove title for 1st and 3rd row
-      }
-    },
-    "row": {
-      "field": "category",
-      "title": "Category"
+      "stack": "zero"
     },
     "color": {
       "field": "category",
       "type": "nominal",
       "scale": {
-        "range": ["#F7AEF8", "#B388EB", "#8093F1"]
+        "range": ["#2C0E37", "#DBBADD", "#CB429F"]
       },
-      "legend": null
+      "title": "Category"
     }
   }
 }
