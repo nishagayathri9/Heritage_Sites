@@ -59,10 +59,7 @@
           "enter": {
             "fill": {"scale": "color", "field": "region_en"},
             "xfocus": {"scale": "xscale", "field": "category", "band": 0.5},
-            "yfocus": {"signal": "cy"},
-            "tooltip": {
-              "signal": "{'Name': datum.name, 'Category': datum.category, 'Region': datum.region_en, 'Year Inscribed': datum.year_inscribed}"
-            }
+            "yfocus": {"signal": "cy"}
           },
           "update": {
             "size": {"signal": "pow(2 * radius, 2)"},
@@ -88,6 +85,47 @@
             ]
           }
         ]
+      },
+      {
+        "type": "group",
+        "encode": {
+          "enter": {
+            "x": {"value": 800},
+            "y": {"value": 20}
+          }
+        },
+        "marks": [
+          {
+            "type": "rect",
+            "encode": {
+              "enter": {
+                "x": {"value": 0},
+                "y": {"field": "y"},
+                "width": {"value": 15},
+                "height": {"value": 15},
+                "fill": {"field": "color"}
+              }
+            }
+          },
+          {
+            "type": "text",
+            "encode": {
+              "enter": {
+                "x": {"value": 20},
+                "y": {"field": "y", "offset": 12},
+                "text": {"field": "label"},
+                "fontSize": {"value": 12}
+              }
+            }
+          }
+        ],
+        "data": [
+          {"name": "legend_data", "values": [
+            {"y": 0, "color": "#3182bd", "label": "Region 1"},
+            {"y": 20, "color": "#6baed6", "label": "Region 2"},
+            {"y": 40, "color": "#9ecae1", "label": "Region 3"}
+          ]}
+        ]
       }
     ],
   
@@ -97,4 +135,4 @@
       "anchor": "middle",
       "offset": 20
     }
-}
+  }
