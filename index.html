@@ -15,10 +15,10 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: black; /* Full black background */
+      background-color: black;
       color: white;
       text-align: center;
-      overflow-y: auto; /* Allow vertical scrolling */
+      overflow-y: auto;
     }
     
     header {
@@ -37,30 +37,29 @@
     .chart-container {
       margin: 0;
       padding: 0;
-      width: 90vw; /* Slightly smaller than full width */
-      height: 60vh; /* Increase height slightly to allow more room for the chart */
+      width: 90vw;
+      height: 60vh;
       margin: 20px auto;
-      background-color: black; /* Make sure the chart background is black */
+      background-color: black;
     }
 
     #chart > iframe {
-      background-color: black; /* Force the iframe background to black */
-      border: none; /* Remove any borders from the iframe */
+      background-color: black;
+      border: none;
     }
 
-    /* New Container Styles */
     .container-wrapper {
       display: flex;
       justify-content: space-between;
-      width: 90vw; /* Keep containers within the viewport width */
+      width: 90vw;
       margin: 20px auto;
-      min-height: 40vh; /* Make sure the containers have minimum height */
+      min-height: 40vh;
     }
 
     .container {
-      background-color: #1a1a1a; /* Dark gray background */
-      border: 2px solid #fff; /* White borders for contrast */
-      width: 48%; /* Containers take up half of the width each, with a small gap */
+      background-color: #1a1a1a;
+      border: 2px solid #fff;
+      width: 48%;
       padding: 10px;
       box-sizing: border-box;
     }
@@ -72,6 +71,37 @@
 
     .container p {
       color: #ddd;
+    }
+
+    /* Tabs for Container 2 */
+    .tabs {
+      display: flex;
+      cursor: pointer;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 10px;
+      background-color: #333;
+      border: 1px solid #fff;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .tab.active {
+      background-color: #555;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+      background-color: #1a1a1a;
+      border: 2px solid #fff;
+      margin-top: 10px;
+    }
+
+    .tab-content.active {
+      display: block;
     }
   </style>
 </head>
@@ -93,17 +123,47 @@
     }).catch(console.error);
   </script>
 
-  <!-- New Containers After the Chart -->
+  <!-- Container 1 -->
   <div class="container-wrapper">
     <div class="container" id="container1">
       <h2>Container 1</h2>
       <p>This is the content of container 1.</p>
     </div>
+    
+    <!-- Container 2 with Tabs -->
     <div class="container" id="container2">
-      <h2>Container 2</h2>
-      <p>This is the content of container 2.</p>
+      <div class="tabs">
+        <div class="tab active" onclick="openTab('tab1')">Tab 1</div>
+        <div class="tab" onclick="openTab('tab2')">Tab 2</div>
+      </div>
+      
+      <div class="tab-content active" id="tab1">
+        <h2>Tab 1 Content</h2>
+        <p>This is the content of Tab 1.</p>
+      </div>
+      
+      <div class="tab-content" id="tab2">
+        <h2>Tab 2 Content</h2>
+        <p>This is the content of Tab 2.</p>
+      </div>
     </div>
   </div>
+
+  <script>
+    function openTab(tabId) {
+      // Hide all tab content
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // Remove active class from all tabs
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      
+      // Show the clicked tab content and activate the tab
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
