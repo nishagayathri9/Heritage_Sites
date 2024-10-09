@@ -66,11 +66,11 @@
     }
 
     #container1 {
-      width: 35%;
+      width: 35%;  /* Container 1 width set to 45% */
     }
 
     #container2 {
-      width: 65%;
+      width: 60%;  /* Container 2 width set to 53% */
     }
 
     .container h2 {
@@ -108,24 +108,31 @@
 
     .tab-content {
       display: none;
-      padding: 10px;
+      padding: 0;
       background-color: #1a1a1a;
-      border: 2px solid #fff;
+      border: none;
       margin-top: 0;
-      height: 40vh; /* Ensure the tab content has a fixed height */
+      flex: 1;
     }
 
     .tab-content.active {
       display: block;
     }
 
-    /* Chart embedded into Tab 2 */
-    #chart2 {
+    /* Chart embedded into Tab 1 and Tab 2 */
+    #chart4, #chart5, #container1Chart {
       width: 100%;
       height: 100%;
       padding: 0;
       margin: 0;
       box-sizing: border-box;
+    }
+
+    /* Ensure iframes within charts fill the container */
+    #chart4 > iframe, #chart5 > iframe, #container1Chart > iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
@@ -136,46 +143,66 @@
     <h1>HERITAGE SITES</h1>
   </header>
   
-  <!-- Container for the Vega Chart -->
-  <div class="chart-container" id="chart"></div>
+  <!-- Container for the Vega Chart (Map Chart) -->
+  <div class="chart-container" id="mapChart"></div>
   
   <script type="text/javascript">
-    // Embed the Vega chart from your GitHub JSON file
-    vegaEmbed('#chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json', {
+    // Embed the Vega chart from your GitHub JSON file (Map Chart)
+    vegaEmbed('#mapChart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json', {
       "width": window.innerWidth * 0.79,  
       "height": window.innerHeight * 0.79 
     }).catch(console.error);
   </script>
 
-  <!-- Container 1 -->
+  <!-- Container 1 and Container 2 -->
   <div class="container-wrapper">
+    <!-- Container 1 -->
     <div class="container" id="container1">
       <h2>Container 1</h2>
-      <p>This is the content of container 1.</p>
+      <div id="container1Chart"></div>
     </div>
     
     <!-- Container 2 with Tabs -->
     <div class="container" id="container2">
       <div class="tabs">
-        <div class="tab active" onclick="openTab('tab1')">Tab 1</div>
-        <div class="tab" onclick="openTab('tab2')">Tab 2</div>
+        <div class="tab active" onclick="openTab('tab5', event)">Tab 1</div>
+        <div class="tab" onclick="openTab('tab4', event)">Tab 2</div>
       </div>
       
-      <div class="tab-content active" id="tab1">
-        <h2>Tab 1 Content</h2>
-        <p>This is the content of Tab 1.</p>
+      <div class="tab-content active" id="tab5">
+        <!-- Chart container for Vega-Lite Chart in Tab 1 (Chart 5) -->
+        <div id="chart5"></div>
       </div>
       
-      <div class="tab-content" id="tab2">
-        <h2>Tab 2 Content</h2>
-        <!-- Add a chart container for Vega-Lite Chart -->
-        <div id="chart2"></div>
+      <div class="tab-content" id="tab4">
+        <div id="chart4"></div>
       </div>
     </div>
   </div>
 
   <script>
-    function openTab(tabId) {
+    // Embed the chart into Container 1 if needed
+    vegaEmbed('#container1Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json', {
+      "width": window.innerWidth * 0.45,
+      "height": window.innerHeight * 0.45,
+      "autosize": { "type": "fit", "contains": "padding" },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
+
+    // Load the chart for Tab 1 on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const chartContainer = document.getElementById('chart5');
+      vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
+        "width": window.innerWidth * 0.45,
+        "height": window.innerHeight * 0.45,
+        "autosize": { "type": 'fit', "contains": 'padding' },
+        renderer: 'canvas',
+        actions: false
+      }).catch(console.error);
+    });
+
+    function openTab(tabId, event) {
       // Hide all tab content
       const tabContents = document.querySelectorAll('.tab-content');
       tabContents.forEach(content => content.classList.remove('active'));
@@ -188,12 +215,41 @@
       document.getElementById(tabId).classList.add('active');
       event.target.classList.add('active');
 
-      // Load chart5.json into Tab 2 when it is clicked
-      if (tabId === 'tab2') {
-        const chartContainer = document.getElementById('chart2');
-        vegaEmbed('#chart2', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
-          "width": chartContainer.offsetWidth,
-          "height": chartContainer.offsetHeight
+      // Load chart5.json into Tab 1 when it is clicked
+      if (tabId === 'tab5') {
+        const chartContainer = document.getElementById('chart5');
+
+        // Clear container to prevent any previous content from interfering
+        while (chartContainer.firstChild) {
+          chartContainer.removeChild(chartContainer.firstChild);
+        }
+
+        // Embed chart
+        vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
+          "width": window.innerWidth * 0.45,
+          "height": window.innerHeight * 0.45,
+          "autosize": { "type": 'fit', "contains": 'padding' },
+          renderer: 'canvas',
+          actions: false
+        }).catch(console.error);
+      }
+
+      // Load chart4.json into Tab 2 when it is clicked
+      if (tabId === 'tab4') {
+        const chartContainer = document.getElementById('chart4');
+
+        // Clear container to prevent any previous content from interfering
+        while (chartContainer.firstChild) {
+          chartContainer.removeChild(chartContainer.firstChild);
+        }
+
+        // Embed chart
+        vegaEmbed('#chart4', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
+          "width": window.innerWidth * 0.45,
+          "height": window.innerHeight * 0.45,
+          "autosize": { "type": 'fit', "contains": 'padding' },
+          renderer: 'canvas',
+          actions: false
         }).catch(console.error);
       }
     }
