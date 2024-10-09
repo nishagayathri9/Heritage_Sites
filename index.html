@@ -57,19 +57,19 @@
     }
 
     .container {
-      background-color: #000; /* Changed to black */
+      background-color: #000;
       padding: 0;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
     }
 
-    #container1 {
-      width: 25%; /* Reduced width */
+    #container1, #container3 {
+      width: 25%;
     }
 
     #container2 {
-      width: 70%; /* Adjusted width to fill space accordingly */
+      width: 70%;
     }
 
     .container h2 {
@@ -79,7 +79,7 @@
     }
 
     /* Chart embedded into the containers */
-    #chart5, #container1Chart {
+    #chart5, #container1Chart, #container3Chart {
       width: 100%;
       height: 90%; /* Adjusted height for a slightly shorter graph */
       padding: 0;
@@ -88,7 +88,7 @@
     }
 
     /* Ensure iframes within charts fill the container */
-    #chart5 > iframe, #container1Chart > iframe {
+    #chart5 > iframe, #container1Chart > iframe, #container3Chart > iframe {
       width: 100%;
       height: 100%;
       border: none;
@@ -113,7 +113,7 @@
     }).catch(console.error);
   </script>
 
-  <!-- Container 1 and Container 2 -->
+  <!-- Container 1, Container 2, and Container 3 -->
   <div class="container-wrapper">
     <!-- Container 1 -->
     <div class="container" id="container1">
@@ -121,6 +121,12 @@
       <div id="container1Chart"></div>
     </div>
     
+    <!-- Container 3 -->
+    <div class="container" id="container3">
+      <h2>Container 3</h2>
+      <div id="container3Chart"></div>
+    </div>
+
     <!-- Container 2 -->
     <div class="container" id="container2">
       <div id="chart5"></div>
@@ -130,6 +136,15 @@
   <script>
     // Embed the chart into Container 1
     vegaEmbed('#container1Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json', {
+      "width": window.innerWidth * 0.45,
+      "height": window.innerHeight * 0.45,
+      "autosize": { "type": "fit", "contains": "padding" },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
+
+    // Embed chart4.json into Container 3
+    vegaEmbed('#container3Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
       "width": window.innerWidth * 0.45,
       "height": window.innerHeight * 0.45,
       "autosize": { "type": "fit", "contains": "padding" },
