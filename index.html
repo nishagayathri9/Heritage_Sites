@@ -98,41 +98,34 @@
     }
 
     .tab.active {
-      background-color: #F5F5DC;
-      color: black;
+      background-color: #F5F5DC; /* for active tab */
+      color: black; /* Black text for contrast */
     }
 
     .tab:hover {
-      background-color: #555;
+      background-color: #555; /* Slightly lighter hover state for inactive tabs */
     }
 
     .tab-content {
       display: none;
-      padding: 0;
+      padding: 10px;
       background-color: #1a1a1a;
-      border: none;
+      border: 2px solid #fff;
       margin-top: 0;
-      flex: 1;
+      height: 40vh; /* Ensure the tab content has a fixed height */
     }
 
     .tab-content.active {
       display: block;
     }
 
-    /* Chart embedded into Tab 1 and Tab 2 */
-    #chart4, #chart5, #container1Chart {
+    /* Chart embedded into Tab 2 */
+    #chart2 {
       width: 100%;
       height: 100%;
       padding: 0;
       margin: 0;
       box-sizing: border-box;
-    }
-
-    /* Ensure iframes within charts fill the container */
-    #chart4 > iframe, #chart5 > iframe, #container1Chart > iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
     }
   </style>
 </head>
@@ -143,123 +136,65 @@
     <h1>HERITAGE SITES</h1>
   </header>
   
-  <!-- Container for the Vega Chart (Map Chart) -->
-  <div class="chart-container" id="mapChart"></div>
+  <!-- Container for the Vega Chart -->
+  <div class="chart-container" id="chart"></div>
   
   <script type="text/javascript">
-    // Embed the Vega chart from your GitHub JSON file (Map Chart)
-    fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/chart1.json')
-      .then(response => response.json())
-      .then(spec => {
-        spec.width = 'container';
-        spec.height = 'container';
-        spec.autosize = { type: 'fit', contains: 'padding' };
-        
-        vegaEmbed('#mapChart', spec, {
-          renderer: 'canvas',
-          actions: false
-        }).catch(console.error);
-      })
-      .catch(console.error);
+    // Embed the Vega chart from your GitHub JSON file
+    vegaEmbed('#chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json', {
+      "width": window.innerWidth * 0.79,  
+      "height": window.innerHeight * 0.79 
+    }).catch(console.error);
   </script>
 
-  <!-- Container 1 and Container 2 -->
+  <!-- Container 1 -->
   <div class="container-wrapper">
-    <!-- Container 1 -->
     <div class="container" id="container1">
       <h2>Container 1</h2>
-      <div id="container1Chart"></div>
+      <p>This is the content of container 1.</p>
     </div>
     
     <!-- Container 2 with Tabs -->
     <div class="container" id="container2">
       <div class="tabs">
-        <div class="tab active" onclick="openTab('tab5', event)">Tab 1</div>
-        <div class="tab" onclick="openTab('tab4', event)">Tab 2</div>
+        <div class="tab active" onclick="openTab('tab1')">Tab 1</div>
+        <div class="tab" onclick="openTab('tab2')">Tab 2</div>
       </div>
       
-      <div class="tab-content active" id="tab5">
-        <!-- Chart container for Vega-Lite Chart in Tab 1 (Chart 5) -->
-        <div id="chart5"></div>
+      <div class="tab-content active" id="tab1">
+        <h2>Tab 1 Content</h2>
+        <p>This is the content of Tab 1.</p>
       </div>
       
-      <div class="tab-content" id="tab4">
-        <div id="chart4"></div>
+      <div class="tab-content" id="tab2">
+        <h2>Tab 2 Content</h2>
+        <!-- Add a chart container for Vega-Lite Chart -->
+        <div id="chart2"></div>
       </div>
     </div>
   </div>
 
   <script>
-    // Embed the chart into Container 1
-    fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/your_container1_chart.json')
-      .then(response => response.json())
-      .then(spec => {
-        spec.width = 'container';
-        spec.height = 'container';
-        spec.autosize = { type: 'fit', contains: 'padding' };
-
-        vegaEmbed('#container1Chart', spec, {
-          renderer: 'canvas',
-          actions: false
-        }).catch(console.error);
-      })
-      .catch(console.error);
-
-    // Load the chart for Tab 1 on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/chart5.json')
-        .then(response => response.json())
-        .then(spec => {
-          spec.width = 'container';
-          spec.height = 'container';
-          spec.autosize = { type: 'fit', contains: 'padding' };
-
-          vegaEmbed('#chart5', spec, {
-            renderer: 'canvas',
-            actions: false
-          }).catch(console.error);
-        })
-        .catch(console.error);
-    });
-
-    function openTab(tabId, event) {
+    function openTab(tabId) {
       // Hide all tab content
       const tabContents = document.querySelectorAll('.tab-content');
       tabContents.forEach(content => content.classList.remove('active'));
-
+      
       // Remove active class from all tabs
       const tabs = document.querySelectorAll('.tab');
       tabs.forEach(tab => tab.classList.remove('active'));
-
+      
       // Show the clicked tab content and activate the tab
       document.getElementById(tabId).classList.add('active');
       event.target.classList.add('active');
 
-      // Load chart4.json into Tab 2 when it is clicked
-      if (tabId === 'tab4') {
-        const chartContainer = document.getElementById('chart4');
-
-        // Clear container to prevent any previous content from interfering
-        while (chartContainer.firstChild) {
-          chartContainer.removeChild(chartContainer.firstChild);
-        }
-
-        // Fetch the chart specification and modify it
-        fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/chart4.json')
-          .then(response => response.json())
-          .then(spec => {
-            // Modify the spec to include autosize and width/height settings
-            spec.width = 'container';
-            spec.height = 'container';
-            spec.autosize = { type: 'fit', contains: 'padding' };
-
-            // Embed the chart with the modified spec
-            vegaEmbed('#chart4', spec, {
-              renderer: 'canvas',
-              actions: false
-            }).catch(console.error);
-          })
-          .catch(console.error);
+      // Load chart5.json into Tab 2 when it is clicked
+      if (tabId === 'tab2') {
+        const chartContainer = document.getElementById('chart2');
+        vegaEmbed('#chart2', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
+          "width": chartContainer.offsetWidth,
+          "height": chartContainer.offsetHeight
+        }).catch(console.error);
       }
     }
   </script>
