@@ -66,11 +66,11 @@
     }
 
     #container1 {
-      width: 35%;  /* Container 1 width set to 35% */
+      width: 45%;  /* Container 1 width set to 45% */
     }
 
     #container2 {
-      width: 65%;  /* Container 2 width set to 65% */
+      width: 53%;  /* Container 2 width set to 53% */
     }
 
     .container h2 {
@@ -165,17 +165,17 @@
     <!-- Container 2 with Tabs -->
     <div class="container" id="container2">
       <div class="tabs">
-        <div class="tab active" onclick="openTab('tab4', event)">Tab 1</div>
-        <div class="tab" onclick="openTab('tab5', event)">Tab 2</div>
+        <div class="tab active" onclick="openTab('tab5', event)">Tab 1</div>
+        <div class="tab" onclick="openTab('tab4', event)">Tab 2</div>
       </div>
       
-      <div class="tab-content active" id="tab4">
-        <!-- Chart container for Vega-Lite Chart in Tab 1 (Chart 4) -->
-        <div id="chart4"></div>
-      </div>
-      
-      <div class="tab-content" id="tab5">
+      <div class="tab-content active" id="tab5">
+        <!-- Chart container for Vega-Lite Chart in Tab 1 (Chart 5) -->
         <div id="chart5"></div>
+      </div>
+      
+      <div class="tab-content" id="tab4">
+        <div id="chart4"></div>
       </div>
     </div>
   </div>
@@ -203,26 +203,7 @@
       document.getElementById(tabId).classList.add('active');
       event.target.classList.add('active');
 
-      // Load chart4.json into Tab 1 when it is clicked
-      if (tabId === 'tab4') {
-        const chartContainer = document.getElementById('chart4');
-
-        // Clear container to prevent any previous content from interfering
-        while (chartContainer.firstChild) {
-          chartContainer.removeChild(chartContainer.firstChild);
-        }
-
-        // Embed chart
-        vegaEmbed('#chart4', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
-          "width": window.innerWidth * 0.45,
-          "height": window.innerHeight * 0.45,
-          "autosize": { "type": 'fit', "contains": 'padding' },
-          renderer: 'canvas',
-          actions: false
-        }).catch(console.error);
-      }
-
-      // Load chart5.json into Tab 2 when it is clicked
+      // Load chart5.json into Tab 1 when it is clicked
       if (tabId === 'tab5') {
         const chartContainer = document.getElementById('chart5');
 
@@ -233,6 +214,25 @@
 
         // Embed chart
         vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
+          "width": window.innerWidth * 0.45,
+          "height": window.innerHeight * 0.45,
+          "autosize": { "type": 'fit', "contains": 'padding' },
+          renderer: 'canvas',
+          actions: false
+        }).catch(console.error);
+      }
+
+      // Load chart4.json into Tab 2 when it is clicked
+      if (tabId === 'tab4') {
+        const chartContainer = document.getElementById('chart4');
+
+        // Clear container to prevent any previous content from interfering
+        while (chartContainer.firstChild) {
+          chartContainer.removeChild(chartContainer.firstChild);
+        }
+
+        // Embed chart
+        vegaEmbed('#chart4', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
           "width": window.innerWidth * 0.45,
           "height": window.innerHeight * 0.45,
           "autosize": { "type": 'fit', "contains": 'padding' },
