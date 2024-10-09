@@ -18,7 +18,7 @@
       background-color: black; /* Full black background */
       color: white;
       text-align: center;
-      overflow: hidden;
+      overflow-y: auto; /* Allow vertical scrolling */
     }
     
     header {
@@ -38,7 +38,7 @@
       margin: 0;
       padding: 0;
       width: 90vw; /* Slightly smaller than full width */
-      height: 50vh; /* Reduce height to make room for the containers */
+      height: 60vh; /* Increase height slightly to allow more room for the chart */
       margin: 20px auto;
       background-color: black; /* Make sure the chart background is black */
     }
@@ -53,8 +53,8 @@
       display: flex;
       justify-content: space-between;
       width: 90vw; /* Keep containers within the viewport width */
-      margin: 20px auto; /* Center the containers */
-      height: 40vh; /* Use remaining space */
+      margin: 20px auto;
+      min-height: 40vh; /* Make sure the containers have minimum height */
     }
 
     .container {
