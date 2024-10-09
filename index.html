@@ -237,16 +237,16 @@
       // Load chart4.json into Tab 2 when it is clicked
       if (tabId === 'tab4') {
         const chartContainer = document.getElementById('chart4');
-
-        // Clear container to prevent any previous content from interfering
+      
+        // Clear the container to prevent any previous content from interfering
         while (chartContainer.firstChild) {
           chartContainer.removeChild(chartContainer.firstChild);
         }
-
-        // Embed chart
+      
+        // Embed chart with reduced size
         vegaEmbed('#chart4', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
-          "width": window.innerWidth * 0.30,
-          "height": window.innerHeight * 0.30,
+          "width": window.innerWidth * 0.2,   // Reduced width to 20% of window width
+          "height": window.innerHeight * 0.2, // Reduced height to 20% of window height
           "autosize": { "type": 'fit', "contains": 'padding' },
           renderer: 'canvas',
           actions: false
