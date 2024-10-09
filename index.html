@@ -66,11 +66,11 @@
     }
 
     #container1 {
-      width: 35%;  /* Container 1 width set to 45% */
+      width: 35%;
     }
 
     #container2 {
-      width: 65%;  /* Container 2 width set to 53% */
+      width: 65%;
     }
 
     .container h2 {
@@ -79,47 +79,7 @@
       margin: 10px;
     }
 
-    /* Tabs for Container 2 */
-    .tabs {
-      display: flex;
-      cursor: pointer;
-      background-color: #333;
-      border-bottom: 2px solid #fff;
-    }
-
-    .tab {
-      flex: 1;
-      padding: 10px;
-      background-color: #333;
-      border: 1px solid #fff;
-      text-align: center;
-      color: white;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .tab.active {
-      background-color: #F5F5DC; /* for active tab */
-      color: black; /* Black text for contrast */
-    }
-
-    .tab:hover {
-      background-color: #555; /* Slightly lighter hover state for inactive tabs */
-    }
-
-    .tab-content {
-      display: none;
-      padding: 0;
-      background-color: #1a1a1a;
-      border: none;
-      margin-top: 0;
-      flex: 1;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    /* Chart embedded into Tab 1 and Tab 2 */
+    /* Chart embedded into the containers */
     #chart4, #chart5, #container1Chart {
       width: 100%;
       height: 100%;
@@ -162,26 +122,16 @@
       <div id="container1Chart"></div>
     </div>
     
-    <!-- Container 2 with Tabs -->
+    <!-- Container 2 -->
     <div class="container" id="container2">
-      <div class="tabs">
-        <div class="tab active" onclick="openTab('tab5', event)">Tab 1</div>
-        <div class="tab" onclick="openTab('tab4', event)">Tab 2</div>
-      </div>
-      
-      <div class="tab-content active" id="tab5">
-        <!-- Chart container for Vega-Lite Chart in Tab 1 (Chart 5) -->
-        <div id="chart5"></div>
-      </div>
-      
-      <div class="tab-content" id="tab4">
-        <div id="chart4"></div>
-      </div>
+      <h2>Chart 5 and Chart 4</h2>
+      <div id="chart5"></div>
+      <div id="chart4"></div>
     </div>
   </div>
 
   <script>
-    // Embed the chart into Container 1 if needed
+    // Embed the chart into Container 1
     vegaEmbed('#container1Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json', {
       "width": window.innerWidth * 0.45,
       "height": window.innerHeight * 0.45,
@@ -190,69 +140,23 @@
       actions: false
     }).catch(console.error);
 
-    // Load the chart for Tab 1 on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      const chartContainer = document.getElementById('chart5');
-      vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
-        "width": window.innerWidth * 0.50,
-        "height": window.innerHeight * 0.45,
-        "autosize": { "type": 'fit', "contains": 'padding' },
-        renderer: 'canvas',
-        actions: false
-      }).catch(console.error);
-    });
+    // Embed chart5.json into Container 2
+    vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
+      "width": window.innerWidth * 0.45,
+      "height": window.innerHeight * 0.45,
+      "autosize": { "type": 'fit', "contains": 'padding' },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
 
-    function openTab(tabId, event) {
-      // Hide all tab content
-      const tabContents = document.querySelectorAll('.tab-content');
-      tabContents.forEach(content => content.classList.remove('active'));
-      
-      // Remove active class from all tabs
-      const tabs = document.querySelectorAll('.tab');
-      tabs.forEach(tab => tab.classList.remove('active'));
-      
-      // Show the clicked tab content and activate the tab
-      document.getElementById(tabId).classList.add('active');
-      event.target.classList.add('active');
-
-      // Load chart5.json into Tab 1 when it is clicked
-      if (tabId === 'tab5') {
-        const chartContainer = document.getElementById('chart5');
-
-        // Clear container to prevent any previous content from interfering
-        while (chartContainer.firstChild) {
-          chartContainer.removeChild(chartContainer.firstChild);
-        }
-
-        // Embed chart
-        vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
-          "width": window.innerWidth * 0.4,
-          "height": window.innerHeight * 0.4,
-          "autosize": { "type": 'fit', "contains": 'padding' },
-          renderer: 'canvas',
-          actions: false
-        }).catch(console.error);
-      }
-
-      // Load chart4.json into Tab 2 when it is clicked
-      if (tabId === 'tab4') {
-        const chartContainer = document.getElementById('chart4');
-      
-        // Clear the container to prevent any previous content from interfering
-        while (chartContainer.firstChild) {
-          chartContainer.removeChild(chartContainer.firstChild);
-        }
-      
-        // Embed chart with reduced size
-        vegaEmbed('#chart4', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
-          "width": window.innerWidth * 0.37,   // Reduced width to 20% of window width
-          "height": window.innerHeight * 0.45, // Reduced height to 20% of window height
-          "autosize": { "type": 'fit', "contains": 'padding' },
-          renderer: 'canvas',
-          actions: false
-        }).catch(console.error);
-      }
-    }
+    // Embed chart4.json into Container 2
+    vegaEmbed('#chart4', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
+      "width": window.innerWidth * 0.37,
+      "height": window.innerHeight * 0.45,
+      "autosize": { "type": 'fit', "contains": 'padding' },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
   </script>
 
 </body>
