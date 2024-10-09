@@ -118,7 +118,7 @@
     }
 
     /* Chart embedded into Tab 2 */
-    #chart2 {
+    #chart2, #chart1 {
       width: 100%;
       height: 100%;
       padding: 0;
@@ -126,8 +126,8 @@
       box-sizing: border-box;
     }
 
-    /* Ensure iframe within chart2 fills the container */
-    #chart2 > iframe {
+    /* Ensure iframe within chart1 and chart2 fill the container */
+    #chart2 > iframe, #chart1 > iframe {
       width: 100%;
       height: 100%;
       border: none;
@@ -157,7 +157,7 @@
     <!-- Container 1 -->
     <div class="container" id="container1">
       <h2>Container 1</h2>
-      <p>This is the content of container 1.</p>
+      <div id="chart1"></div> <!-- New chart1 container for Tab 1 -->
     </div>
     
     <!-- Container 2 with Tabs -->
@@ -168,12 +168,11 @@
       </div>
       
       <div class="tab-content active" id="tab1">
-        <h2>Tab 1 Content</h2>
-        <p>This is the content of Tab 1.</p>
+        <!-- Chart container for Vega-Lite Chart -->
+        <div id="chart1"></div>
       </div>
       
       <div class="tab-content" id="tab2">
-        <!-- Chart container for Vega-Lite Chart -->
         <div id="chart2"></div>
       </div>
     </div>
@@ -192,6 +191,29 @@
       // Show the clicked tab content and activate the tab
       document.getElementById(tabId).classList.add('active');
       event.target.classList.add('active');
+
+      // Load chart4.json into Tab 1 when it is clicked
+      if (tabId === 'tab1') {
+        const chartContainer = document.getElementById('chart1');
+
+        // Check if the chart is already loaded to prevent reloading on each click
+        if (!chartContainer.hasChildNodes()) {
+          fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json')
+            .then(response => response.json())
+            .then(spec => {
+              // Modify the spec to include autosize and width/height settings
+              spec.width = 'container';
+              spec.height = 'container';
+              spec.autosize = { type: 'fit', contains: 'padding' };
+
+              vegaEmbed('#chart1', spec, {
+                renderer: 'canvas',
+                actions: false
+              }).catch(console.error);
+            })
+            .catch(console.error);
+        }
+      }
 
       // Load chart5.json into Tab 2 when it is clicked
       if (tabId === 'tab2') {
