@@ -23,8 +23,8 @@
       "axis": {
         "labelColor": "white",
         "titleColor": "white",
-        "gridColor": "white",
-        "tickColor": "white"
+        "tickColor": "white",
+        "grid": false  
       }
     },
     "y": {
@@ -34,15 +34,14 @@
       "axis": {
         "labelColor": "white",
         "titleColor": "white",
-        "gridColor": "white",
-        "tickColor": "white"
+        "grid": false  
       }
     },
     "color": {
       "field": "category",
       "type": "nominal",
       "scale": {
-        "range": ["#2C0E37", "#DBBADD", "#CB429F"]
+        "range": ["#E27396","#ea9ab2", "#EFCFE3"]
       },
       "title": "Category",
       "legend": {
