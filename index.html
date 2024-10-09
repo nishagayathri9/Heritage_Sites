@@ -37,8 +37,9 @@
     .chart-container {
       margin: 0;
       padding: 0;
-      width: 100vw; /* Full width */
-      height: 100vh; /* Full height */
+      width: 90vw; /* Slightly smaller than full width */
+      height: 90vh; /* Slightly smaller than full height */
+      margin: 20px auto; /* Center the chart */
     }
   </style>
 </head>
@@ -55,8 +56,8 @@
   <script type="text/javascript">
     // Embed the Vega chart from your GitHub JSON file
     vegaEmbed('#chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json', {
-      "width": window.innerWidth,  // Make chart fit the width of the screen
-      "height": window.innerHeight // Make chart fit the height of the screen
+      "width": window.innerWidth * 0.9,  // 90% of the screen width
+      "height": window.innerHeight * 0.9 // 90% of the screen height
     }).catch(console.error);
   </script>
 
