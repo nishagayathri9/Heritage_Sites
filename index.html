@@ -148,7 +148,7 @@
   
   <script type="text/javascript">
     // Embed the Vega chart from your GitHub JSON file (Map Chart)
-    fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json')
+    fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/chart1.json')
       .then(response => response.json())
       .then(spec => {
         spec.width = 'container';
@@ -191,7 +191,7 @@
 
   <script>
     // Embed the chart into Container 1
-    fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json')
+    fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/your_container1_chart.json')
       .then(response => response.json())
       .then(spec => {
         spec.width = 'container';
@@ -207,7 +207,7 @@
 
     // Load the chart for Tab 1 on page load
     window.addEventListener('DOMContentLoaded', () => {
-      fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json')
+      fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/chart5.json')
         .then(response => response.json())
         .then(spec => {
           spec.width = 'container';
@@ -245,7 +245,7 @@
         }
 
         // Fetch the chart specification and modify it
-        fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json')
+        fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/chart4.json')
           .then(response => response.json())
           .then(spec => {
             // Modify the spec to include autosize and width/height settings
