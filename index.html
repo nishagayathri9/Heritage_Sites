@@ -261,28 +261,6 @@
           })
           .catch(console.error);
       }
-
-      // Load chart5.json into Tab 1 when it is clicked (if needed)
-      if (tabId === 'tab5') {
-        const chartContainer = document.getElementById('chart5');
-
-        // Check if the chart is already loaded to prevent reloading
-        if (!chartContainer.hasChildNodes()) {
-          fetch('https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json')
-            .then(response => response.json())
-            .then(spec => {
-              spec.width = 'container';
-              spec.height = 'container';
-              spec.autosize = { type: 'fit', contains: 'padding' };
-
-              vegaEmbed('#chart5', spec, {
-                renderer: 'canvas',
-                actions: false
-              }).catch(console.error);
-            })
-            .catch(console.error);
-        }
-      }
     }
   </script>
 
