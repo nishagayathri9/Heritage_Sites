@@ -15,15 +15,16 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f9;
+      background-color: black; /* Set full background to black */
+      color: white; /* Make text white to contrast */
       text-align: center;
+      overflow: hidden; /* Remove any overflow */
     }
     
     header {
       background-color: #282c34;
       color: white;
       padding: 20px;
-      text-align: center;
     }
     
     h1 {
@@ -34,9 +35,10 @@
     }
     
     .chart-container {
-      margin: 40px auto;
-      width: 90vw;
-      height: 80vh;
+      margin: 0;
+      padding: 0;
+      width: 100vw; /* Full width */
+      height: 100vh; /* Full height */
     }
   </style>
 </head>
@@ -52,7 +54,10 @@
   
   <script type="text/javascript">
     // Embed the Vega chart from your GitHub JSON file
-    vegaEmbed('#chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json').catch(console.error);
+    vegaEmbed('#chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json', {
+      "width": window.innerWidth,  // Make chart fit the width of the screen
+      "height": window.innerHeight // Make chart fit the height of the screen
+    }).catch(console.error);
   </script>
 
 </body>
