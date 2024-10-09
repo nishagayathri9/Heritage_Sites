@@ -1,11 +1,11 @@
 {
     "$schema": "https://vega.github.io/schema/vega/v5.json",
     "description": "A beeswarm chart using a force-directed layout to group world heritage sites by category.",
-    "width": 1000,
-    "height": 300,
-    "padding": {"left": 5, "right": 5, "top": 60, "bottom": 50},
+    "width": 680,  
+    "height": 450,
+    "padding": {"left": 50, "right": 260, "top": 60, "bottom": 60},  
     "autosize": "none",
-  
+    
     "signals": [
       { "name": "cx", "update": "width / 2" },
       { "name": "cy", "update": "height / 2" },
@@ -15,7 +15,7 @@
       { "name": "gravityY", "value": 0.61 },
       { "name": "static", "value": false }
     ],
-  
+    
     "data": [
       {
         "name": "heritage_sites",
@@ -23,7 +23,7 @@
         "format": {"type": "csv"}
       }
     ],
-  
+    
     "scales": [
       {
         "name": "xscale",
@@ -35,10 +35,10 @@
         "name": "color",
         "type": "ordinal",
         "domain": {"data": "heritage_sites", "field": "region_en"},
-        "range": {"scheme": "category20c"}
+        "range": ["#fbb4ae", "#b3cde3", "#ccebc5", "#decbe4", "#fed9a6", "#ffffcc"]  
       }
     ],
-  
+    
     "axes": [
       {
         "orient": "bottom", 
@@ -49,7 +49,7 @@
         "titlePadding": 11
       }
     ],
-  
+    
     "marks": [
       {
         "name": "nodes",
@@ -59,7 +59,10 @@
           "enter": {
             "fill": {"scale": "color", "field": "region_en"},
             "xfocus": {"scale": "xscale", "field": "category", "band": 0.5},
-            "yfocus": {"signal": "cy"}
+            "yfocus": {"signal": "cy"},
+            "tooltip": {
+              "signal": "{'Name': datum.name, 'Category': datum.category, 'Region': datum.region_en, 'Year Inscribed': datum.year_inscribed}"
+            }
           },
           "update": {
             "size": {"signal": "pow(2 * radius, 2)"},
@@ -85,54 +88,26 @@
             ]
           }
         ]
-      },
-      {
-        "type": "group",
-        "encode": {
-          "enter": {
-            "x": {"value": 800},
-            "y": {"value": 20}
-          }
-        },
-        "marks": [
-          {
-            "type": "rect",
-            "encode": {
-              "enter": {
-                "x": {"value": 0},
-                "y": {"field": "y"},
-                "width": {"value": 15},
-                "height": {"value": 15},
-                "fill": {"field": "color"}
-              }
-            }
-          },
-          {
-            "type": "text",
-            "encode": {
-              "enter": {
-                "x": {"value": 20},
-                "y": {"field": "y", "offset": 12},
-                "text": {"field": "label"},
-                "fontSize": {"value": 12}
-              }
-            }
-          }
-        ],
-        "data": [
-          {"name": "legend_data", "values": [
-            {"y": 0, "color": "#3182bd", "label": "Region 1"},
-            {"y": 20, "color": "#6baed6", "label": "Region 2"},
-            {"y": 40, "color": "#9ecae1", "label": "Region 3"}
-          ]}
-        ]
       }
     ],
-  
+    
+    "legends": [
+      {
+        "fill": "color",
+        "title": "Region",
+        "orient": "right",  
+        "titleFontSize": 13,  
+        "labelFontSize": 11,  
+        "labelLimit": 300,  
+        "offset": 0  
+      }
+    ],
+    
     "title": {
       "text": "World Heritage Sites Grouped by Category",
-      "fontSize": 20,
+      "fontSize": 21,  
       "anchor": "middle",
       "offset": 20
     }
   }
+  
