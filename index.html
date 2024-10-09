@@ -48,7 +48,7 @@
       border: none;
     }
 
-    .container-wrapper {
+    .container-wrapper, .container-wrapper-reverse, .container-wrapper-triple {
       display: flex;
       justify-content: space-between;
       width: 90vw;
@@ -62,30 +62,15 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
+      border: 2px solid #fff; /* White border */
     }
 
-    #container1 {
+    #container1, #container4, #container5, #container6 {
       width: 30%;
     }
 
-    #container2 {
+    #container2, #container3 {
       width: 65%;
-    }
-
-    #container3 {
-      width: 65%;
-    }
-
-    #container4 {
-      width: 30%;
-    }
-
-    .container-wrapper-reverse {
-      display: flex;
-      justify-content: space-between;
-      width: 90vw;
-      margin: 20px auto;
-      min-height: 40vh;
     }
 
     .container h2 {
@@ -164,6 +149,27 @@
     </div>
   </div>
 
+  <!-- New Container 4, 5, 6 in One Row -->
+  <div class="container-wrapper-triple">
+    <!-- Container 4 -->
+    <div class="container" id="container4">
+      <h2>Container 4</h2>
+      <p>Exploration, Hiking, Beach, Desert, Stars, Planet, Galaxy, Travel, Expedition, Adventure, Rafting, Trail, Footpath, Rock, Birdsong, Sunlight, Bridge, Tracks, Weather, Forest, Terrain, Journey, Travel, Wildlife, Ocean, Islands, Mountains, Cabin, Jungle, Flight, Rivers, Bay, Inlet, Cove, Ferry, Boating, Harbor, Village, Culture, Nature, Cliff, Hill, Mountain, Sky, Landscape, Meadows, Tradition, Flora, Heritage, Discovery</p>
+    </div>
+
+    <!-- Container 5 -->
+    <div class="container" id="container5">
+      <h2>Container 5</h2>
+      <div id="container5Chart"></div>
+    </div>
+
+    <!-- Container 6 -->
+    <div class="container" id="container6">
+      <h2>Container 6</h2>
+      <div id="container6Chart"></div>
+    </div>
+  </div>
+
   <script>
     // Embed the chart into Container 1
     vegaEmbed('#container1Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json', {
@@ -176,7 +182,7 @@
 
     // Embed chart4.json into Container 3
     vegaEmbed('#container3Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
-      "width": window.innerWidth * 0.40,
+      "width": window.innerWidth * 0.85,
       "height": window.innerHeight * 0.3, // Reduced height for a smaller graph
       "autosize": { "type": "fit", "contains": "padding" },
       renderer: 'canvas',
