@@ -76,17 +76,88 @@
             "labelColor": "white",
             "titleColor": "white"
           }
-        },
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "image",
+        "width": 30,
+        "height": 30
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "url": {"field": "url", "type": "nominal"},
         "tooltip": [
+          {"field": "country", "type": "nominal", "title": "Country"},
+          {"field": "image", "type": "nominal", "title": "Image"}
+        ]
+      },
+      "data": {
+        "values": [
           {
-            "field": "properties.NAME",
-            "type": "nominal",
-            "title": "Country"
+            "country": "France",
+            "latitude": 46.603354,
+            "longitude": 1.888334,
+            "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
+            "image": "https://example.com/france-image.jpg"
           },
           {
-            "field": "class_count",
-            "type": "nominal",
-            "title": "Heritage Site Class"
+            "country": "Egypt",
+            "latitude": 26.820553,
+            "longitude": 30.802498,
+            "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
+            "image": "https://example.com/egypt-image.jpg"
+          },
+          {
+            "country": "Japan",
+            "latitude": 36.204824,
+            "longitude": 138.252924,
+            "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
+            "image": "https://example.com/japan-image.jpg"
+          },
+          {
+            "country": "Australia",
+            "latitude": -25.274398,
+            "longitude": 133.775136,
+            "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
+            "image": "https://example.com/australia-image.jpg"
+          },
+          {
+            "country": "United States",
+            "latitude": 37.09024,
+            "longitude": -95.712891,
+            "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
+            "image": "https://example.com/usa-image.jpg"
+          },
+          {
+            "country": "Brazil",
+            "latitude": -14.235004,
+            "longitude": -51.92528,
+            "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
+            "image": "https://example.com/brazil-image.jpg"
+          },
+          {
+            "country": "China",
+            "latitude": 35.86166,
+            "longitude": 104.195397,
+            "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
+            "image": "https://example.com/china-image.jpg"
+          },
+          {
+            "country": "India",
+            "latitude": 20.593684,
+            "longitude": 78.96288,
+            "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
+            "image": "https://example.com/india-image.jpg"
+          },
+          {
+            "country": "Indonesia",
+            "latitude": -0.789275,
+            "longitude": 113.921327,
+            "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
+            "image": "https://example.com/indonesia-image.jpg"
           }
         ]
       }
