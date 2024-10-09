@@ -1,27 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vega-Lite Visualizations</title>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Charts</title>
+    <!-- Import Vega and Vega-Lite -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+        .chart-container {
+            margin: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <div id="vis1"></div>
-  <div id="vis2"></div>
 
-  <script>
-    // Embed the first chart
-    vegaEmbed('#vis1', 'chart.json').then(function(result) {
-      // Access the Vega view instance as result.view
-    }).catch(console.error);
+<h1 style="text-align:center;">Collection of Charts</h1>
 
-    // Embed the second chart
-    vegaEmbed('#vis2', 'chart2.json').then(function(result) {
-      // Access the Vega view instance as result.view
-    }).catch(console.error);
-  </script>
+<!-- Container for Chart 1 -->
+<div class="chart-container">
+    <h2>Chart 1</h2>
+    <div id="chart1"></div>
+</div>
+
+<!-- Container for Chart 2 -->
+<div class="chart-container">
+    <h2>Chart 2</h2>
+    <div id="chart2"></div>
+</div>
+
+<!-- Container for Chart 3 -->
+<div class="chart-container">
+    <h2>Chart 3</h2>
+    <div id="chart3"></div>
+</div>
+
+<!-- Container for Chart 4 -->
+<div class="chart-container">
+    <h2>Chart 4</h2>
+    <div id="chart4"></div>
+</div>
+
+<!-- Container for Chart 5 -->
+<div class="chart-container">
+    <h2>Chart 5</h2>
+    <div id="chart5"></div>
+</div>
+
+<!-- Embedding the charts -->
+<script>
+    const embedOptions = { "actions": false }; // Disable the Vega actions menu
+
+    // Embed each chart using .then(), assuming the JSON files are in the same directory
+    vegaEmbed("#chart1", "chart1.json", embedOptions)
+        .then(result => console.log("Chart 1 loaded successfully"))
+        .catch(console.error);
+
+    vegaEmbed("#chart2", "chart2.json", embedOptions)
+        .then(result => console.log("Chart 2 loaded successfully"))
+        .catch(console.error);
+
+    vegaEmbed("#chart3", "chart3.json", embedOptions)
+        .then(result => console.log("Chart 3 loaded successfully"))
+        .catch(console.error);
+
+    vegaEmbed("#chart4", "chart4.json", embedOptions)
+        .then(result => console.log("Chart 4 loaded successfully"))
+        .catch(console.error);
+
+    vegaEmbed("#chart5", "chart5.json", embedOptions)
+        .then(result => console.log("Chart 5 loaded successfully"))
+        .catch(console.error);
+</script>
+
 </body>
 </html>
