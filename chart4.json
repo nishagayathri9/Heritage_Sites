@@ -1,10 +1,10 @@
 {
     "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "description": "A beeswarm chart using a force-directed layout to group world heritage sites by category.",
     "width": 680,  
     "height": 450,
     "padding": {"left": 50, "right": 260, "top": 60, "bottom": 60},  
     "autosize": "none",
+    "background": "null",  
     
     "signals": [
       { "name": "cx", "update": "width / 2" },
@@ -46,7 +46,10 @@
         "title": "Categories", 
         "labelFontSize": 14,
         "titleFontSize": 16,
-        "titlePadding": 11
+        "titlePadding": 11,
+        "labelColor": "white",  
+        "titleColor": "white", 
+        "tickColor": "white"  
       }
     ],
     
@@ -99,15 +102,10 @@
         "titleFontSize": 13,  
         "labelFontSize": 11,  
         "labelLimit": 300,  
-        "offset": 0  
+        "offset": 0,
+        "titleColor": "white",   
+        "labelColor": "white"    
       }
-    ],
-    
-    "title": {
-      "text": "World Heritage Sites Grouped by Category",
-      "fontSize": 21,  
-      "anchor": "middle",
-      "offset": 20
-    }
+    ]
   }
   
