@@ -201,6 +201,15 @@
       renderer: 'canvas',
       actions: false
     }).catch(console.error);
+
+    // Embed chart2.json into Container 5
+    vegaEmbed('#container5Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart2.json', {
+      "width": window.innerWidth * 0.45,
+      "height": window.innerHeight * 0.35, // Adjusted height for a shorter graph
+      "autosize": { "type": 'fit', "contains": 'padding' },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
   </script>
 
 </body>
