@@ -1,100 +1,67 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212; /* Dark background */
-    color: #ffffff;
-    padding: 0; /* Remove padding to allow full-width effect */
-}
-
-/* Header Styling */
-header {
-    text-align: center;
-    padding: 20px 10px;
-    background-color: #1f1f1f;
-    color: #00FFC6; /* Neon greenish-blue */
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 255, 198, 0.3);
-}
-
-h1 {
-    font-size: 2.5rem;
-    letter-spacing: 1px;
-}
-
-/* Main Layout */
-main {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0; /* Remove padding from main */
-}
-
-/* Main Chart Section - No visible container */
-.main-chart {
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
-    border: none; /* Remove border */
-    background: none; /* Remove background */
-    text-align: center;
-}
-
-.main-chart h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #00FFC6; /* Neon Greenish-blue */
-}
-
-/* Ensure the chart takes full width */
-#chart1 {
-    width: 100vw;  /* Full viewport width */
-    height: 600px;
-    margin: 0;
-}
-
-/* Grid for Other Charts (Optional) */
-.charts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px; /* Maintain some padding for other charts */
-}
-
-.chart {
-    background-color: #1f1f1f;
-    padding: 20px;
-    border: 1px solid #333;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(198, 0, 255, 0.3); /* Neon purple */
-    text-align: center;
-}
-
-.chart h3 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: #C600FF; /* Neon purple */
-}
-
-#chart2, #chart3, #chart4, #chart5 {
-    width: 100%;
-    height: 400px;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    .main-chart h2, .chart h3 {
-        font-size: 1.4rem;
-    }
-
-    #chart1, #chart2, #chart3, #chart4, #chart5 {
-        height: 300px;
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Heritage Sites Charts</title>
+    <title>Futuristic World Heritage Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Vega-Embed Script -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+    <header>
+        <h1>World Heritage Sites Analysis</h1>
+        <h1>World Heritage Sites Dashboard</h1>
+    </header>
+    
+    <main>
+        <!-- Main Chart (Chart 1) -->
+        <section class="main-chart">
+            <h2>Chart 1: Heritage Sites by Region</h2>
+            <div id="chart1"></div>
+        </section>
+        <!-- Other Charts -->
+        <section class="charts-grid">
+            <div class="chart">
+                <img src="chart1.png" alt="Chart 1: Heritage Sites by Region">
+                <p class="caption">Chart 1: Heritage Sites by Region</p>
+            </div>
+            <div class="chart">
+                <img src="chart2.png" alt="Chart 2: Natural vs Cultural Sites">
+                <p class="caption">Chart 2: Natural vs Cultural Sites</p>
+                <h3>Chart 2: Natural vs Cultural Sites</h3>
+                <div id="chart2"></div>
+            </div>
+            <div class="chart">
+                <img src="chart3.png" alt="Chart 3: Sites Added Over Time">
+                <p class="caption">Chart 3: Sites Added Over Time</p>
+                <h3>Chart 3: Sites Added Over Time</h3>
+                <div id="chart3"></div>
+            </div>
+            <div class="chart">
+                <img src="chart4.png" alt="Chart 4: Endangered Sites">
+                <p class="caption">Chart 4: Endangered Sites</p>
+                <h3>Chart 4: Endangered Sites</h3>
+                <div id="chart4"></div>
+            </div>
+            <div class="chart">
+                <img src="chart5.png" alt="Chart 5: Sites by Country">
+                <p class="caption">Chart 5: Sites by Country</p>
+                <h3>Chart 5: Sites by Country</h3>
+                <div id="chart5"></div>
+            </div>
+        </section>
+    </main>
+    <script type="text/javascript">
+        // Embed all the charts
+        vegaEmbed('#chart1', 'chart1.json').catch(console.error);
+        vegaEmbed('#chart2', 'chart2.json').catch(console.error);
+        vegaEmbed('#chart3', 'chart3.json').catch(console.error);
+        vegaEmbed('#chart4', 'chart4.json').catch(console.error);
+        vegaEmbed('#chart5', 'chart5.json').catch(console.error);
+    </script>
+</body>
+</html>
