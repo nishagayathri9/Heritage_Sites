@@ -66,11 +66,11 @@
     }
 
     #container1 {
-      width: 45%;  /* Container 1 width set to 45% */
+      width: 35%;  /* Container 1 width set to 45% */
     }
 
     #container2 {
-      width: 53%;  /* Container 2 width set to 53% */
+      width: 60%;  /* Container 2 width set to 53% */
     }
 
     .container h2 {
@@ -189,6 +189,18 @@
       renderer: 'canvas',
       actions: false
     }).catch(console.error);
+
+    // Load the chart for Tab 1 on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const chartContainer = document.getElementById('chart5');
+      vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
+        "width": window.innerWidth * 0.45,
+        "height": window.innerHeight * 0.45,
+        "autosize": { "type": 'fit', "contains": 'padding' },
+        renderer: 'canvas',
+        actions: false
+      }).catch(console.error);
+    });
 
     function openTab(tabId, event) {
       // Hide all tab content
