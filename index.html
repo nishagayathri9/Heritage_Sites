@@ -53,24 +53,33 @@
 <script>
     const embedOptions = { "actions": false }; // Disable the Vega actions menu
 
-    // Embed each chart using .then(), assuming the JSON files are in the same directory
-    vegaEmbed("#chart1", "chart1.json", embedOptions)
+    // URLs for the chart JSONs
+    const charts = [
+        "https://raw.githubusercontent.com/your-username/repo/main/chart1.json",
+        "https://raw.githubusercontent.com/your-username/repo/main/chart2.json",
+        "https://raw.githubusercontent.com/your-username/repo/main/chart3.json",
+        "https://raw.githubusercontent.com/your-username/repo/main/chart4.json",
+        "https://raw.githubusercontent.com/your-username/repo/main/chart5.json"
+    ];
+
+    // Embed each chart using .then()
+    vegaEmbed("#chart1", charts[0], embedOptions)
         .then(result => console.log("Chart 1 loaded successfully"))
         .catch(console.error);
 
-    vegaEmbed("#chart2", "chart2.json", embedOptions)
+    vegaEmbed("#chart2", charts[1], embedOptions)
         .then(result => console.log("Chart 2 loaded successfully"))
         .catch(console.error);
 
-    vegaEmbed("#chart3", "chart3.json", embedOptions)
+    vegaEmbed("#chart3", charts[2], embedOptions)
         .then(result => console.log("Chart 3 loaded successfully"))
         .catch(console.error);
 
-    vegaEmbed("#chart4", "chart4.json", embedOptions)
+    vegaEmbed("#chart4", charts[3], embedOptions)
         .then(result => console.log("Chart 4 loaded successfully"))
         .catch(console.error);
 
-    vegaEmbed("#chart5", "chart5.json", embedOptions)
+    vegaEmbed("#chart5", charts[4], embedOptions)
         .then(result => console.log("Chart 5 loaded successfully"))
         .catch(console.error);
 </script>
