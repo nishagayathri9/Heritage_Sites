@@ -1,67 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Heritage Sites Charts</title>
-    <title>Futuristic World Heritage Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Vega-Embed Script -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Site Visualization</title>
+  
+  <!-- Import Vega and Vega-Embed libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      text-align: center;
+    }
+    
+    header {
+      background-color: #282c34;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+    
+    .chart-container {
+      margin: 40px auto;
+      width: 90vw;
+      height: 80vh;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>World Heritage Sites Analysis</h1>
-        <h1>World Heritage Sites Dashboard</h1>
-    </header>
-    
-    <main>
-        <!-- Main Chart (Chart 1) -->
-        <section class="main-chart">
-            <h2>Chart 1: Heritage Sites by Region</h2>
-            <div id="chart1"></div>
-        </section>
-        <!-- Other Charts -->
-        <section class="charts-grid">
-            <div class="chart">
-                <img src="chart1.png" alt="Chart 1: Heritage Sites by Region">
-                <p class="caption">Chart 1: Heritage Sites by Region</p>
-            </div>
-            <div class="chart">
-                <img src="chart2.png" alt="Chart 2: Natural vs Cultural Sites">
-                <p class="caption">Chart 2: Natural vs Cultural Sites</p>
-                <h3>Chart 2: Natural vs Cultural Sites</h3>
-                <div id="chart2"></div>
-            </div>
-            <div class="chart">
-                <img src="chart3.png" alt="Chart 3: Sites Added Over Time">
-                <p class="caption">Chart 3: Sites Added Over Time</p>
-                <h3>Chart 3: Sites Added Over Time</h3>
-                <div id="chart3"></div>
-            </div>
-            <div class="chart">
-                <img src="chart4.png" alt="Chart 4: Endangered Sites">
-                <p class="caption">Chart 4: Endangered Sites</p>
-                <h3>Chart 4: Endangered Sites</h3>
-                <div id="chart4"></div>
-            </div>
-            <div class="chart">
-                <img src="chart5.png" alt="Chart 5: Sites by Country">
-                <p class="caption">Chart 5: Sites by Country</p>
-                <h3>Chart 5: Sites by Country</h3>
-                <div id="chart5"></div>
-            </div>
-        </section>
-    </main>
-    <script type="text/javascript">
-        // Embed all the charts
-        vegaEmbed('#chart1', 'chart1.json').catch(console.error);
-        vegaEmbed('#chart2', 'chart2.json').catch(console.error);
-        vegaEmbed('#chart3', 'chart3.json').catch(console.error);
-        vegaEmbed('#chart4', 'chart4.json').catch(console.error);
-        vegaEmbed('#chart5', 'chart5.json').catch(console.error);
-    </script>
+
+  <!-- Header with the title -->
+  <header>
+    <h1>HERITAGE SITE VISUALIZATION DASHBOARD</h1>
+  </header>
+  
+  <!-- Container for the Vega Chart -->
+  <div class="chart-container" id="chart"></div>
+  
+  <script type="text/javascript">
+    // Embed the Vega chart from your GitHub JSON file
+    vegaEmbed('#chart1', 'chart1.json').catch(console.error);
+  </script>
+
 </body>
 </html>
