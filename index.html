@@ -56,13 +56,6 @@
       min-height: 40vh;
     }
 
-    .left-column {
-      width: 30%;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
     .container {
       background-color: #000;
       padding: 10px;
@@ -72,17 +65,27 @@
     }
 
     #container1 {
-      width: 100%;
-    }
-
-    #container3 {
-      width: 90%;
-      margin: 20px auto;
-      padding: 20px;
+      width: 30%;
     }
 
     #container2 {
       width: 65%;
+    }
+
+    #container3 {
+      width: 65%;
+    }
+
+    #container4 {
+      width: 30%;
+    }
+
+    .container-wrapper-reverse {
+      display: flex;
+      justify-content: space-between;
+      width: 90vw;
+      margin: 20px auto;
+      min-height: 40vh;
     }
 
     .container h2 {
@@ -99,7 +102,7 @@
     /* Chart embedded into the containers */
     #chart5, #container1Chart, #container3Chart {
       width: 100%;
-      height: 80%; /* Reduced height for a smaller graph */
+      height: 80%; /* Reduced height for a slightly shorter graph */
       padding: 0;
       margin: 0;
       box-sizing: border-box;
@@ -131,16 +134,13 @@
     }).catch(console.error);
   </script>
 
-  <!-- Left Column and Right Container -->
+  <!-- Original Container 1 and Container 2 -->
   <div class="container-wrapper">
-    <!-- Left Column (Container 1) -->
-    <div class="left-column">
-      <!-- Container 1 -->
-      <div class="container" id="container1">
-        <h2>Container 1</h2>
-        <p>Mountain, River, Sky, Forest, City, Culture, Travel, Adventure, Nature, Ocean, Valley, Lake, Architecture, Garden, Beach, Village, Island, Castle, Landmark, Monument, Museum, Gallery, Park, History, Tradition, Wildlife, Flora, Fauna, Landscape, Vista</p>
-        <div id="container1Chart"></div>
-      </div>
+    <!-- Container 1 -->
+    <div class="container" id="container1">
+      <h2>Container 1</h2>
+      <p>Mountain, River, Sky, Forest, City, Culture, Travel, Adventure, Nature, Ocean, Valley, Lake, Architecture, Garden, Beach, Village, Island, Castle, Landmark, Monument, Museum, Gallery, Park, History, Tradition, Wildlife, Flora, Fauna, Landscape, Vista</p>
+      <div id="container1Chart"></div>
     </div>
 
     <!-- Container 2 -->
@@ -149,10 +149,19 @@
     </div>
   </div>
 
-  <!-- Container 3 -->
-  <div class="container" id="container3">
-    <h2>Container 3</h2>
-    <div id="container3Chart"></div>
+  <!-- Reversed Container 3 and Container 4 -->
+  <div class="container-wrapper-reverse">
+    <!-- Container 3 (Wider Container) -->
+    <div class="container" id="container3">
+      <h2>Container 3</h2>
+      <div id="container3Chart"></div>
+    </div>
+
+    <!-- Container 4 (Narrower Container) -->
+    <div class="container" id="container4">
+      <h2>Container 4</h2>
+      <p>Sunset, Sunrise, Horizon, Waves, Forest, Travel, Journey, Explore, Compass, Landmark, Heritage, Culture, Mountain, River, City, Sky, Wild, Natural, Scenic, Flora, Fauna, Tradition, Adventure, Discovery, Ocean, Breeze, Coast, Wildlife, Park, Canyon, Historic, Ruins, Waterfall, Meadow, Lake, Valley, Glacial, Cliff, Summit, Ridge, Adventure, Landscape, Vista, Trail, Expedition, Sanctuary, Village, Habitat, Diverse, Island, Plains</p>
+    </div>
   </div>
 
   <script>
