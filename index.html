@@ -88,17 +88,22 @@
       font-size: 16px;
     }
 
+    /* Adjust container 5 for better fit */
+    #container5 {
+      width: 48%; /* Increased width */
+    }
+
     /* Chart embedded into the containers */
-    #chart5, #container1Chart, #container3Chart {
+    #chart5, #container1Chart, #container3Chart, #container5Chart {
       width: 100%;
-      height: 80%; /* Reduced height for a slightly shorter graph */
+      height: 90%; /* Increased height for better fit */
       padding: 0;
       margin: 0;
       box-sizing: border-box;
     }
 
     /* Ensure iframes within charts fill the container */
-    #chart5 > iframe, #container1Chart > iframe, #container3Chart > iframe {
+    #chart5 > iframe, #container1Chart > iframe, #container3Chart > iframe, #container5Chart > iframe {
       width: 100%;
       height: 100%;
       border: none;
@@ -202,10 +207,10 @@
       actions: false
     }).catch(console.error);
 
-    // Embed chart2.json into Container 5
+    // Embed chart2.json into Container 5 with adjusted dimensions
     vegaEmbed('#container5Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart2.json', {
-      "width": window.innerWidth * 0.2,
-      "height": window.innerHeight * 0.30, // Adjusted height for a shorter graph
+      "width": window.innerWidth * 0.48,  // Adjusted width to better fit container
+      "height": window.innerHeight * 0.5, // Adjusted height to avoid white space
       "autosize": { "type": 'fit', "contains": 'padding' },
       renderer: 'canvas',
       actions: false
