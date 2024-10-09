@@ -1,41 +1,190 @@
-{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Distribution of Categories and Ratings",
-    "anchor": "middle"
-  },
-  "width": 400,
-  "height": 200,  
-  "data": {
-    "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/beeswarm.csv",
-    "format": {"type": "csv"}
-  },
-  "mark": "area",
-  "transform": [
-    {
-      "density": "Rating",
-      "groupby": ["category"],
-      "extent": [0, 5]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Site Visualization</title>
+  
+  <!-- Import Vega and Vega-Embed libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      text-align: center;
+      overflow-y: auto;
     }
-  ],
-  "encoding": {
-    "x": {
-      "field": "value",
-      "type": "quantitative",
-      "title": "Rating"
-    },
-    "y": {
-      "field": "density",
-      "type": "quantitative",
-      "stack": "zero"
-    },
-    "color": {
-      "field": "category",
-      "type": "nominal",
-      "scale": {
-        "range": ["#2C0E37", "#DBBADD", "#CB429F"]
-      },
-      "title": "Category"
+    
+    header {
+      background-color: #282c34;
+      color: white;
+      padding: 20px;
     }
-  }
-}
+    
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+    
+    .chart-container {
+      margin: 0;
+      padding: 0;
+      width: 90vw;
+      height: 60vh;
+      margin: 20px auto;
+      background-color: black;
+    }
+
+    #chart > iframe {
+      background-color: black;
+      border: none;
+    }
+
+    .container-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 90vw;
+      margin: 20px auto;
+      min-height: 40vh;
+    }
+
+    .container {
+      background-color: #1a1a1a;
+      border: 2px solid #fff;
+      width: 48%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .container h2 {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    .container p {
+      color: #ddd;
+    }
+
+    /* Tabs for Container 2 */
+    .tabs {
+      display: flex;
+      cursor: pointer;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 10px;
+      background-color: #333;
+      border: 1px solid #fff;
+      text-align: center;
+      color: white;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .tab.active {
+      background-color: #F5F5DC; /* for active tab */
+      color: black; /* Black text for contrast */
+    }
+
+    .tab:hover {
+      background-color: #555; /* Slightly lighter hover state for inactive tabs */
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+      background-color: #1a1a1a;
+      border: 2px solid #fff;
+      margin-top: 10px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Chart embedded into Tab 2 */
+    #chart2 {
+      width: 100%;
+      height: 50vh; /* Adjust the height to fit within the container */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with the title -->
+  <header>
+    <h1>HERITAGE SITES</h1>
+  </header>
+  
+  <!-- Container for the Vega Chart -->
+  <div class="chart-container" id="chart"></div>
+  
+  <script type="text/javascript">
+    // Embed the Vega chart from your GitHub JSON file
+    vegaEmbed('#chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json', {
+      "width": window.innerWidth * 0.79,  
+      "height": window.innerHeight * 0.79 
+    }).catch(console.error);
+  </script>
+
+  <!-- Container 1 -->
+  <div class="container-wrapper">
+    <div class="container" id="container1">
+      <h2>Container 1</h2>
+      <p>This is the content of container 1.</p>
+    </div>
+    
+    <!-- Container 2 with Tabs -->
+    <div class="container" id="container2">
+      <div class="tabs">
+        <div class="tab active" onclick="openTab('tab1')">Tab 1</div>
+        <div class="tab" onclick="openTab('tab2')">Tab 2</div>
+      </div>
+      
+      <div class="tab-content active" id="tab1">
+        <h2>Tab 1 Content</h2>
+        <p>This is the content of Tab 1.</p>
+      </div>
+      
+      <div class="tab-content" id="tab2">
+        <h2>Tab 2 Content</h2>
+        <!-- Add a chart container for Vega-Lite Chart -->
+        <div id="chart2"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openTab(tabId) {
+      // Hide all tab content
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // Remove active class from all tabs
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      
+      // Show the clicked tab content and activate the tab
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+
+      // Load chart5.json into Tab 2 when it is clicked
+      if (tabId === 'tab2') {
+        vegaEmbed('#chart2', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
+          "width": document.getElementById('chart2').offsetWidth,
+          "height": document.getElementById('chart2').offsetHeight
+        }).catch(console.error);
+      }
+    }
+  </script>
+
+</body>
+</html>
