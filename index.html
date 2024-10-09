@@ -71,8 +71,14 @@
       flex-direction: column;
     }
 
-    #container1, #container3 {
+    #container1 {
       width: 100%;
+    }
+
+    #container3 {
+      width: 90%;
+      margin: 20px auto;
+      padding: 20px;
     }
 
     #container2 {
@@ -93,7 +99,7 @@
     /* Chart embedded into the containers */
     #chart5, #container1Chart, #container3Chart {
       width: 100%;
-      height: 90%; /* Adjusted height for a slightly shorter graph */
+      height: 80%; /* Reduced height for a smaller graph */
       padding: 0;
       margin: 0;
       box-sizing: border-box;
@@ -127,19 +133,13 @@
 
   <!-- Left Column and Right Container -->
   <div class="container-wrapper">
-    <!-- Left Column (Container 1 and Container 3) -->
+    <!-- Left Column (Container 1) -->
     <div class="left-column">
       <!-- Container 1 -->
       <div class="container" id="container1">
         <h2>Container 1</h2>
-        <p>Mountain, River, Sky, Forest, City, Culture, Travel, Adventure, Nature, Ocean, Valley, Lake, Architecture, Garden, Beach, Village, Island, Castle, Landmark, Monument, Museum, Gallery, Park, History, Tradition, Wildlife, Flora, Fauna, Landscape, Vista,Mountain, River, Sky, Forest, City, Culture, Travel, Adventure, Nature, Ocean, Valley, Lake, Architecture, Garden, Beach, Village, Island</p>
+        <p>Mountain, River, Sky, Forest, City, Culture, Travel, Adventure, Nature, Ocean, Valley, Lake, Architecture, Garden, Beach, Village, Island, Castle, Landmark, Monument, Museum, Gallery, Park, History, Tradition, Wildlife, Flora, Fauna, Landscape, Vista</p>
         <div id="container1Chart"></div>
-      </div>
-      
-      <!-- Container 3 -->
-      <div class="container" id="container3">
-        <h2>Container 3</h2>
-        <div id="container3Chart"></div>
       </div>
     </div>
 
@@ -147,6 +147,12 @@
     <div class="container" id="container2">
       <div id="chart5"></div>
     </div>
+  </div>
+
+  <!-- Container 3 -->
+  <div class="container" id="container3">
+    <h2>Container 3</h2>
+    <div id="container3Chart"></div>
   </div>
 
   <script>
@@ -161,8 +167,8 @@
 
     // Embed chart4.json into Container 3
     vegaEmbed('#container3Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
-      "width": window.innerWidth * 0.45,
-      "height": window.innerHeight * 0.45,
+      "width": window.innerWidth * 0.85,
+      "height": window.innerHeight * 0.3, // Reduced height for a smaller graph
       "autosize": { "type": "fit", "contains": "padding" },
       renderer: 'canvas',
       actions: false
