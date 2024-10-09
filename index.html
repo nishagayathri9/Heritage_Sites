@@ -3,86 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiple Charts</title>
-    <!-- Import Vega and Vega-Lite -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-    <style>
-        .chart-container {
-            margin: 20px;
-            text-align: center;
-        }
-    </style>
+    <title>World Heritage Sites Charts</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<h1 style="text-align:center;">Collection of Charts</h1>
-
-<!-- Container for Chart 1 -->
-<div class="chart-container">
-    <h2>Chart 1</h2>
-    <div id="chart1"></div>
-</div>
-
-<!-- Container for Chart 2 -->
-<div class="chart-container">
-    <h2>Chart 2</h2>
-    <div id="chart2"></div>
-</div>
-
-<!-- Container for Chart 3 -->
-<div class="chart-container">
-    <h2>Chart 3</h2>
-    <div id="chart3"></div>
-</div>
-
-<!-- Container for Chart 4 -->
-<div class="chart-container">
-    <h2>Chart 4</h2>
-    <div id="chart4"></div>
-</div>
-
-<!-- Container for Chart 5 -->
-<div class="chart-container">
-    <h2>Chart 5</h2>
-    <div id="chart5"></div>
-</div>
-
-<!-- Embedding the charts -->
-<script>
-    const embedOptions = { "actions": false }; // Disable the Vega actions menu
-
-    // URLs for the chart JSONs
-    const charts = [
-        "https://raw.githubusercontent.com/your-username/repo/main/chart1.json",
-        "https://raw.githubusercontent.com/your-username/repo/main/chart2.json",
-        "https://raw.githubusercontent.com/your-username/repo/main/chart3.json",
-        "https://raw.githubusercontent.com/your-username/repo/main/chart4.json",
-        "https://raw.githubusercontent.com/your-username/repo/main/chart5.json"
-    ];
-
-    // Embed each chart using .then()
-    vegaEmbed("#chart1", charts[0], embedOptions)
-        .then(result => console.log("Chart 1 loaded successfully"))
-        .catch(console.error);
-
-    vegaEmbed("#chart2", charts[1], embedOptions)
-        .then(result => console.log("Chart 2 loaded successfully"))
-        .catch(console.error);
-
-    vegaEmbed("#chart3", charts[2], embedOptions)
-        .then(result => console.log("Chart 3 loaded successfully"))
-        .catch(console.error);
-
-    vegaEmbed("#chart4", charts[3], embedOptions)
-        .then(result => console.log("Chart 4 loaded successfully"))
-        .catch(console.error);
-
-    vegaEmbed("#chart5", charts[4], embedOptions)
-        .then(result => console.log("Chart 5 loaded successfully"))
-        .catch(console.error);
-</script>
-
+    <header>
+        <h1>World Heritage Sites Analysis</h1>
+    </header>
+    
+    <main>
+        <section class="charts-grid">
+            <div class="chart">
+                <img src="chart1.png" alt="Chart 1: Heritage Sites by Region">
+                <p class="caption">Chart 1: Heritage Sites by Region</p>
+            </div>
+            <div class="chart">
+                <img src="chart2.png" alt="Chart 2: Natural vs Cultural Sites">
+                <p class="caption">Chart 2: Natural vs Cultural Sites</p>
+            </div>
+            <div class="chart">
+                <img src="chart3.png" alt="Chart 3: Sites Added Over Time">
+                <p class="caption">Chart 3: Sites Added Over Time</p>
+            </div>
+            <div class="chart">
+                <img src="chart4.png" alt="Chart 4: Endangered Sites">
+                <p class="caption">Chart 4: Endangered Sites</p>
+            </div>
+            <div class="chart">
+                <img src="chart5.png" alt="Chart 5: Sites by Country">
+                <p class="caption">Chart 5: Sites by Country</p>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
