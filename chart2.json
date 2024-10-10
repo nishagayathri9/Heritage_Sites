@@ -1,133 +1,210 @@
-{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Contribution of Tourism to GDP by Region",
-    "anchor": "middle",
-    "fontSize": 20,
-    "offset": 20
-  },
-  "width": 900,
-  "height": 500,
-  "data": {
-    "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/scatter_data.csv",
-    "format": {
-      "type": "csv"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Site Visualization</title>
+  
+  <!-- Import Vega and Vega-Embed libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      text-align: center;
+      overflow-y: auto;
     }
-  },
-  "layer": [
-    {
-      "mark": {
-        "type": "arc",
-        "innerRadius": 50,  
-        "stroke": "#fff"
-      },
-      "encoding": {
-        "theta": {
-          "field": "percentage_of_gdp",
-          "type": "quantitative",
-          "stack": true
-        },
-        "radius": {
-          "field": "percentage_of_gdp",
-          "scale": {
-            "type": "sqrt",
-            "zero": true,
-            "rangeMin": 50
-          }
-        },
-        "color": {
-          "condition": {
-            "test": "datum.percentage_of_gdp > 2.5",
-            "field": "country",
-            "legend": null,
-            "type": "nominal",
-            "scale": {
-              "scheme": "tableau20"
-            }
-          },
-          "value": "lightgray"
-        },
-        "tooltip": [
-          {
-            "field": "country",
-            "type": "nominal",
-            "title": "Country"
-          },
-          {
-            "field": "percentage_of_gdp",
-            "type": "quantitative",
-            "title": "Percentage of GDP"
-          },
-          {
-            "field": "Passport Score",
-            "type": "quantitative",
-            "title": "Passport Score"
-          }
-        ]
-      }
-    },
-    {
-      "mark": {
-        "type": "text",  
-        "align": "center",
-        "baseline": "middle",
-        "radius": 120, 
-        "fontSize": 12,
-        "fontWeight": "lighter"
-      },
-      "encoding": {
-        "text": {
-          "condition": {
-            "test": "datum.percentage_of_gdp > 2.5",
-            "field": "country",
-            "type": "nominal"
-          }
-        },
-        "theta": {
-          "field": "percentage_of_gdp",
-          "type": "quantitative",
-          "stack": true
-        }
-      }
-    },
-    {
-      "layer": [
-        {
-          "mark": {
-            "type": "text",
-            "fontSize": 15,
-            "fontWeight": 100
-          },
-          "encoding": {
-            "text": {
-              "value": "Croatia has over 1,000 islands!"
-            },
-            "x": {"value": 765},
-            "y": {"value": 275} 
-          },
-          "transform": [
-            {
-              "filter": "region_select == 'Europe'"
-            }
-          ]
-        }
-      ]
+    
+    header {
+      background-color: #282c34;
+      color: white;
+      padding: 20px;
     }
-  ],
-  "params": [
-    {
-      "name": "region_select",
-      "value": "Europe",
-      "bind": {
-        "input": "select",
-        "options": ["Asia", "Europe"],
-        "name": "Select a Region  "
-      }
+    
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      letter-spacing: 2px;
+      font-weight: bold;
     }
-  ],
-  "transform": [
-    {
-      "filter": "(datum.region == region_select)"
+    
+    .chart-container {
+      margin: 0;
+      padding: 0;
+      width: 90vw;
+      height: 60vh;
+      margin: 20px auto;
+      background-color: black;
     }
-  ]
-}
+
+    #mapChart > iframe {
+      background-color: black;
+      border: none;
+    }
+
+    .container-wrapper, .container-wrapper-reverse, .container-wrapper-triple {
+      display: flex;
+      justify-content: space-between;
+      width: 90vw;
+      margin: 20px auto;
+      min-height: 40vh;
+    }
+
+    .container {
+      background-color: #000;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #container1, #container4, #container5 {
+      width: 30%;
+    }
+
+    #container2, #container3 {
+      width: 65%;
+    }
+
+    .container h2 {
+      color: #fff;
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    .container p {
+      color: #aaa;
+      font-size: 16px;
+    }
+
+    /* Adjust container 5 for better fit */
+    #container5 {
+      width: 48%; /* Increased width */
+    }
+
+    /* Chart embedded into the containers */
+    #chart5, #container1Chart, #container3Chart, #container5Chart {
+      width: 100%;
+      height: 90%; /* Increased height for better fit */
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    /* Ensure iframes within charts fill the container */
+    #chart5 > iframe, #container1Chart > iframe, #container3Chart > iframe, #container5Chart > iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with the title -->
+  <header>
+    <h1>HERITAGE SITES</h1>
+  </header>
+  
+  <!-- Container for the Vega Chart (Map Chart) -->
+  <div class="chart-container" id="mapChart"></div>
+  
+  <script type="text/javascript">
+    // Embed the Vega chart from your GitHub JSON file (Map Chart)
+    vegaEmbed('#mapChart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json', {
+      "width": window.innerWidth * 0.79,  
+      "height": window.innerHeight * 0.79 
+    }).catch(console.error);
+  </script>
+
+  <!-- Original Container 1 and Container 2 -->
+  <div class="container-wrapper">
+    <!-- Container 1 -->
+    <div class="container" id="container1">
+      <h2>Container 1</h2>
+      <p>Mountain, River, Sky, Forest, City, Culture, Travel, Adventure, Nature, Ocean, Valley, Lake, Architecture, Garden, Beach, Village, Island, Castle, Landmark, Monument, Museum, Gallery, Park, History, Tradition, Wildlife, Flora, Fauna, Landscape, Vista</p>
+      <div id="container1Chart"></div>
+    </div>
+
+    <!-- Container 2 -->
+    <div class="container" id="container2">
+      <div id="chart5"></div>
+    </div>
+  </div>
+
+  <!-- Reversed Container 3 and Container 4 -->
+  <div class="container-wrapper-reverse">
+    <!-- Container 3 (Wider Container) -->
+    <div class="container" id="container3">
+      <h2>Container 3</h2>
+      <div id="container3Chart"></div>
+    </div>
+
+    <!-- Container 4 (Narrower Container) -->
+    <div class="container" id="container4">
+      <h2>Container 4</h2>
+      <p>Sunset, Sunrise, Horizon, Waves, Forest, Travel, Journey, Explore, Compass, Landmark, Heritage, Culture, Mountain, River, City, Sky, Wild, Natural, Scenic, Flora, Fauna, Tradition, Adventure, Discovery, Ocean, Breeze, Coast, Wildlife, Park, Canyon, Historic, Ruins, Waterfall, Meadow, Lake, Valley, Glacial, Cliff, Summit, Ridge, Adventure, Landscape, Vista, Trail, Expedition, Sanctuary, Village, Habitat, Diverse, Island, Plains</p>
+    </div>
+  </div>
+
+  <!-- New Container 4, 5 in One Row -->
+  <div class="container-wrapper-triple">
+    <!-- Container 4 -->
+    <div class="container" id="container4">
+      <h2>Container 4</h2>
+      <p>Exploration, Hiking, Beach, Desert, Stars, Planet, Galaxy, Travel, Expedition, Adventure, Rafting, Trail, Footpath, Rock, Birdsong, Sunlight, Bridge, Tracks, Weather, Forest, Terrain, Journey, Travel, Wildlife, Ocean, Islands, Mountains, Cabin, Jungle, Flight, Rivers, Bay, Inlet, Cove, Ferry, Boating, Harbor, Village, Culture, Nature, Cliff, Hill, Mountain, Sky, Landscape, Meadows, Tradition, Flora, Heritage, Discovery</p>
+    </div>
+
+    <!-- Container 5 -->
+    <div class="container" id="container5">
+      <h2>Container 5</h2>
+      <div id="container5Chart"></div>
+    </div>
+  </div>
+
+  <script>
+    // Embed the chart into Container 1
+    vegaEmbed('#container1Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json', {
+      "width": window.innerWidth * 0.45,
+      "height": window.innerHeight * 0.45,
+      "autosize": { "type": "fit", "contains": "padding" },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
+
+    // Embed chart4.json into Container 3
+    vegaEmbed('#container3Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
+      "width": window.innerWidth * 0.40,
+      "height": window.innerHeight * 0.2, // Reduced height for a smaller graph
+      "autosize": { "type": "fit", "contains": "padding" },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
+
+    // Embed chart5.json into Container 2
+    vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
+      "width": window.innerWidth * 0.45,
+      "height": window.innerHeight * 0.35, // Adjusted height for a shorter graph
+      "autosize": { "type": 'fit', "contains": 'padding' },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
+
+    // Embed chart2.json into Container 5 with adjusted dimensions
+    vegaEmbed('#container5Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart2.json', {
+      "width": window.innerWidth * 0.48,  // Adjusted width to better fit container
+      "height": window.innerHeight * 0.5, // Adjusted height to avoid white space
+      "autosize": { "type": 'fit', "contains": 'padding' },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
+  </script>
+
+</body>
+</html>
