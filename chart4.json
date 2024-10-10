@@ -1,112 +1,115 @@
 {
-    "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "width": 680,  
-    "height": 450,
-    "padding": {"left": 50, "right": 260, "top": 60, "bottom": 60},  
-    "autosize": "none",
-    "background": "null",  
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 680,  
+  "height": 450,
+  "padding": {"left": 50, "right": 260, "top": 30, "bottom": 60},  
+  "autosize": "none",
+  "background": "null",  
   
-    "signals": [
-      { "name": "cx", "update": "width / 2" },
-      { "name": "cy", "update": "height / 2" },
-      { "name": "radius", "value": 5 },
-      { "name": "collide", "value": 1.5 },  
-      { "name": "gravityX", "value": 0.2 },  
-      { "name": "gravityY", "value": 0.5 },
-      { "name": "static", "value": true }
-    ],
+  "signals": [
+    { "name": "cx", "update": "width / 2" },
+    { "name": "cy", "update": "height / 2" },
+    { "name": "radius", "value": 5 },
+    { "name": "collide", "value": 1.5 },  
+    { "name": "gravityX", "value": 0.2 },  
+    { "name": "gravityY", "value": 0.5 },
+    { "name": "static", "value": true }
+  ],
   
-    "data": [
-      {
-        "name": "heritage_sites",
-        "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/beeswarm.csv",
-        "format": {"type": "csv"}
-      }
-    ],
+  "data": [
+    {
+      "name": "heritage_sites",
+      "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/beeswarm.csv",
+      "format": {"type": "csv"}
+    }
+  ],
   
-    "scales": [
-      {
-        "name": "xscale",
-        "type": "band",
-        "domain": {"data": "heritage_sites", "field": "category", "sort": true},
-        "range": "width"
-      },
-      {
-        "name": "color",
-        "type": "ordinal",
-        "domain": {"data": "heritage_sites", "field": "region_en"},
-        "range": ["#A682FF", "#b3cde3", "#5887FF", "#decbe4", "#fed9a6", "#55C1FF"]  
-
-      }
-    ],
+  "scales": [
+    {
+      "name": "xscale",
+      "type": "band",
+      "domain": {"data": "heritage_sites", "field": "category", "sort": true},
+      "range": "width"
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "heritage_sites", "field": "region_en"},
+      "range": ["#A682FF", "#b3cde3", "#5887FF", "#decbe4", "#fed9a6", "#55C1FF"]  
+    }
+  ],
   
-    "axes": [
-      {
-        "orient": "bottom", 
-        "scale": "xscale", 
-        "title": "Categories", 
-        "labelFontSize": 14,
-        "titleFontSize": 16,
-        "titlePadding": 11,
-        "labelColor": "white",  
-        "titleColor": "white", 
-        "tickColor": "white"  
-      }
-    ],
+  "axes": [
+    {
+      "orient": "bottom", 
+      "scale": "xscale", 
+      "title": "Categories", 
+      "labelFontSize": 14,
+      "titleFontSize": 16,
+      "titlePadding": 11,
+      "labelColor": "white",  
+      "titleColor": "white", 
+      "tickColor": "white"  
+    }
+  ],
   
-    "marks": [
-      {
-        "name": "nodes",
-        "type": "symbol",
-        "from": {"data": "heritage_sites"},
-        "encode": {
-          "enter": {
-            "fill": {"scale": "color", "field": "region_en"},
-            "xfocus": {"scale": "xscale", "field": "category", "band": 0.5},
-            "yfocus": {"signal": "cy"},
-            "tooltip": {  
-              "signal": "{'Name': datum.name, 'Region': datum.region_en}"
-            }
-          },
-          "update": {
-            "size": {"signal": "pow(2 * radius, 2)"},
-            "stroke": {"value": "white"},
-            "strokeWidth": {"value": 1},
-            "zindex": {"value": 0}
-          },
-          "hover": {
-            "stroke": {"value": "purple"},
-            "strokeWidth": {"value": 3},
-            "zindex": {"value": 1}
+  "marks": [
+    {
+      "name": "nodes",
+      "type": "symbol",
+      "from": {"data": "heritage_sites"},
+      "encode": {
+        "enter": {
+          "fill": {"scale": "color", "field": "region_en"},
+          "xfocus": {"scale": "xscale", "field": "category", "band": 0.5},
+          "yfocus": {"signal": "cy"},
+          "tooltip": {  
+            "signal": "{'Name': datum.name, 'Region': datum.region_en}"
           }
         },
-        "transform": [
-          {
-            "type": "force",
-            "iterations": 100,  
-            "static": {"signal": "static"},
-            "forces": [
-              {"force": "collide", "iterations": {"signal": "collide"}, "radius": {"signal": "radius"}},
-              {"force": "x", "x": "xfocus", "strength": {"signal": "gravityX"}},
-              {"force": "y", "y": "yfocus", "strength": {"signal": "gravityY"}}
-            ]
-          }
-        ]
-      }
-    ],
+        "update": {
+          "size": {"signal": "pow(2 * radius, 2)"},
+          "stroke": {"value": "white"},
+          "strokeWidth": {"value": 1},
+          "zindex": {"value": 0}
+        },
+        "hover": {
+          "stroke": {"value": "purple"},
+          "strokeWidth": {"value": 3},
+          "zindex": {"value": 1}
+        }
+      },
+      "transform": [
+        {
+          "type": "force",
+          "iterations": 100,  
+          "static": {"signal": "static"},
+          "forces": [
+            {"force": "collide", "iterations": {"signal": "collide"}, "radius": {"signal": "radius"}},
+            {"force": "x", "x": "xfocus", "strength": {"signal": "gravityX"}},
+            {"force": "y", "y": "yfocus", "strength": {"signal": "gravityY"}}
+          ]
+        }
+      ]
+    }
+  ],
   
-    "legends": [
-      {
-        "fill": "color",
-        "title": "Region",
-        "orient": "right",  
-        "titleFontSize": 13,  
-        "labelFontSize": 11,  
-        "labelLimit": 300,  
-        "offset": 0,
-        "titleColor": "white",   
-        "labelColor": "white"    
-      }
-    ]
-  }
-  
+  "legends": [
+    {
+      "fill": "color",
+      "title": "Region",
+      "orient": "top",   
+      "direction": "horizontal",
+      "columns": 3,     
+      "titleFontSize": 13,  
+      "labelFontSize": 11,  
+      "labelLimit": 300,  
+      "symbolPadding": 20,  
+      "offset": -40,  
+      "titleColor": "white",   
+      "labelColor": "white",
+      "symbolSize": 100,   
+      "symbolType": "circle"
+    }
+  ]
+}
