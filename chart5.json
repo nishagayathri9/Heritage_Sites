@@ -4,52 +4,66 @@
     "type": "fit",
     "contains": "padding"
   },
-  "background": "null",
+  "background": "#222222",  // Set the background color to #222222
   "data": {
     "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/beeswarm.csv",
     "format": {"type": "csv"}
   },
-  "mark": "area",
-  "transform": [
-    {
-      "density": "Rating",
-      "groupby": ["category"],
-      "extent": [0, 5]
+  "facet": {
+    "field": "category", 
+    "type": "nominal", 
+    "columns": 2,
+    "title": null,  // Remove the title for the facet
+    "header": {
+      "labelColor": "white",  // Set facet label colors (Cultural, Mixed, Natural) to white
+      "title": null           // Ensure no title appears above the facet labels
     }
-  ],
-  "encoding": {
-    "x": {
-      "field": "value",
-      "type": "quantitative",
-      "title": "Rating",
-      "axis": {
-        "labelColor": "white",
-        "titleColor": "white",
-        "tickColor": "white",
-        "grid": false  
+  },
+  "spec": {
+    "mark": "area",
+    "transform": [
+      {
+        "density": "Rating",
+        "groupby": ["category"],
+        "extent": [0, 5]
       }
-    },
-    "y": {
-      "field": "density",
-      "type": "quantitative",
-      "stack": "zero",
-      "axis": {
-        "labelColor": "white",
-        "titleColor": "white",
-        "grid": false  
-      }
-    },
-    "color": {
-      "field": "category",
-      "type": "nominal",
-      "scale": {
-        "range": ["#E27396","#ea9ab2", "#EFCFE3"]
+    ],
+    "encoding": {
+      "x": {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Rating",
+        "axis": {
+          "labelColor": "white",  
+          "titleColor": "white",  
+          "tickColor": "white",   
+          "grid": false  
+        }
       },
-      "title": "Category",
-      "legend": {
-        "labelColor": "white",
-        "titleColor": "white"
+      "y": {
+        "field": "density",
+        "type": "quantitative",
+        "stack": "zero",
+        "axis": {
+          "labelColor": "white",  
+          "titleColor": "white",  
+          "grid": false  
+        }
+      },
+      "color": {
+        "field": "category",
+        "type": "nominal",
+        "scale": {
+          "range": ["#E27396", "#ea9ab2", "#EFCFE3"]
+        },
+        "legend": null
       }
+    }
+  },
+  "resolve": {
+    "scale": {
+      "x": "shared",
+      "y": "independent"
     }
   }
 }
