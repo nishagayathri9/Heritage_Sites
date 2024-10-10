@@ -153,8 +153,8 @@
   <div class="container-wrapper">
     <!-- Container 1 -->
     <div class="container" id="container1">
-      <h2>Container 1</h2>
-      <p>Mountain, River, Sky, Forest, City, Culture, Travel, Adventure, Nature, Ocean, Valley, Lake, Architecture, Garden, Beach, Village, Island, Castle, Landmark, Monument, Museum, Gallery, Park, History, Tradition, Wildlife, Flora, Fauna, Landscape, Vista</p>
+      <h2>Distribution of World Heritage Site Categories Based on Ratings</h2>
+      <p>This graph shows the distribution of three types of UNESCO World Heritage Sites: Cultural, Mixed, and Natural, based on their ratings. Cultural sites dominate the mid-to-high rating range (3.0-5.0), followed by Mixed and Natural sites. The density plot highlights how ratings vary between categories, with Cultural sites having the most balanced spread across all rating levels.</p>
       <div id="container1Chart"></div>
     </div>
 
@@ -223,7 +223,7 @@
     }).catch(console.error);
 
     // Embed chart2.json into Container 5 with adjusted dimensions
-    vegaEmbed('#container5Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart2.json', {
+    vegaEmbed('#container6Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart2.json', {
       "width": window.innerWidth * 0.42,  // Adjusted width to better fit container
       "height": window.innerHeight * 0.5, // Adjusted height to avoid white space
       "autosize": { "type": 'fit', "contains": 'padding' },
@@ -231,14 +231,6 @@
       actions: false
     }).catch(console.error);
 
-    // Embed chart3.json into Container 6
-    vegaEmbed('#container6Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart3.json', {
-      "width": window.innerWidth * 0.25,  // Smaller width for Container 6
-      "height": window.innerHeight * 0.35, // Smaller height for balance
-      "autosize": { "type": 'fit', "contains": 'padding' },
-      renderer: 'canvas',
-      actions: false
-    }).catch(console.error);
   </script>
 
 </body>
