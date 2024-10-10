@@ -37,7 +37,7 @@
             "legend": null,
             "type": "nominal",
             "scale": {
-              "scheme": "category20b"
+              "scheme": "category20c"
             }
           },
           "value": "lightgray"
@@ -67,9 +67,9 @@
         "align": "center",
         "baseline": "middle",
         "radius": 120, 
-        "fontSize": 12,
+        "fontSize": 13,
         "fontWeight": "lighter",
-        "fill": "white"
+        "fill": "black"
       },
       "encoding": {
         "text": {
