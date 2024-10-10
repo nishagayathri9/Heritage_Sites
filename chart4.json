@@ -1,15 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "width": 680,  
-  "height": 450,
-  "padding": {"left": 50, "right": 260, "top": 40, "bottom": 60},  
+  "height": 420,
+  "padding": {"left": 20, "right": 20, "top": 20, "bottom": 55},  
   "autosize": "none",
   "background": "null",  
   
   "signals": [
     { "name": "cx", "update": "width / 2" },
     { "name": "cy", "update": "height / 2" },
-    { "name": "radius", "value": 5 },
+    { "name": "radius", "value": 6 },
     { "name": "collide", "value": 1.5 },  
     { "name": "gravityX", "value": 0.2 },  
     { "name": "gravityY", "value": 0.5 },
@@ -104,11 +104,11 @@
       "titleFontSize": 13,  
       "labelFontSize": 11,  
       "labelLimit": 300,  
-      "symbolPadding": 20,  
-      "offset": -50,  
+      "symbolPadding": 10,  
+      "offset": -60,  
       "titleColor": "white",   
       "labelColor": "white",
-      "symbolSize": 100,   
+      "symbolSize": 80,   
       "symbolType": "circle"
     }
   ]
