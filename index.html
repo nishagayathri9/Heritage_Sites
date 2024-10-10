@@ -64,7 +64,7 @@
       flex-direction: column;
     }
 
-    #container1, #container4, #container5 {
+    #container1, #container4, #container5, #container6 {
       width: 30%;
     }
 
@@ -89,7 +89,7 @@
     }
 
     /* Chart embedded into the containers */
-    #chart5, #container1Chart, #container3Chart, #container5Chart {
+    #chart5, #container1Chart, #container3Chart, #container5Chart, #container6Chart {
       width: 100%;
       height: 90%; /* Increased height for better fit */
       padding: 0;
@@ -98,7 +98,7 @@
     }
 
     /* Ensure iframes within charts fill the container */
-    #chart5 > iframe, #container1Chart > iframe, #container3Chart > iframe, #container5Chart > iframe {
+    #chart5 > iframe, #container1Chart > iframe, #container3Chart > iframe, #container5Chart > iframe, #container6Chart > iframe {
       width: 100%;
       height: 100%;
       border: none;
@@ -153,18 +153,18 @@
     </div>
   </div>
 
-  <!-- New Container 4, 5 in One Row -->
+  <!-- New Container 5 and 6 in One Row -->
   <div class="container-wrapper-triple">
-    <!-- Container 4 -->
-    <div class="container" id="container4">
-      <h2>Container 4</h2>
-      <p>Exploration, Hiking, Beach, Desert, Stars, Planet, Galaxy, Travel, Expedition, Adventure, Rafting, Trail, Footpath, Rock, Birdsong, Sunlight, Bridge, Tracks, Weather, Forest, Terrain, Journey, Travel, Wildlife, Ocean, Islands, Mountains, Cabin, Jungle, Flight, Rivers, Bay, Inlet, Cove, Ferry, Boating, Harbor, Village, Culture, Nature, Cliff, Hill, Mountain, Sky, Landscape, Meadows, Tradition, Flora, Heritage, Discovery</p>
-    </div>
-
     <!-- Container 5 -->
     <div class="container" id="container5">
       <h2>Container 5</h2>
       <div id="container5Chart"></div>
+    </div>
+
+    <!-- Container 6 for Chart 3 -->
+    <div class="container" id="container6">
+      <h2>Container 6</h2>
+      <div id="container6Chart"></div>
     </div>
   </div>
 
@@ -200,6 +200,15 @@
     vegaEmbed('#container5Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart2.json', {
       "width": window.innerWidth * 0.48,  // Adjusted width to better fit container
       "height": window.innerHeight * 0.5, // Adjusted height to avoid white space
+      "autosize": { "type": 'fit', "contains": 'padding' },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
+
+    // Embed chart3.json into Container 6
+    vegaEmbed('#container6Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart3.json', {
+      "width": window.innerWidth * 0.48,  // Adjusted width to match container 5
+      "height": window.innerHeight * 0.5, // Similar height for balance
       "autosize": { "type": 'fit', "contains": 'padding' },
       renderer: 'canvas',
       actions: false
