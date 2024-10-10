@@ -1,245 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Heritage Site Visualization</title>
-  
-  <!-- Import Vega and Vega-Embed libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  
+  <title>Explore the Numbers in Every Adventure</title>
+  <!-- Import Vega & Vega-Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet"> <!-- Digital-like font -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      background-color: white;
+      color: white;
       margin: 0;
       padding: 0;
+    }
+
+    .page {
+      width: 850px;
       background-color: black;
-      color: white;
-      text-align: center;
-      overflow-y: auto;
+      margin: 50px auto;
+      padding: 50px;
+      padding-top: 35px;
+      border: none; /* Removed the white border */
     }
-    
-    header {
-      background-color: #282c34;
-      color: white;
-      padding: 20px;
+
+    body * {
+      font-family: 'Orbitron', sans-serif;
     }
-    
+
+    p {
+      font-family: 'Open Sans', sans-serif; /* Keep the body font as Open Sans */
+    }
+
     h1 {
-      margin: 0;
-      font-size: 36px;
-      letter-spacing: 2px;
-      font-weight: bold;
+      font-weight: 900;
+      font-size: 34px; /* Increased the font size for the title */
+      margin-bottom: 5px;
     }
 
-    .description {
-      font-size: 18px;
-      margin: 20px auto;
-      width: 80%;
-      text-align: center;
-      line-height: 1.6;
-      color: #f0f0f0;
+    .vis-container {
+      width: 100%;
     }
 
-    .chart-container {
-      margin: 0;
-      padding: 0;
-      width: 90vw;
-      height: 60vh;
-      margin: 20px auto;
-      background-color: black;
+    .description h2,
+    h1 {
+      margin-top: 0px;
     }
 
-    #mapChart > iframe {
-      background-color: black;
-      border: none;
+    .description-right {
+      padding-left: 20px;
     }
 
-    .container-wrapper, .container-wrapper-reverse, .container-wrapper-triple {
+    .description-left {
+      padding-right: 20px;
+    }
+
+    .pure-g {
+      margin-bottom: 20px;
+    }
+
+    .small-font {
+      font-size: 14px;
+    }
+
+    a {
+      color: white;
+    }
+
+    /* Flexbox container for side-by-side layout */
+    .flex-container {
       display: flex;
       justify-content: space-between;
-      width: 90vw;
-      margin: 20px auto;
-      min-height: 40vh;
+      align-items: flex-start;
+      gap: 20px;
     }
 
-    .container {
-      background-color: #000;
-      padding: 0; /* Remove padding */
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
+    /* Text container */
+    .text-container {
+      flex: 1 1 20%; /* Occupies 20% of the space */
+      padding-right: 20px;
     }
 
-    #container1, #container4, #container5, #container6 {
-      width: 30%;
+    /* Chart container */
+    .chart-container {
+      flex: 1 1 75%; /* Occupies 75% of the space */
     }
 
-    #container2, #container3 {
-      width: 65%;
+    /* Ensure the layout adjusts properly on smaller screens */
+    @media only screen and (max-width: 900px) {
+      .flex-container {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+      }
     }
 
-    .container h2 {
-      color: #fff;
-      font-size: 24px;
-      margin: 10px 0;
-    }
-
-    .container p {
-      color: #aaa;
-      font-size: 16px;
-    }
-
-    /* Adjust container 5 for better fit */
-    #container5 {
-      width: 42%; /* Moved to the left by reducing width */
-      margin-left: -5%; /* Negative margin to move to the left */
-    }
-
-    /* Chart embedded into the containers */
-    #chart5, #container1Chart, #container3Chart, #container5Chart, #container6Chart {
+    /* Adjustments for the map visibility */
+    #vis1 {
       width: 100%;
-      height: 90%; /* Increased height for better fit */
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
-
-    /* Ensure iframes within charts fill the container */
-    #chart5 > iframe, #container1Chart > iframe, #container3Chart > iframe, #container5Chart > iframe, #container6Chart > iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* Adjust container 6 to be smaller and remove space between container 5 and container 6 */
-    #container6 {
-      width: 38%; /* Smaller width for Container 6 */
-      margin-left: -5%; /* Move closer to container 5 */
-    }
-
-    .container-wrapper-triple .container {
-      margin-right: 0; /* Ensure no right margin */
-      margin-left: 0;  /* Ensure no left margin */
+      height: 400px; /* Ensure height is sufficient to show the map */
+      margin-bottom: 40px;
+      border: none; /* No borders on the map */
     }
   </style>
+
 </head>
+
 <body>
 
-  <!-- Header with the title -->
-  <header>
-    <h1>HERITAGE SITES</h1>
-  </header>
-  
-  <!-- Description before the map -->
-  <div class="description">
-    UNESCO World Heritage Sites highlight regions with outstanding cultural or natural importance. Europe, China, and India have the most sites, reflecting centuries of global influence. UNESCO began this initiative in 1972 to protect landmarks from deterioration, and over 1,100 sites are now preserved. France and Italy, known for their historical significance, are among the leaders in site numbers. The initiative also focuses on endangered areas, with efforts in countries like India and Southeast Asia, ensuring preservation of both natural wonders and cultural legacies for future generations.
-  </div>
-  
-  <!-- Container for the Vega Chart (Map Chart) -->
-  <div class="chart-container" id="mapChart"></div>
-  
+  <div class="page">
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>Explore the Numbers in Every Adventure</h1> <!-- Title maintained, font size increased -->
+        <p>This page demonstrates how you can use pure.css grid for your layout.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- Vega embedding for the map (ensure it's visible) -->
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <div id="vis1" class="vis-container"></div> <!-- Map container -->
+      </div>
+    </div>
+    <!-- end vega embedding -->
+
+    <!-- Flexbox layout for Two Columns Layout -->
+    <div class="flex-container">
+      <!-- Text Container -->
+      <div class="text-container">
+        <div class="description">
+          <h2>Distribution of Categories by Region</h2>
+          <p>Shows the distribution of Cultural, Mixed, and Natural UNESCO World Heritage Sites across
+             different regions. Each dot represents a heritage site, and colors indicate regions such as Europe, Asia, and Africa. 
+             Cultural sites have the highest concentration, while Mixed sites are less frequent. The chart highlights the variety and global representation of heritage sites, with a significant number originating from Europe and North America.</p>
+        </div>
+      </div>
+
+      <!-- Chart Container -->
+      <div class="chart-container">
+        <div id="vis4" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end Flexbox layout -->
+
+
+  </div> <!-- end page -->
+
   <script type="text/javascript">
-    // Embed the Vega chart from your GitHub JSON file (Map Chart)
-    vegaEmbed('#mapChart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json', {
-      "width": window.innerWidth * 0.79,  
-      "height": window.innerHeight * 0.79 
-    }).catch(console.error);
-  </script>
+    // Vega and Vega-Lite specification for embedding
+    var specVis1 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json";
+    var specVis4 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json"; // New chart
 
-  <!-- Original Container 1 and Container 2 -->
-  <div class="container-wrapper">
-    <!-- Container 1 -->
-    <div class="container" id="container1">
-      <h2>Distribution of World Heritage Site Categories Based on Ratings</h2>
-      <p>This graph shows the distribution of three types of UNESCO World Heritage Sites: Cultural, Mixed, and Natural, based on their ratings. Cultural sites dominate the mid-to-high rating range (3.0-5.0), followed by Mixed and Natural sites. The density plot highlights how ratings vary between categories, with Cultural sites having the most balanced spread across all rating levels.</p>
-      <div id="container1Chart"></div>
-    </div>
-
-    <!-- Container 2 -->
-    <div class="container" id="container2">
-      <div id="chart5"></div>
-    </div>
-  </div>
-
-  <!-- Reversed Container 3 and Container 4 -->
-  <div class="container-wrapper-reverse">
-    <!-- Container 3 (Wider Container, no title) -->
-    <div class="container" id="container3">
-      <div id="container3Chart"></div>
-    </div>
-
-    <!-- Container 4 (Narrower Container with updated title and text) -->
-    <div class="container" id="container4">
-      <h2>Distribution of World Heritage Site Categories by Region</h2>
-      <p>Shows the distribution of Cultural, Mixed, and Natural UNESCO World Heritage Sites across different regions. Each dot represents a heritage site, and colors indicate regions such as Europe, Asia, and Africa. Cultural sites have the highest concentration, while Mixed sites are less frequent. The chart highlights the variety and global representation of heritage sites, with a significant number originating from Europe and North America.</p>
-    </div>
-  </div>
-
-  <!-- New Container 5 and 6 in One Row -->
-  <div class="container-wrapper-triple">
-    <!-- Container 5 (Title removed) -->
-    <div class="container" id="container5">
-      <div id="container5Chart"></div>
-    </div>
-
-    <!-- Container 6 for Chart 6 (Updated title and text) -->
-    <div class="container" id="container6">
-      <h2>Top Global Tourist Destinations and Their Heritage Appeal</h2>
-      <p>Countries like France, the United States, and Mexico attract the highest number of tourists, likely due to their abundance of UNESCO World Heritage Sites. Heritage-rich nations like Italy, Germany, and Turkey also rank highly, showcasing the draw of historical and cultural landmarks. These tourist hotspots benefit from a combination of natural wonders and preserved heritage, showing the significant role that cultural and natural sites play in driving global tourism.</p>
-      <div id="container6Chart"></div>
-    </div>
-  </div>
-
-  <script>
-    // Embed the chart into Container 1
-    vegaEmbed('#container1Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json', {
-      "width": window.innerWidth * 0.45,
-      "height": window.innerHeight * 0.45,
-      "autosize": { "type": "fit", "contains": "padding" },
-      renderer: 'canvas',
-      actions: false
+    // Removing the borders and setting the map display
+    vegaEmbed('#vis1', specVis1, {
+      "actions": false,
+      "width": 840,
+      "height": 400,
+      "config": {
+        "view": {
+          "stroke": null  // Remove the border from the map
+        },
+        "background": "black"  // Ensure background color matches the page
+      }
+    }).then(function (result) {
+        // Ensure the map is displayed properly
     }).catch(console.error);
 
-    // Embed chart4.json into Container 3
-    vegaEmbed('#container3Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
-      "width": window.innerWidth * 0.40,
-      "height": window.innerHeight * 0.2, // Reduced height for a smaller graph
-      "autosize": { "type": "fit", "contains": "padding" },
-      renderer: 'canvas',
-      actions: false
-    }).catch(console.error);
-
-    // Embed chart5.json into Container 2
-    vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
-      "width": window.innerWidth * 0.45,
-      "height": window.innerHeight * 0.35, // Adjusted height for a shorter graph
-      "autosize": { "type": 'fit', "contains": 'padding' },
-      renderer: 'canvas',
-      actions: false
-    }).catch(console.error);
-
-    // Embed chart3.json into Container 5
-    vegaEmbed('#container5Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart3.json', {
-      "width": window.innerWidth * 0.42,  // Adjusted width to better fit container
-      "height": window.innerHeight * 0.5, // Adjusted height to avoid white space
-      "autosize": { "type": 'fit', "contains": 'padding' },
-      renderer: 'canvas',
-      actions: false
-    }).catch(console.error);
-
-    // Embed chart6.json into Container 6
-    vegaEmbed('#container6Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart6.json', {
-      "width": window.innerWidth * 0.42,  // Adjusted width to better fit container
-      "height": window.innerHeight * 0.5, // Adjusted height to avoid white space
-      "autosize": { "type": 'fit', "contains": 'padding' },
-      renderer: 'canvas',
-      actions: false
+    // Embedding another chart
+    vegaEmbed('#vis4', specVis4, {
+      "actions": false,
+      "width": 600,
+      "height": 340
+    }).then(function (result) {
+        // Access the Vega view instance as result.view
     }).catch(console.error);
 
   </script>
 
 </body>
+
 </html>
