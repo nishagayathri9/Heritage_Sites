@@ -4,7 +4,7 @@
     "type": "fit",
     "contains": "padding"
   },
-  "background": "#222222",  // Set the background color to #222222
+  "background": "#222222", 
   "data": {
     "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/beeswarm.csv",
     "format": {"type": "csv"}
@@ -15,8 +15,8 @@
     "columns": 2,
     "title": null,  // Remove the title for the facet
     "header": {
-      "labelColor": "white",  // Set facet label colors (Cultural, Mixed, Natural) to white
-      "title": null           // Ensure no title appears above the facet labels
+      "labelColor": "white",  
+      "title": null           
     }
   },
   "spec": {
