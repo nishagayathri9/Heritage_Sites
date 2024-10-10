@@ -48,10 +48,9 @@
       border: none;
     }
 
-    .container-wrapper {
+    .container-wrapper, .container-wrapper-reverse, .container-wrapper-triple {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       width: 90vw;
       margin: 20px auto;
       min-height: 40vh;
@@ -63,16 +62,14 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      justify-content: center;
     }
 
-    #container1 {
-      width: 40%;
-      text-align: left;
+    #container1, #container4, #container5 {
+      width: 30%;
     }
 
-    #container5 {
-      width: 55%; /* Adjust width for the chart */
+    #container2, #container3 {
+      width: 65%;
     }
 
     .container h2 {
@@ -86,17 +83,22 @@
       font-size: 16px;
     }
 
+    /* Adjust container 5 for better fit */
+    #container5 {
+      width: 48%; /* Increased width */
+    }
+
     /* Chart embedded into the containers */
-    #container5Chart {
+    #chart5, #container1Chart, #container3Chart, #container5Chart {
       width: 100%;
-      height: 90%;
+      height: 90%; /* Increased height for better fit */
       padding: 0;
       margin: 0;
       box-sizing: border-box;
     }
 
     /* Ensure iframes within charts fill the container */
-    #container5Chart > iframe {
+    #chart5 > iframe, #container1Chart > iframe, #container3Chart > iframe, #container5Chart > iframe {
       width: 100%;
       height: 100%;
       border: none;
@@ -121,16 +123,47 @@
     }).catch(console.error);
   </script>
 
-  <!-- Container for Text and Chart side by side -->
+  <!-- Original Container 1 and Container 2 -->
   <div class="container-wrapper">
-    <!-- Container 1 (Text Section) -->
+    <!-- Container 1 -->
     <div class="container" id="container1">
-      <h2>Percentage of GDP</h2>
+      <h2>Container 1</h2>
+      <p>Mountain, River, Sky, Forest, City, Culture, Travel, Adventure, Nature, Ocean, Valley, Lake, Architecture, Garden, Beach, Village, Island, Castle, Landmark, Monument, Museum, Gallery, Park, History, Tradition, Wildlife, Flora, Fauna, Landscape, Vista</p>
+      <div id="container1Chart"></div>
+    </div>
+
+    <!-- Container 2 -->
+    <div class="container" id="container2">
+      <div id="chart5"></div>
+    </div>
+  </div>
+
+  <!-- Reversed Container 3 and Container 4 -->
+  <div class="container-wrapper-reverse">
+    <!-- Container 3 (Wider Container) -->
+    <div class="container" id="container3">
+      <h2>Container 3</h2>
+      <div id="container3Chart"></div>
+    </div>
+
+    <!-- Container 4 (Narrower Container) -->
+    <div class="container" id="container4">
+      <h2>Container 4</h2>
+      <p>Sunset, Sunrise, Horizon, Waves, Forest, Travel, Journey, Explore, Compass, Landmark, Heritage, Culture, Mountain, River, City, Sky, Wild, Natural, Scenic, Flora, Fauna, Tradition, Adventure, Discovery, Ocean, Breeze, Coast, Wildlife, Park, Canyon, Historic, Ruins, Waterfall, Meadow, Lake, Valley, Glacial, Cliff, Summit, Ridge, Adventure, Landscape, Vista, Trail, Expedition, Sanctuary, Village, Habitat, Diverse, Island, Plains</p>
+    </div>
+  </div>
+
+  <!-- New Container 4, 5 in One Row -->
+  <div class="container-wrapper-triple">
+    <!-- Container 4 -->
+    <div class="container" id="container4">
+      <h2>Container 4</h2>
       <p>Exploration, Hiking, Beach, Desert, Stars, Planet, Galaxy, Travel, Expedition, Adventure, Rafting, Trail, Footpath, Rock, Birdsong, Sunlight, Bridge, Tracks, Weather, Forest, Terrain, Journey, Travel, Wildlife, Ocean, Islands, Mountains, Cabin, Jungle, Flight, Rivers, Bay, Inlet, Cove, Ferry, Boating, Harbor, Village, Culture, Nature, Cliff, Hill, Mountain, Sky, Landscape, Meadows, Tradition, Flora, Heritage, Discovery</p>
     </div>
 
-    <!-- Container 5 (Chart Section) -->
+    <!-- Container 5 -->
     <div class="container" id="container5">
+      <h2>Container 5</h2>
       <div id="container5Chart"></div>
     </div>
   </div>
