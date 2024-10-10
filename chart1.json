@@ -58,7 +58,7 @@
           "as": "display_count"
         },
         {
-          "calculate": "datum.display_count == 0 ? 'No sites' : datum.display_count > 40 ? '>40 sites' : datum.display_count > 25 ? '26-40 sites' : datum.display_count > 10 ? '11-25 sites' : '1-10 sites'",
+          "calculate": "datum.display_count == 0 ? 'None' : datum.display_count > 40 ? 'More than 40' : datum.display_count > 25 ? '26-40' : datum.display_count > 10 ? '11-25' : '1-10'",
           "as": "class_count"
         }
       ],
@@ -67,14 +67,18 @@
           "field": "class_count",
           "type": "nominal",
           "scale": {
-            "domain": ["No sites", "1-10 sites", "11-25 sites", "26-40 sites", ">40 sites"],
-            "range": ["#ffffd4","#fed98e","#fe9929","#d95f0e","#993404"]
+            "domain": ["None", "1-10", "11-25", "26-40", "More than 40"],
+            "range": ["#ffffd4", "#fed98e", "#fe9929", "#d95f0e", "#993404"]
           },
           "legend": {
             "title": "Heritage Site Classes",
             "symbolType": "square",
             "labelColor": "white",
-            "titleColor": "white"
+            "titleColor": "white",
+            "orient": "top",
+            "direction": "horizontal",
+            "legendX": 200,
+            "legendY": -40
           }
         },
         "tooltip": [
