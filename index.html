@@ -86,7 +86,7 @@
       font-size: 16px;
     }
 
-    /* Chart embedded into the container */
+    /* Chart embedded into the containers */
     #container5Chart {
       width: 100%;
       height: 90%;
@@ -136,6 +136,33 @@
   </div>
 
   <script>
+    // Embed the chart into Container 1
+    vegaEmbed('#container1Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json', {
+      "width": window.innerWidth * 0.45,
+      "height": window.innerHeight * 0.45,
+      "autosize": { "type": "fit", "contains": "padding" },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
+
+    // Embed chart4.json into Container 3
+    vegaEmbed('#container3Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
+      "width": window.innerWidth * 0.40,
+      "height": window.innerHeight * 0.2, // Reduced height for a smaller graph
+      "autosize": { "type": "fit", "contains": "padding" },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
+
+    // Embed chart5.json into Container 2
+    vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
+      "width": window.innerWidth * 0.45,
+      "height": window.innerHeight * 0.35, // Adjusted height for a shorter graph
+      "autosize": { "type": 'fit', "contains": 'padding' },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
+
     // Embed chart2.json into Container 5 with adjusted dimensions
     vegaEmbed('#container5Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart2.json', {
       "width": window.innerWidth * 0.48,  // Adjusted width to better fit container
