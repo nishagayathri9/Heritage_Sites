@@ -76,7 +76,11 @@
             "labelColor": "white",
             "titleColor": "white"
           }
-        }
+        },
+        "tooltip": [
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "display_count", "type": "quantitative", "title": "Number of Sites"}
+        ]
       }
     },
     {
@@ -89,9 +93,10 @@
         "longitude": {"field": "longitude", "type": "quantitative"},
         "latitude": {"field": "latitude", "type": "quantitative"},
         "url": {"field": "url", "type": "nominal"},
-        "tooltip": {
-          "signal": "{'Country: ' + datum.country + '<br><img src=' + datum.image + ' width=\"100\" height=\"100\">'}"
-        }
+        "tooltip": [
+          {"field": "country", "type": "nominal", "title": "Country"},
+          {"field": "image", "type": "nominal", "title": "Image"}
+        ]
       },
       "data": {
         "values": [
@@ -107,7 +112,7 @@
             "latitude": 26.820553,
             "longitude": 30.802498,
             "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
-            "image": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/whc_images/egypt_image.jpg"
+            "image": "https://whc.unesco.org/uploads/thumbs/site_0086_0020-1200-630-20151104170236.jpg"
           },
           {
             "country": "Japan",
