@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
-  "height": 460,
+  "width": 350,
+  "height": 350,
   "background": "null",
   "data": {
     "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/scatter_data.csv",
@@ -85,7 +85,7 @@
         "fontSize": 12,
         "fontWeight": "normal",
         "fill": "white",
-        "radius": 100
+        "radius": 90
       },
       "encoding": {
         "text": {
