@@ -103,6 +103,12 @@
       height: 100%;
       border: none;
     }
+
+    /* Adjust container 6 to be smaller and closer to container 5 */
+    #container6 {
+      width: 40%; /* Reduced width */
+      margin-left: -20px; /* Negative margin to bring it closer */
+    }
   </style>
 </head>
 <body>
@@ -207,7 +213,7 @@
 
     // Embed chart3.json into Container 6
     vegaEmbed('#container6Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart3.json', {
-      "width": window.innerWidth * 0.48,  // Adjusted width to match container 5
+      "width": window.innerWidth * 0.40,  // Smaller width for Container 6
       "height": window.innerHeight * 0.5, // Similar height for balance
       "autosize": { "type": 'fit', "contains": 'padding' },
       renderer: 'canvas',
