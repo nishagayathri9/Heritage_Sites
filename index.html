@@ -33,7 +33,16 @@
       letter-spacing: 2px;
       font-weight: bold;
     }
-    
+
+    .description {
+      font-size: 18px;
+      margin: 20px auto;
+      width: 80%;
+      text-align: center;
+      line-height: 1.6;
+      color: #f0f0f0;
+    }
+
     .chart-container {
       margin: 0;
       padding: 0;
@@ -58,7 +67,7 @@
 
     .container {
       background-color: #000;
-      padding: 10px;
+      padding: 0; /* Remove padding */
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -86,6 +95,7 @@
     /* Adjust container 5 for better fit */
     #container5 {
       width: 48%; /* Increased width */
+      margin-right: 0; /* Remove right margin */
     }
 
     /* Chart embedded into the containers */
@@ -104,10 +114,15 @@
       border: none;
     }
 
-    /* Adjust container 6 to be smaller and closer to container 5 */
+    /* Adjust container 6 to be smaller and remove space between container 5 and container 6 */
     #container6 {
       width: 40%; /* Reduced width */
-      margin-left: -20px; /* Negative margin to bring it closer */
+      margin-left: 0; /* Remove left margin */
+    }
+
+    .container-wrapper-triple .container {
+      margin-right: 0; /* Ensure no right margin */
+      margin-left: 0;  /* Ensure no left margin */
     }
   </style>
 </head>
@@ -117,6 +132,11 @@
   <header>
     <h1>HERITAGE SITES</h1>
   </header>
+  
+  <!-- Description before the map -->
+  <div class="description">
+    UNESCO World Heritage Sites highlight regions with outstanding cultural or natural importance. Europe, China, and India have the most sites, reflecting centuries of global influence. UNESCO began this initiative in 1972 to protect landmarks from deterioration, and over 1,100 sites are now preserved. France and Italy, known for their historical significance, are among the leaders in site numbers. The initiative also focuses on endangered areas, with efforts in countries like India and Southeast Asia, ensuring preservation of both natural wonders and cultural legacies for future generations.
+  </div>
   
   <!-- Container for the Vega Chart (Map Chart) -->
   <div class="chart-container" id="mapChart"></div>
@@ -213,7 +233,7 @@
 
     // Embed chart3.json into Container 6
     vegaEmbed('#container6Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart3.json', {
-      "width": window.innerWidth * 0.35,  // Smaller width for Container 6
+      "width": window.innerWidth * 0.40,  // Smaller width for Container 6
       "height": window.innerHeight * 0.5, // Similar height for balance
       "autosize": { "type": 'fit', "contains": 'padding' },
       renderer: 'canvas',
