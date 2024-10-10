@@ -48,9 +48,10 @@
       border: none;
     }
 
-    .container-wrapper, .container-wrapper-reverse, .container-wrapper-triple {
+    .container-wrapper {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       width: 90vw;
       margin: 20px auto;
       min-height: 40vh;
@@ -62,14 +63,16 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
+      justify-content: center;
     }
 
-    #container1, #container4, #container5 {
-      width: 30%;
+    #container1 {
+      width: 40%;
+      text-align: left;
     }
 
-    #container2, #container3 {
-      width: 65%;
+    #container5 {
+      width: 55%; /* Adjust width for the chart */
     }
 
     .container h2 {
@@ -83,22 +86,17 @@
       font-size: 16px;
     }
 
-    /* Adjust container 5 for better fit */
-    #container5 {
-      width: 48%; /* Increased width */
-    }
-
-    /* Chart embedded into the containers */
-    #chart5, #container1Chart, #container3Chart, #container5Chart {
+    /* Chart embedded into the container */
+    #container5Chart {
       width: 100%;
-      height: 90%; /* Increased height for better fit */
+      height: 90%;
       padding: 0;
       margin: 0;
       box-sizing: border-box;
     }
 
     /* Ensure iframes within charts fill the container */
-    #chart5 > iframe, #container1Chart > iframe, #container3Chart > iframe, #container5Chart > iframe {
+    #container5Chart > iframe {
       width: 100%;
       height: 100%;
       border: none;
@@ -123,79 +121,21 @@
     }).catch(console.error);
   </script>
 
-  <!-- Original Container 1 and Container 2 -->
+  <!-- Container for Text and Chart side by side -->
   <div class="container-wrapper">
-    <!-- Container 1 -->
+    <!-- Container 1 (Text Section) -->
     <div class="container" id="container1">
-      <h2>Container 1</h2>
-      <p>Mountain, River, Sky, Forest, City, Culture, Travel, Adventure, Nature, Ocean, Valley, Lake, Architecture, Garden, Beach, Village, Island, Castle, Landmark, Monument, Museum, Gallery, Park, History, Tradition, Wildlife, Flora, Fauna, Landscape, Vista</p>
-      <div id="container1Chart"></div>
-    </div>
-
-    <!-- Container 2 -->
-    <div class="container" id="container2">
-      <div id="chart5"></div>
-    </div>
-  </div>
-
-  <!-- Reversed Container 3 and Container 4 -->
-  <div class="container-wrapper-reverse">
-    <!-- Container 3 (Wider Container) -->
-    <div class="container" id="container3">
-      <h2>Container 3</h2>
-      <div id="container3Chart"></div>
-    </div>
-
-    <!-- Container 4 (Narrower Container) -->
-    <div class="container" id="container4">
-      <h2>Container 4</h2>
-      <p>Sunset, Sunrise, Horizon, Waves, Forest, Travel, Journey, Explore, Compass, Landmark, Heritage, Culture, Mountain, River, City, Sky, Wild, Natural, Scenic, Flora, Fauna, Tradition, Adventure, Discovery, Ocean, Breeze, Coast, Wildlife, Park, Canyon, Historic, Ruins, Waterfall, Meadow, Lake, Valley, Glacial, Cliff, Summit, Ridge, Adventure, Landscape, Vista, Trail, Expedition, Sanctuary, Village, Habitat, Diverse, Island, Plains</p>
-    </div>
-  </div>
-
-  <!-- New Container 4, 5 in One Row -->
-  <div class="container-wrapper-triple">
-    <!-- Container 4 -->
-    <div class="container" id="container4">
-      <h2>Container 4</h2>
+      <h2>Percentage of GDP</h2>
       <p>Exploration, Hiking, Beach, Desert, Stars, Planet, Galaxy, Travel, Expedition, Adventure, Rafting, Trail, Footpath, Rock, Birdsong, Sunlight, Bridge, Tracks, Weather, Forest, Terrain, Journey, Travel, Wildlife, Ocean, Islands, Mountains, Cabin, Jungle, Flight, Rivers, Bay, Inlet, Cove, Ferry, Boating, Harbor, Village, Culture, Nature, Cliff, Hill, Mountain, Sky, Landscape, Meadows, Tradition, Flora, Heritage, Discovery</p>
     </div>
 
-    <!-- Container 5 -->
+    <!-- Container 5 (Chart Section) -->
     <div class="container" id="container5">
-      <h2>Container 5</h2>
       <div id="container5Chart"></div>
     </div>
   </div>
 
   <script>
-    // Embed the chart into Container 1
-    vegaEmbed('#container1Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/your_container1_chart.json', {
-      "width": window.innerWidth * 0.45,
-      "height": window.innerHeight * 0.45,
-      "autosize": { "type": "fit", "contains": "padding" },
-      renderer: 'canvas',
-      actions: false
-    }).catch(console.error);
-
-    // Embed chart4.json into Container 3
-    vegaEmbed('#container3Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json', {
-      "width": window.innerWidth * 0.40,
-      "height": window.innerHeight * 0.2, // Reduced height for a smaller graph
-      "autosize": { "type": "fit", "contains": "padding" },
-      renderer: 'canvas',
-      actions: false
-    }).catch(console.error);
-
-    // Embed chart5.json into Container 2
-    vegaEmbed('#chart5', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart5.json', {
-      "width": window.innerWidth * 0.45,
-      "height": window.innerHeight * 0.35, // Adjusted height for a shorter graph
-      "autosize": { "type": 'fit', "contains": 'padding' },
-      renderer: 'canvas',
-      actions: false
-    }).catch(console.error);
-
     // Embed chart2.json into Container 5 with adjusted dimensions
     vegaEmbed('#container5Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart2.json', {
       "width": window.innerWidth * 0.48,  // Adjusted width to better fit container
