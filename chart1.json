@@ -76,7 +76,11 @@
             "labelColor": "white",
             "titleColor": "white"
           }
-        }
+        },
+        "tooltip": [
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "display_count", "type": "quantitative", "title": "Number of Sites"}
+        ]
       }
     },
     {
