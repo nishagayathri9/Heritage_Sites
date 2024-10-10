@@ -94,8 +94,8 @@
 
     /* Adjust container 5 for better fit */
     #container5 {
-      width: 48%; /* Increased width */
-      margin-right: 0; /* Remove right margin */
+      width: 42%; /* Moved to the left by reducing width */
+      margin-left: -5%; /* Negative margin to move to the left */
     }
 
     /* Chart embedded into the containers */
@@ -116,8 +116,8 @@
 
     /* Adjust container 6 to be smaller and remove space between container 5 and container 6 */
     #container6 {
-      width: 40%; /* Reduced width */
-      margin-left: 0; /* Remove left margin */
+      width: 38%; /* Smaller width for Container 6 */
+      margin-left: -5%; /* Move closer to container 5 */
     }
 
     .container-wrapper-triple .container {
@@ -224,7 +224,7 @@
 
     // Embed chart2.json into Container 5 with adjusted dimensions
     vegaEmbed('#container5Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart2.json', {
-      "width": window.innerWidth * 0.40,  // Adjusted width to better fit container
+      "width": window.innerWidth * 0.42,  // Adjusted width to better fit container
       "height": window.innerHeight * 0.5, // Adjusted height to avoid white space
       "autosize": { "type": 'fit', "contains": 'padding' },
       renderer: 'canvas',
@@ -233,8 +233,8 @@
 
     // Embed chart3.json into Container 6
     vegaEmbed('#container6Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart3.json', {
-      "width": window.innerWidth * 0.3,  // Smaller width for Container 6
-      "height": window.innerHeight * 0.3, // Similar height for balance
+      "width": window.innerWidth * 0.38,  // Smaller width for Container 6
+      "height": window.innerHeight * 0.42, // Smaller height for balance
       "autosize": { "type": 'fit', "contains": 'padding' },
       renderer: 'canvas',
       actions: false
