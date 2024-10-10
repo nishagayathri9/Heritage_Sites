@@ -30,7 +30,7 @@
       "mark": {
         "type": "arc",
         "innerRadius": 50,
-        "stroke": "#fff"
+        "stroke": "slategrey"
       },
       "encoding": {
         "theta": {
@@ -82,10 +82,10 @@
         "type": "text",
         "align": "center",
         "baseline": "middle",
-        "fontSize": 12,
+        "fontSize": 11.2,
         "fontWeight": "normal",
         "fill": "white",
-        "radius": 90
+        "radius": 95
       },
       "encoding": {
         "text": {
