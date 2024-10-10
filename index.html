@@ -187,7 +187,7 @@
       <div id="container5Chart"></div>
     </div>
 
-    <!-- Container 6 for Chart 3 -->
+    <!-- Container 6 for Chart 6 -->
     <div class="container" id="container6">
       <h2>Container 6</h2>
       <div id="container6Chart"></div>
@@ -222,8 +222,17 @@
       actions: false
     }).catch(console.error);
 
-    // Embed chart2.json into Container 5 with adjusted dimensions
-    vegaEmbed('#container6Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart2.json', {
+    // Embed chart3.json into Container 5
+    vegaEmbed('#container5Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart3.json', {
+      "width": window.innerWidth * 0.42,  // Adjusted width to better fit container
+      "height": window.innerHeight * 0.5, // Adjusted height to avoid white space
+      "autosize": { "type": 'fit', "contains": 'padding' },
+      renderer: 'canvas',
+      actions: false
+    }).catch(console.error);
+
+    // Embed chart6.json into Container 6
+    vegaEmbed('#container6Chart', 'https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart6.json', {
       "width": window.innerWidth * 0.42,  // Adjusted width to better fit container
       "height": window.innerHeight * 0.5, // Adjusted height to avoid white space
       "autosize": { "type": 'fit', "contains": 'padding' },
