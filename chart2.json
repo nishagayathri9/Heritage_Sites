@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
+  "width": 700,
   "height": 500,
   "background": "#222222",
   "data": {
@@ -9,11 +9,27 @@
       "type": "csv"
     }
   },
+  "params": [
+    {
+      "name": "region_select",
+      "value": "Europe",
+      "bind": {
+        "input": "select",
+        "options": ["Asia", "Europe"],
+        "name": "Select a Region  "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "(datum.region == region_select)"
+    }
+  ],
   "layer": [
     {
       "mark": {
         "type": "arc",
-        "innerRadius": 50,  
+        "innerRadius": 50,
         "stroke": "#fff"
       },
       "encoding": {
@@ -63,13 +79,13 @@
     },
     {
       "mark": {
-        "type": "text",  
+        "type": "text",
         "align": "center",
         "baseline": "middle",
-        "radius": 120, 
-        "fontSize": 13,
-        "fontWeight": "lighter",
-        "fill": "white"
+        "fontSize": 12,
+        "fontWeight": "normal",
+        "fill": "white",
+        "radius": 120
       },
       "encoding": {
         "text": {
@@ -85,22 +101,6 @@
           "stack": true
         }
       }
-    }
-  ],
-  "params": [
-    {
-      "name": "region_select",
-      "value": "Europe",
-      "bind": {
-        "input": "select",
-        "options": ["Asia", "Europe"],
-        "name": "Select a Region  "
-      }
-    }
-  ],
-  "transform": [
-    {
-      "filter": "(datum.region == region_select)"
     }
   ]
 }
