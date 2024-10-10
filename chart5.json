@@ -13,7 +13,7 @@
     "field": "category", 
     "type": "nominal", 
     "columns": 2,
-    "title": null,  // Remove the title for the facet
+    "title": null,  
     "header": {
       "labelColor": "white",  
       "title": null           
