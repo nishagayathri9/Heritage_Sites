@@ -35,7 +35,8 @@
         "name": "color",
         "type": "ordinal",
         "domain": {"data": "heritage_sites", "field": "region_en"},
-        "range": ["#fbb4ae", "#b3cde3", "#ccebc5", "#decbe4", "#fed9a6", "#ffffcc"]  
+        "range": ["#A682FF", "#b3cde3", "#5887FF", "#decbe4", "#fed9a6", "#55C1FF"]  
+
       }
     ],
   
