@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "width": 680,  
   "height": 450,
-  "padding": {"left": 50, "right": 260, "top": 30, "bottom": 60},  
+  "padding": {"left": 50, "right": 260, "top": 40, "bottom": 60},  
   "autosize": "none",
   "background": "null",  
   
@@ -13,7 +13,7 @@
     { "name": "collide", "value": 1.5 },  
     { "name": "gravityX", "value": 0.2 },  
     { "name": "gravityY", "value": 0.5 },
-    { "name": "static", "value": true }
+    { "name": "static", "value": false }
   ],
   
   "data": [
@@ -83,7 +83,7 @@
         {
           "type": "force",
           "iterations": 100,  
-          "static": {"signal": "static"},
+          "static": false,
           "forces": [
             {"force": "collide", "iterations": {"signal": "collide"}, "radius": {"signal": "radius"}},
             {"force": "x", "x": "xfocus", "strength": {"signal": "gravityX"}},
@@ -105,7 +105,7 @@
       "labelFontSize": 11,  
       "labelLimit": 300,  
       "symbolPadding": 20,  
-      "offset": -40,  
+      "offset": -50,  
       "titleColor": "white",   
       "labelColor": "white",
       "symbolSize": 100,   
