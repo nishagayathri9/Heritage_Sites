@@ -7,7 +7,7 @@
     {
       "mark": {
         "type": "geoshape",
-        "fill": "light"
+        "fill": "lightblue"
       },
       "data": {
         "sphere": true
@@ -68,7 +68,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["No sites", "1-10 sites", "11-25 sites", "26-40 sites", ">40 sites"],
-            "range": ["#ffffcc", "#a1dab4", "#41b6c4", "#2c7fb8", "#253494"]
+            "range": ["#ffffd4","#fed98e","#fe9929","#d95f0e","#993404"]
           },
           "legend": {
             "title": "Heritage Site Classes",
