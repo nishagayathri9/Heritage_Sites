@@ -4,66 +4,52 @@
     "type": "fit",
     "contains": "padding"
   },
-  "background": "#222222", 
+  "background": "#222222",
   "data": {
     "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/beeswarm.csv",
     "format": {"type": "csv"}
   },
-  "facet": {
-    "field": "category", 
-    "type": "nominal", 
-    "columns": 2,
-    "title": null,  
-    "header": {
-      "labelColor": "white",  
-      "title": null           
+  "mark": "area",
+  "transform": [
+    {
+      "density": "Rating",
+      "groupby": ["category"],
+      "extent": [0, 5]
     }
-  },
-  "spec": {
-    "mark": "area",
-    "transform": [
-      {
-        "density": "Rating",
-        "groupby": ["category"],
-        "extent": [0, 5]
+  ],
+  "encoding": {
+    "x": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Rating",
+      "axis": {
+        "labelColor": "white",
+        "titleColor": "white",
+        "tickColor": "white",
+        "grid": false  
       }
-    ],
-    "encoding": {
-      "x": {
-        "field": "value",
-        "type": "quantitative",
-        "title": "Rating",
-        "axis": {
-          "labelColor": "white",  
-          "titleColor": "white",  
-          "tickColor": "white",   
-          "grid": false  
-        }
-      },
-      "y": {
-        "field": "density",
-        "type": "quantitative",
-        "stack": "zero",
-        "axis": {
-          "labelColor": "white",  
-          "titleColor": "white",  
-          "grid": false  
-        }
-      },
-      "color": {
-        "field": "category",
-        "type": "nominal",
-        "scale": {
-          "range": ["#E27396", "#ea9ab2", "#EFCFE3"]
-        },
-        "legend": null
+    },
+    "y": {
+      "field": "density",
+      "type": "quantitative",
+      "stack": "zero",
+      "axis": {
+        "labelColor": "white",
+        "titleColor": "white",
+        "grid": false  
       }
-    }
-  },
-  "resolve": {
-    "scale": {
-      "x": "shared",
-      "y": "independent"
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "scale": {
+        "range": ["#E27396","#ea9ab2", "#EFCFE3"]
+      },
+      "title": "Category",
+      "legend": {
+        "labelColor": "white",
+        "titleColor": "white"
+      }
     }
   }
 }
