@@ -16,7 +16,7 @@
   <!-- Google font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet"> <!-- Digital-like font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
   <style>
@@ -33,7 +33,7 @@
       margin: 50px auto;
       padding: 50px;
       padding-top: 35px;
-      border: none; /* Removed the white border */
+      border: none;
     }
 
     body * {
@@ -41,12 +41,12 @@
     }
 
     p {
-      font-family: 'Open Sans', sans-serif; /* Keep the body font as Open Sans */
+      font-family: 'Open Sans', sans-serif;
     }
 
     h1 {
       font-weight: 900;
-      font-size: 34px; /* Increased the font size for the title */
+      font-size: 34px;
       margin-bottom: 5px;
     }
 
@@ -59,27 +59,14 @@
       margin-top: 0px;
     }
 
-    .description-right {
-      padding-left: 20px;
-    }
-
-    .description-left {
-      padding-right: 20px;
-    }
-
     .pure-g {
       margin-bottom: 20px;
-    }
-
-    .small-font {
-      font-size: 14px;
     }
 
     a {
       color: white;
     }
 
-    /* Flexbox container for side-by-side layout */
     .flex-container {
       display: flex;
       justify-content: space-between;
@@ -87,60 +74,55 @@
       gap: 20px;
     }
 
-    /* Text container */
     .text-container {
-      flex: 1 1 20%; /* Occupies 20% of the space */
+      flex: 1 1 20%;
       padding-right: 20px;
     }
 
-    /* Chart container */
     .chart-container {
-      flex: 1 1 75%; /* Occupies 75% of the space */
-      min-width: 300px; /* Added min-width */
-      min-height: 300px; /* Added min-height */
+      flex: 1 1 75%;
+      min-width: 300px;
+      min-height: 300px;
     }
 
-    /* Ensure the layout adjusts properly on smaller screens */
     @media only screen and (max-width: 900px) {
       .flex-container {
-        flex-direction: column; /* Stack items vertically on smaller screens */
+        flex-direction: column;
       }
     }
 
-    /* Adjustments for the map visibility */
     #vis1 {
       width: 100%;
-      height: 400px; /* Ensure height is sufficient to show the map */
+      height: 400px;
       margin-bottom: 40px;
-      border: none; /* No borders on the map */
+      border: none;
     }
 
     #vis2 {
-      border: none; /* No borders on the map */
+      border: none;
     }
 
-    /* Updated Container Section */
     .container-section {
-        width: 100%;
-        background-color: #222;
-        padding: 20px;
-        margin: 20px 0;
-        border-radius: 8px;
-        box-sizing: border-box;
+      width: 100%;
+      background-color: #222;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-sizing: border-box;
     }
 
     .container-section h3 {
-        margin-top: 0;
-        margin-bottom: 10px; /* Ensure spacing between title and text */
-        color: #f4f4f4;
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #f4f4f4;
+      font-size: 24px;
     }
 
     .container-section p {
-        color: #ddd;
-        margin: 0; /* Remove extra margin from paragraphs */
+      color: #ddd;
+      margin: 0;
     }
 
-    /* Flex container for the chart and text */
     .explore-flex {
       display: flex;
       justify-content: space-between;
@@ -149,21 +131,44 @@
       margin-top: 20px;
     }
 
-    /* Left container for chart */
     .explore-chart {
       flex: 1;
-      min-width: 300px; /* Added min-width */
-      min-height: 300px; /* Added min-height */
+      min-width: 300px;
+      min-height: 300px;
     }
 
-    /* Right container for text */
     .explore-text {
       flex: 0.5;
       color: #ddd;
     }
 
+    .three-column-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 5px;
+      margin-top: 20px;
+      margin-bottom: 100px;
+    }
+
+    .column {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      flex: 1;
+      min-height: 220px;
+      max-height: 230px;
+    }
+
+    .column p {
+      color: white;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
     @media only screen and (max-width: 900px) {
-      .explore-flex {
+      .three-column-container {
         flex-direction: column;
       }
     }
@@ -178,49 +183,64 @@
     <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <h1>Explore the Numbers in Every Adventure</h1> <!-- Title maintained, font size increased -->
+        <h1>Explore the Numbers in Every Adventure</h1>
         <p>This page demonstrates how you can use pure.css grid for your layout.</p>
       </div>
     </div>
     <!-- end pure grid group -->
 
-    <!-- Vega embedding for the map (ensure it's visible) -->
+    <!-- Vega embedding for the map -->
     <div class="pure-g">
       <div class="pure-u-1">
-        <div id="vis1" class="vis-container"></div> <!-- Map container -->
+        <div id="vis1" class="vis-container"></div>
       </div>
     </div>
-    <!-- end vega embedding -->
 
     <!-- Flexbox layout for Two Columns Layout -->
     <div class="flex-container">
-      <!-- Text Container -->
       <div class="text-container">
         <div class="description">
           <h2>Distribution of Categories by Region</h2>
-          <p>Each dot represents a heritage site. Cultural sites have the highest concentration,
-             while Mixed sites are less frequent. Theres a variety of global representation of heritage sites, with a 
-             significant number originating from Europe.</p>
+          <p>Each dot represents a heritage site. Cultural sites have the highest concentration, while Mixed sites are less frequent. There’s a variety of global representation of heritage sites, with a significant number originating from Europe.</p>
         </div>
       </div>
 
-      <!-- Chart Container -->
       <div class="chart-container">
         <div id="vis4" class="vis-container"></div>
       </div>
     </div>
-    <!-- end Flexbox layout -->
+
+    <!-- Gauge Chart Section Title -->
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <h2>Overview of Heritage Sites by Type</h2>
+        <p>Below, you can explore the distribution of cultural, mixed, and natural heritage sites using the interactive gauge charts.</p>
+      </div>
+    </div>
+
+    <!-- New 3-column layout -->
+    <div class="three-column-container">
+      <div class="column">
+        <div id="gaugeChart1" class="vis-container"></div>
+        <p>Representing heritage sites with cultural significance. High concentration globally.</p>
+      </div>
+      <div class="column">
+        <div id="gaugeChart2" class="vis-container"></div>
+        <p>Sites representing a combination of cultural and natural significance.</p>
+      </div>
+      <div class="column">
+        <div id="gaugeChart3" class="vis-container"></div>
+        <p>Locations primarily valued for their natural beauty and ecosystem preservation.</p>
+      </div>
+    </div>
 
     <!-- New Container 1 -->
     <div class="container-section">
       <h3>Distribution of Categories by Rating</h3>
-      <!-- Flex layout for chart and text -->
       <div class="explore-flex">
-        <!-- Chart Section -->
         <div class="explore-chart">
-          <div id="vis2" class="vis-container"></div> <!-- Chart 5 container -->
+          <div id="vis2" class="vis-container"></div>
         </div>
-        <!-- Text Section -->
         <div class="explore-text">
           <p>Text about the chart can go here. You can add any additional insights or details about the visualization to the right of the chart for better context.</p>
         </div>
@@ -238,22 +258,24 @@
   <script type="text/javascript">
     // Vega and Vega-Lite specification for embedding
     var specVis1 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json";
-    var specVis4 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json"; // New chart
-    var specVis2 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites//main/chart2.json"; // Chart 5
+    var specVis4 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json";
+    var specVis2 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/chart2.json";
+    var specGaugeChart1 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/gaugechart1.json"; // Gauge chart 1 spec
+    var specGaugeChart2 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/gaugechart2.json"; // Gauge chart 2 spec
+    var specGaugeChart3 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/gaugechart3.json"; // Gauge chart 3 spec
 
-    // Removing the borders and setting the map display
+    // Embedding the map
     vegaEmbed('#vis1', specVis1, {
       "actions": false,
       "width": 840,
       "height": 400,
       "config": {
         "view": {
-          "stroke": null  // Remove the border from the map
+          "stroke": null
         },
-        "background": "black"  // Ensure background color matches the page
+        "background": "black"
       }
     }).then(function (result) {
-        // Ensure the map is displayed properly
     }).catch(console.error);
 
     // Embedding another chart
@@ -262,21 +284,43 @@
       "width": 600,
       "height": 340
     }).then(function (result) {
-        // Access the Vega view instance as result.view
     }).catch(console.error);
 
-    vegaEmbed('#vis2', specVis2, {
-
-        "width": 520,  // Adjusted width
-        "height": 380,  // Adjusted height
-        "config": {
-            "view": {
-              "stroke": null  // Remove the border from vis2
-            },
-            "background": "black"  // Match the background
-        }
+    // Embedding the first gauge chart in the first column
+    vegaEmbed('#gaugeChart1', specGaugeChart1, {
+      "actions": false,
+      "width": 240,
+      "height": 210
     }).then(function (result) {
-    // Access the Vega view instance as result.view
+    }).catch(console.error);
+
+    // Embedding the second gauge chart in the second column
+    vegaEmbed('#gaugeChart2', specGaugeChart2, {
+      "actions": false,
+      "width": 240,
+      "height": 210
+    }).then(function (result) {
+    }).catch(console.error);
+
+    // Embedding the third gauge chart in the third column
+    vegaEmbed('#gaugeChart3', specGaugeChart3, {
+      "actions": false,
+      "width": 240,
+      "height": 210
+    }).then(function (result) {
+    }).catch(console.error);
+
+    // Embedding another chart
+    vegaEmbed('#vis2', specVis2, {
+      "width": 520,
+      "height": 380,
+      "config": {
+        "view": {
+          "stroke": null
+        },
+        "background": "black"
+      }
+    }).then(function (result) {
     }).catch(console.error);
 
   </script>
