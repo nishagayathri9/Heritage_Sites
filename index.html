@@ -71,7 +71,7 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 20px;
+      gap: 00px;
     }
 
     .text-container {
@@ -104,7 +104,7 @@
 
     .container-section {
       width: 100%;
-      background-color: #222;
+      background-color: black;
       padding: 20px;
       margin: 20px 0;
       border-radius: 8px;
@@ -148,7 +148,7 @@
       align-items: flex-start;
       gap: 5px;
       margin-top: 20px;
-      margin-bottom: 100px;
+      margin-bottom: 60px;
     }
 
     .column {
@@ -250,7 +250,14 @@
     <!-- New Container 2 -->
     <div class="container-section">
       <h3>Global Impact</h3>
-      <p>Understand the economic and cultural impact of these heritage sites globally. From tourism revenue to cultural preservation, these numbers reveal a deep connection between heritage and the modern world.</p>
+      <p>Below, you can explore the distribution of cultural, mixed, and natural heritage sites using the interactive gauge charts.</p>
+      <div class="explore-flex">
+        <div class="explore-chart">
+          <div id="vis3" class="vis-container"></div>
+        </div>
+        <div class="explore-text">
+        </div>
+      </div>
     </div>
 
   </div> <!-- end page -->
@@ -260,6 +267,7 @@
     var specVis1 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart1.json";
     var specVis4 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart4.json";
     var specVis2 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/chart2.json";
+    var specVis3 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/chart3.json"; // Chart 3 spec
     var specGaugeChart1 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/gaugechart1.json"; // Gauge chart 1 spec
     var specGaugeChart2 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/gaugechart2.json"; // Gauge chart 2 spec
     var specGaugeChart3 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/gaugechart3.json"; // Gauge chart 3 spec
@@ -313,6 +321,20 @@
     // Embedding another chart
     vegaEmbed('#vis2', specVis2, {
       "width": 520,
+      "height": 380,
+      "config": {
+        "view": {
+          "stroke": null
+        },
+        "background": "black"
+      }
+    }).then(function (result) {
+    }).catch(console.error);
+
+    // Embedding the new chart in the Global Impact section
+    vegaEmbed('#vis3', specVis3, {
+      "actions":false,
+      "width": 200,
       "height": 380,
       "config": {
         "view": {
