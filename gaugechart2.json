@@ -2,6 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "width": 250,
   "height": 250,
+  "background" : "null",
   
   "signals": [
     {
@@ -50,7 +51,7 @@
     },
     {
       "name": "needleColor",
-      "value": "#555"
+      "value": "white"
     },
     {
       "name": "lowIsGood",
@@ -266,50 +267,6 @@
 
     {
       "type": "text",
-      "from": { "data": "gauge" },
-      "encode": {
-        "enter": {
-          "align": { "value": "center" },
-          "baseline": { "value": "top" }
-        },
-        "update": {
-          "text": { "signal": "minValue" },
-          "x": { "signal": "datum.x - datum.outerRadius + width/16" },
-          "y": {
-            "field": "y",
-            "offset": 10
-          },
-          "fontSize": { "signal": "fontFactor * 11" },
-          "opacity": { "signal": "showTicks ? 0 : 1" }
-        }
-      }
-
-    },
-
-    {
-      "type": "text",
-      "from": { "data": "gauge" },
-      "encode": {
-        "enter": {
-          "align": { "value": "center" },
-          "baseline": { "value": "top" }
-        },
-        "update": {
-          "text": { "signal": "maxValue" },
-          "x": { "signal": "datum.x + datum.outerRadius - width/16" },
-          "y": {
-            "field": "y",
-            "offset": 10
-          },
-          "fontSize": { "signal": "fontFactor*11" },
-          "opacity": { "signal": "showTicks ? 0 : 1" }
-        }
-      }
-
-    },
-
-    {
-      "type": "text",
       "name": "gaugeValue",
       "encode": {
         "enter": {
@@ -323,11 +280,13 @@
             "signal": "centerY",
             "offset": 10
           },
-          "fontSize": { "signal": "fontFactor * 14" }
+          "fontSize": { "signal": "fontFactor * 14" },
+          "fill": { "value": "white" }  
         }
       }
 
     },
+
     {
       "type": "text",
       "name": "targetDiff",
@@ -353,27 +312,6 @@
         }
       }
 
-    },
-
-    {
-      "type": "symbol",
-      "from": { "data": "targetDiff" },
-      "encode": {
-        "update": {
-          "shape": { "signal": "targetStatus === 0 ? 'circle' : targetStatus === 1 ? 'triangle-up' : 'triangle-down'" },
-          "size": { "signal": "targetStatus === 0 ? pow(8*fontFactor, 2) : pow(12*fontFactor, 2)" },
-          "x": { "signal": "datum.bounds.x1 - (12*fontFactor)" },
-          "y": {
-            "field": "y",
-            "offset": { "signal": "(datum.bounds.y2 - datum.bounds.y1)/2" }
-          },
-          "fill": {
-            "signal": "targetStatus",
-            "scale": "targetStatusColorScale"
-          },
-          "opacity": { "signal": "targetValue ? 1:0" }
-        }
-      }
     },
     {
       "type": "symbol",
@@ -428,12 +366,11 @@
             "signal": "datum.y - datum.outerRadius",
             "offset": { "signal": "-15*fontFactor" }
           },
-          "fontSize": { "signal": "datum.outerRadius/8" }
+          "fontSize": { "signal": "datum.outerRadius/8" },
+          "fill": { "value": "white" } 
         }
       }
     }
-
-
 
   ]
 }
