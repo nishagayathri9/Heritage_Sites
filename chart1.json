@@ -123,13 +123,6 @@
             "image": "https://example.com/usa-image.jpg"
           },
           {
-            "country": "Japan",
-            "latitude": 36.204824,
-            "longitude": 138.252924,
-            "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
-            "image": "https://example.com/japan-image.jpg"
-          },
-          {
             "country": "Australia",
             "latitude": -25.274398,
             "longitude": 133.775136,
@@ -163,13 +156,6 @@
             "longitude": 78.96288,
             "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
             "image": "https://example.com/india-image.jpg"
-          },
-          {
-            "country": "Indonesia",
-            "latitude": -0.789275,
-            "longitude": 113.921327,
-            "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png",
-            "image": "https://example.com/indonesia-image.jpg"
           }
         ]
       }
