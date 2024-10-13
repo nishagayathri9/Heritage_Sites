@@ -30,7 +30,11 @@
       }
     },
     {
-      "mark": {"type": "geoshape"},
+      "mark": {
+        "type": "geoshape",
+        "stroke": "white",  // Set the country border stroke to white
+        "strokeWidth": 0.8   // Optional: Make the outline thicker for visibility
+      },
       "projection": {
         "type": "equalEarth"
       },
@@ -68,7 +72,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["None", "1-10", "11-25", "26-40", "More than 40"],
-            "range": ["#ffffd4", "#fed98e", "#fe9929", "#d95f0e", "#993404"]
+            "range": ["#ffffb2","#fecc5c","#fd8d3c","#f03b20","#bd0026"]
           },
           "legend": {
             "title": "Heritage Site Classes",
