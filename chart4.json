@@ -105,7 +105,7 @@
       "labelFontSize": 14,  
       "labelLimit": 300,  
       "symbolPadding": 10,  
-      "offset": -60,  
+      "offset": -50,  
       "titleColor": "white",   
       "labelColor": "white",
       "symbolSize": 80,   
