@@ -76,6 +76,8 @@
           },
           "legend": {
             "title": "Heritage Site Classes",
+            "labelFontSize": 14,
+            "titleFontSize" : 14,
             "symbolType": "square",
             "labelColor": "white",
             "titleColor": "white",
