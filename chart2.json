@@ -50,11 +50,29 @@
           "condition": {
             "test": "datum.percentage_of_gdp > 2.5",
             "field": "country",
-            "legend": null,
             "type": "nominal",
             "scale": {
-              "scheme": "category20b"
-            }
+              "range": [
+                "#CD5C5C",
+                "#4682B4",
+                "#008080",
+                "#DDA0DD",
+                "#FFDAB9",
+                "#F08080",
+                "#7B68EE",
+                "#9ACD32",
+                "#C71585",
+                "#7B68EE",
+                "#FF1493",
+                "#5F9EA0",
+                "#66CDAA",
+                "#C71585",
+                "#B0C4DE",
+                "#BC8F8F",
+                "#C71585"
+              ]
+            },
+            "legend": null
           },
           "value": "lightgray"
         },
