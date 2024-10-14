@@ -42,6 +42,7 @@
 
     p {
       font-family: 'Open Sans', sans-serif;
+      font-size: 15px; 
     }
 
     h1 {
@@ -172,6 +173,33 @@
         flex-direction: column;
       }
     }
+
+    .hover-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: #444; /* Darker color to reduce focus */
+    color: #ccc; /* Subtle text color */
+    border-radius: 50px;
+    font-size: 14px; /* Smaller text */
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: none; /* Remove shadow */
+  }
+
+  .hover-button:hover {
+    background-color: #666; /* Slightly brighter on hover */
+  }
+
+  .hover-button img {
+    width: 20px;
+    height: 20px; /* Smaller icon */
+  }
+
+
   </style>
 
 </head>
@@ -184,7 +212,13 @@
     <div class="pure-g">
       <div class="pure-u-1-1">
         <h1>Explore the Numbers in Every Adventure</h1>
-        <p>This page demonstrates how you can use pure.css grid for your layout.</p>
+        <p>Journey through heritage sites and explore tourism's impact on economies worldwide.</p>
+
+        <!-- Oval Button with Icon -->
+        <div class="hover-button">
+          <img src="https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/icons/location-pin.png" alt="Location Pin">
+          Hover over the map pins for **fun facts**!
+        </div>
       </div>
     </div>
     <!-- end pure grid group -->
@@ -236,25 +270,20 @@
 
     <!-- New Container 1 -->
     <div class="container-section">
-      <h3>Distribution of Categories by Rating</h3>
+      <h2>Gross Domestic Product (GDP) in Tourism</h2>
       <div class="explore-flex">
         <div class="explore-chart">
           <div id="vis2" class="vis-container"></div>
         </div>
         <div class="explore-text">
-          <p> European nations like France and Italy, with high Passport Scores and rich World Heritage Sites, attract significant tourism, 
-            boosting their GDPs. While strong passports reflect citizens' travel freedom, it's the cultural and historical attractions that 
-            draw visitors. Countries like Cambodia and Ethiopia, despite lower passport strength, still see notable GDP contributions from 
-            tourism due to unique heritage sites. The data reveals that investing in preserving and promoting cultural assets enhances a 
-            nation's appeal and stimulates economic growth. Ultimately, passport strength aids outbound travel, but inbound tourism thrives
-            on rich heritage and infrastructure.</p>
+          <p>Text about the chart can go here. You can add any additional insights or details about the visualization to the right of the chart for better context.</p>
         </div>
       </div>
     </div>
 
     <!-- New Container 2 -->
     <div class="container-section">
-      <h3>Global Impact</h3>
+      <h2>Global Impact</h2>
       <p>Below, you can explore the distribution of cultural, mixed, and natural heritage sites using the interactive gauge charts.</p>
       <div class="explore-flex">
         <div class="explore-chart">
