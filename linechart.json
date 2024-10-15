@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Interactive line chart showing the number of nominations per year by region, with year filters.",
-  "width": 800,
-  "height": 400,
+  "width": 660,
+  "height": 340,
   "background": "null",
 
   "data": {
@@ -53,7 +53,7 @@
         "titleColor": "white",
         "labelFontSize": 14,
         "titleFontSize": 16,
-        "titlePadding": 10   
+        "titlePadding": 10   // Added titlePadding here
       }
     },
     "y": {
@@ -65,7 +65,7 @@
         "titleColor": "white",
         "labelFontSize": 14,
         "titleFontSize": 16,
-        "titlePadding": 10  
+        "titlePadding": 10   // And here as well
       }
     },
     "color": {
@@ -114,7 +114,7 @@
       "mark": {
         "type": "text",
         "text": "Rapid EU expansion & cultural preservation efforts",
-        "dx": -20,
+        "dx": 300,
         "dy": 20,
         "fill": "white",
         "fontSize": 14,
