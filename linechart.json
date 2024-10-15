@@ -1,10 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Interactive line chart showing the number of nominations per year by region, with year filters.",
-
   "width": 800,
   "height": 400,
-
+  
   "data": {
     "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/line_chart.csv"
   },
@@ -17,7 +16,7 @@
     {"filter": "datum['Nomination Year'] >= minYear"},
     {"filter": "datum['Nomination Year'] <= maxYear"}
   ],
-
+  
   "params": [
     {
       "name": "minYear", "value": 1979,
@@ -77,23 +76,27 @@
 
   "layer": [
     {
-      "description": "Transparent layer to make it easier to trigger selection",
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2,
+        "point": true
+      },
       "params": [
         {
           "name": "hover",
           "select": {
             "type": "point",
             "fields": ["Region"],
-            "on": "pointerover"
+            "on": "mouseover",
+            "clear": "mouseout"
           }
         }
-      ],
-      "mark": {"type": "line", "strokeWidth": 8, "stroke": "transparent"}
-    },
-    {
-      "mark": {"type": "line", "strokeWidth": 2}
+      ]
     }
   ],
 
-  "config": {"view": {"stroke": null}, "line": {"point": true}}
+  "config": {
+    "view": {"stroke": null},
+    "line": {"point": true}
+  }
 }
