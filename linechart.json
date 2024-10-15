@@ -3,7 +3,7 @@
   "description": "Interactive line chart showing the number of nominations per year by region, with year filters.",
   "width": 800,
   "height": 400,
-  "background": "black",
+  "background": "null",
 
   "data": {
     "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/line_chart.csv"
