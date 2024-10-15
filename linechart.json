@@ -114,7 +114,7 @@
       "mark": {
         "type": "text",
         "text": "Rapid EU expansion & cultural preservation efforts",
-        "dx": 50,
+        "dx": -20,
         "dy": 20,
         "fill": "white",
         "fontSize": 14,
