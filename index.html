@@ -107,7 +107,7 @@
       width: 100%;
       background-color: black;
       padding: 20px;
-      margin: 20px 0;
+      margin: 10px 0;
       border-radius: 8px;
       box-sizing: border-box;
     }
@@ -149,7 +149,7 @@
       align-items: flex-start;
       gap: 5px;
       margin-top: 20px;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
 
     .column {
@@ -281,6 +281,16 @@
     <!-- New Flexbox Container for the Line Chart -->
     <div class="container-section">
       <h2>Nominations Over the Years</h2>
+      <p>
+        The graph reflects the global distribution of World Heritage Site nominations, with 
+        <span style="font-weight: bold; color: #9467bd;">Europe</span> peaking around 2000, driven by the EU’s eastern expansion and cultural integration policies, 
+        as former Soviet bloc countries sought UNESCO recognition to solidify national identity. 
+        In contrast, lower nomination rates in 
+        <span style="font-weight: bold; color: #aec7e8;">Asia</span> and 
+        <span style="font-weight: bold; color: #ff7f0e;">South America</span> suggest barriers like limited resources, slower processes, or differing heritage priorities. 
+        Post-2000, <span style="font-weight: bold; color: #9467bd;">Europe</span> stabilizes while other regions gradually grow, reflecting rising global awareness of heritage value but highlighting disparities in UNESCO access influenced by geopolitical factors, funding availability, or a regional focus on economic development over conservation.
+      </p>
+      
       <div class="explore-flex">
         <div class="explore-chart">
           <div id="lineChart" class="vis-container"></div>
@@ -298,16 +308,66 @@
           <div id="vis2" class="vis-container"></div>
         </div>
         <div class="explore-text">
-          <p>Text about the chart can go here. You can add any additional insights or details about the visualization to the right of the chart for better context.</p>
+          <p>
+            <span style="font-weight: bold; color: #9467bd;">Europe</span> shows a diverse range of countries contributing to tourism GDP, 
+            reflecting its cultural heritage appeal and many UNESCO World Heritage Sites attracting international tourism.
+          </p>
+          
+          <p>
+            In <span style="font-weight: bold; color: #aec7e8;">Asia</span>, reliance on economic hubs (like 
+            <span style="font-weight: bold; color: #d62728;">Hong Kong</span> and 
+            <span style="font-weight: bold; color: #e377c2;">United Arab Emirates</span>) shows tourism focused on modern attractions over heritage sites.
+          </p>
+          
+          <p>
+            Countries like <span style="font-weight: bold; color: #ff7f0e;">Cambodia</span>, with heritage sites like Angkor Wat, show smaller tourism GDP, 
+            suggesting underutilization due to infrastructure challenges or limited promotion.
+          </p>
+          
+          <p>
+            Regions balancing natural and cultural heritage (e.g., 
+            <span style="font-weight: bold; color: #bcbd22;">Croatia</span> and 
+            <span style="font-weight: bold; color: #8c564b;">Greece</span>) integrate tourism effectively, while others focus mainly on economic hubs, missing cultural tourism opportunities.
+          </p>
+          
         </div>
       </div>
     </div>
 
     <!-- New Container 2 -->
     <div class="container-section">
-      <h2>Global Impact</h2>
-      <p>Below, you can explore the distribution of cultural, mixed, and natural heritage sites using the interactive gauge charts.</p>
-      <div class="explore-flex">
+      <h2>Tourist Arrivals</h2>
+      <p>
+        The word cloud highlights <span style="font-weight: bold; color: #9467bd;">France</span>, 
+        <span style="font-weight: bold; color: #9467bd;">Italy</span>, and 
+        <span style="font-weight: bold; color: #bcbd22;">Croatia</span>, which are large contributors to tourism GDP in the previous chart. 
+        These countries’ strong cultural heritage, with numerous UNESCO World Heritage Sites, not only boosts international arrivals but also 
+        significantly influences their economic reliance on tourism.
+      </p>
+      
+      <p>
+        Despite being featured in the word cloud, countries like 
+        <span style="font-weight: bold; color: #ff7f0e;">Cambodia</span> and 
+        <span style="font-weight: bold; color: #d62728;">Hong Kong</span> show smaller contributions in the previous chart. 
+        This suggests that while tourist arrivals may be high, these countries' heritage sites are not fully integrated into tourism strategies, limiting GDP impact.
+      </p>
+      
+      <p>
+        The previous chart highlights economic hubs like 
+        <span style="font-weight: bold; color: #e377c2;">United Arab Emirates</span> and 
+        <span style="font-weight: bold; color: #d62728;">Hong Kong</span>, which focus more on luxury and modern attractions. 
+        Their presence in the word cloud reflects high tourist arrivals, yet their tourism GDP may not be strongly linked to heritage, 
+        showing a gap between modern and heritage tourism contributions.
+      </p>
+      
+      <p>
+        The presence of countries like 
+        <span style="font-weight: bold; color: #8c564b;">Portugal</span> and 
+        <span style="font-weight: bold; color: #8c564b;">Greece</span> in both charts shows how regions that strategically integrate heritage assets see steady economic benefits. 
+        These countries demonstrate that balancing economic development with heritage conservation enhances tourism’s contribution to GDP, 
+        as reflected in both tourist arrival trends and economic outcomes.
+      </p>
+            <div class="explore-flex">
         <div class="explore-chart">
           <div id="vis3" class="vis-container"></div>
         </div>
@@ -377,7 +437,7 @@
 
     vegaEmbed('#lineChart', specLineChart, {
       "actions": false,
-      "width": 660,
+      "width": 620,
       "height": 340,
       "background": "black"
       }
