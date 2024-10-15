@@ -33,7 +33,7 @@
       "name": "color",
       "type": "ordinal",
       "domain": {"data": "table", "field": "text"},
-      "range":  {"scheme": "tableau20"}
+      "range":  {"scheme": "viridis"}
     }
   ],
 
