@@ -238,7 +238,7 @@
     <div class="flex-container">
       <div class="text-container">
         <div class="description">
-          <h2>Distribution of Categories by Region</h2>
+          <h2>Distribution of Heritage Site Categories by Region</h2>
           <p>
             Each dot represents a heritage site. Cultural sites have the highest concentration, while Mixed sites are less frequent. 
             <span style="font-size: 15px; font-weight: bold; color: #9467bd;">Europe and North America</span> dominate cultural sites, 
@@ -257,8 +257,7 @@
     <!-- Gauge Chart Section Title -->
     <div class="pure-g">
       <div class="pure-u-1">
-        <h2>Overview of Heritage Sites by Type</h2>
-        <p>Below, you can explore the distribution of cultural, mixed, and natural heritage sites using the interactive gauge charts.</p>
+        <h2>Ratings of Heritage Site Categories</h2>
       </div>
     </div>
 
@@ -266,15 +265,28 @@
     <div class="three-column-container">
       <div class="column">
         <div id="gaugeChart1" class="vis-container"></div>
-        <p>Representing heritage sites with cultural significance. High concentration globally.</p>
+        <p>Cultural sites show moderate appreciation. These sites are evaluated based on their historical, artistic, or architectural value. </p>
       </div>
       <div class="column">
         <div id="gaugeChart2" class="vis-container"></div>
-        <p>Sites representing a combination of cultural and natural significance.</p>
+        <p>Combining natural beauty with cultural significance seems to be favorable. Visitors may find the balance between 
+          the elements engaging, leading to better ratings.</p>
       </div>
       <div class="column">
         <div id="gaugeChart3" class="vis-container"></div>
-        <p>Locations primarily valued for their natural beauty and ecosystem preservation.</p>
+        <p>While many natural heritage sites meet expectations, there may be room for improvement to enhance visitor experiences.</p>
+      </div>
+    </div>
+
+    <!-- New Flexbox Container for the Line Chart -->
+    <div class="container-section">
+      <h2>Nominations Over the Years</h2>
+      <div class="explore-flex">
+        <div class="explore-chart">
+          <div id="lineChart" class="vis-container"></div>
+        </div>
+        <div class="explore-text">
+        </div>
       </div>
     </div>
 
@@ -315,11 +327,12 @@
     var specGaugeChart1 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/main/gaugechart1.json"; // Gauge chart 1 spec
     var specGaugeChart2 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/gaugechart2.json"; // Gauge chart 2 spec
     var specGaugeChart3 = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/gaugechart3.json"; // Gauge chart 3 spec
+    var specLineChart = "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/linechart.json";
 
     // Embedding the map
     vegaEmbed('#vis1', specVis1, {
       "actions": false,
-      "width": 840,
+      "width": 800,
       "height": 400,
       "config": {
         "view": {
@@ -360,6 +373,15 @@
       "width": 240,
       "height": 210
     }).then(function (result) {
+    }).catch(console.error);
+
+    vegaEmbed('#lineChart', specLineChart, {
+      "actions": false,
+      "width": 660,
+      "height": 340,
+      "background": "black"
+      }
+    ).then(function (result) {
     }).catch(console.error);
 
     // Embedding another chart
