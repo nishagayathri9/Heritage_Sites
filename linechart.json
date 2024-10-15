@@ -3,11 +3,12 @@
   "description": "Interactive line chart showing the number of nominations per year by region, with year filters.",
   "width": 800,
   "height": 400,
-  
+  "background": "null",
+
   "data": {
     "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/line_chart.csv"
   },
-  
+
   "transform": [
     {
       "aggregate": [{"op": "count", "as": "Count"}],
@@ -16,7 +17,7 @@
     {"filter": "datum['Nomination Year'] >= minYear"},
     {"filter": "datum['Nomination Year'] <= maxYear"}
   ],
-  
+
   "params": [
     {
       "name": "minYear", "value": 1979,
@@ -44,27 +45,26 @@
     "x": {
       "field": "Nomination Year",
       "type": "ordinal",
-      "title": "Year"
+      "title": "Year",
+      "axis": {"labelColor": "white", "titleColor": "white"}
     },
     "y": {
       "field": "Count",
       "type": "quantitative",
-      "title": "Number of Nominations"
+      "title": "Number of Nominations",
+      "axis": {"labelColor": "white", "titleColor": "white"}
     },
     "color": {
       "condition": {
         "param": "hover",
         "field": "Region",
         "type": "nominal",
-        "legend": {"title": "Region"}
+        "legend": {"title": "Region", "labelColor": "white", "titleColor": "white"}
       },
       "value": "grey"
     },
     "opacity": {
-      "condition": {
-        "param": "hover",
-        "value": 1
-      },
+      "condition": {"param": "hover", "value": 1},
       "value": 0.2
     },
     "tooltip": [
@@ -97,6 +97,8 @@
 
   "config": {
     "view": {"stroke": null},
-    "line": {"point": true}
+    "axis": {"tickColor": "white"},
+    "legend": {"labelColor": "white", "titleColor": "white"},
+    "title": {"color": "white"}
   }
 }
