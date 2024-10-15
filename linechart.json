@@ -53,7 +53,7 @@
         "titleColor": "white",
         "labelFontSize": 14,
         "titleFontSize": 16,
-        "titlePadding": 10   // Added titlePadding here
+        "titlePadding": 10   
       }
     },
     "y": {
@@ -65,7 +65,7 @@
         "titleColor": "white",
         "labelFontSize": 14,
         "titleFontSize": 16,
-        "titlePadding": 10   // And here as well
+        "titlePadding": 10   
       }
     },
     "color": {
