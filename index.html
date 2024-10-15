@@ -175,35 +175,34 @@
     }
 
     .hover-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 10px;
-    padding: 5px 15px;
-    background-color: #444; /* Darker color to reduce focus */
-    color: #ccc; /* Subtle text color */
-    border-radius: 50px;
-    font-size: 14px; /* Smaller text */
-    font-family: 'Open Sans', sans-serif;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: none; /* Remove shadow */
-  }
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 5px 15px;
+      background-color: #444; /* Darker color to reduce focus */
+      color: #ccc; /* Subtle text color */
+      border-radius: 50px;
+      font-size: 14px; /* Smaller text */
+      font-family: 'Open Sans', sans-serif;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: none; /* Remove shadow */
+    }
 
-  .hover-button:hover {
-    background-color: #666; /* Slightly brighter on hover */
-  }
+    .hover-button:hover {
+      background-color: #666; /* Slightly brighter on hover */
+    }
 
-  .hover-button img {
-    width: 20px;
-    height: 20px; /* Smaller icon */
-  }
+    .hover-button img {
+      width: 20px;
+      height: 20px; /* Smaller icon */
+    }
 
-  .region-highlight {
-  font-size: 15px;
-  font-weight: bold;
-  }
-
+    .region-highlight {
+      font-size: 15px;
+      font-weight: bold;
+    }
   </style>
 
 </head>
@@ -334,48 +333,6 @@
       </div>
     </div>
 
-    <!-- New Container 2 -->
-    <div class="container-section">
-      <h2>Tourist Arrivals</h2>
-      <p>
-        The word cloud highlights <span style="font-weight: bold; color: #9467bd;">France</span>, 
-        <span style="font-weight: bold; color: #9467bd;">Italy</span>, and 
-        <span style="font-weight: bold; color: #bcbd22;">Croatia</span>, which are large contributors to tourism GDP in the previous chart. 
-        These countries’ strong cultural heritage, with numerous UNESCO World Heritage Sites, not only boosts international arrivals but also 
-        significantly influences their economic reliance on tourism.
-      </p>
-      
-      <p>
-        Despite being featured in the word cloud, countries like 
-        <span style="font-weight: bold; color: #ff7f0e;">Cambodia</span> and 
-        <span style="font-weight: bold; color: #d62728;">Hong Kong</span> show smaller contributions in the previous chart. 
-        This suggests that while tourist arrivals may be high, these countries' heritage sites are not fully integrated into tourism strategies, limiting GDP impact.
-      </p>
-      
-      <p>
-        The previous chart highlights economic hubs like 
-        <span style="font-weight: bold; color: #e377c2;">United Arab Emirates</span> and 
-        <span style="font-weight: bold; color: #d62728;">Hong Kong</span>, which focus more on luxury and modern attractions. 
-        Their presence in the word cloud reflects high tourist arrivals, yet their tourism GDP may not be strongly linked to heritage, 
-        showing a gap between modern and heritage tourism contributions.
-      </p>
-      
-      <p>
-        The presence of countries like 
-        <span style="font-weight: bold; color: #8c564b;">Portugal</span> and 
-        <span style="font-weight: bold; color: #8c564b;">Greece</span> in both charts shows how regions that strategically integrate heritage assets see steady economic benefits. 
-        These countries demonstrate that balancing economic development with heritage conservation enhances tourism’s contribution to GDP, 
-        as reflected in both tourist arrival trends and economic outcomes.
-      </p>
-            <div class="explore-flex">
-        <div class="explore-chart">
-          <div id="vis3" class="vis-container"></div>
-        </div>
-        <div class="explore-text">
-        </div>
-      </div>
-    </div>
-
   </div> <!-- end page -->
 
   <script type="text/javascript">
@@ -459,7 +416,7 @@
 
     // Embedding the new chart in the Global Impact section
     vegaEmbed('#vis3', specVis3, {
-      "actions":false,
+      "actions": false,
       "width": 200,
       "height": 380,
       "config": {
