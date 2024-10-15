@@ -3,7 +3,7 @@
   "description": "Interactive line chart showing the number of nominations per year by region, with year filters.",
   "width": 800,
   "height": 400,
-  "background": "null",
+  "background": "black",
 
   "data": {
     "url": "https://raw.githubusercontent.com/nishagayathri9/Heritage_Sites/refs/heads/main/line_chart.csv"
@@ -20,7 +20,8 @@
 
   "params": [
     {
-      "name": "minYear", "value": 1979,
+      "name": "minYear",
+      "value": 1979,
       "bind": {
         "input": "range",
         "min": 1979,
@@ -30,7 +31,8 @@
       }
     },
     {
-      "name": "maxYear", "value": 2024,
+      "name": "maxYear",
+      "value": 2024,
       "bind": {
         "input": "range",
         "min": 1980,
@@ -46,22 +48,37 @@
       "field": "Nomination Year",
       "type": "ordinal",
       "title": "Year",
-      "axis": {"labelColor": "white", "titleColor": "white"}
+      "axis": {
+        "labelColor": "white",
+        "titleColor": "white",
+        "labelFontSize": 14,
+        "titleFontSize": 16,
+        "titlePadding": 10   // Added titlePadding here
+      }
     },
     "y": {
       "field": "Count",
       "type": "quantitative",
       "title": "Number of Nominations",
-      "axis": {"labelColor": "white", "titleColor": "white"}
+      "axis": {
+        "labelColor": "white",
+        "titleColor": "white",
+        "labelFontSize": 14,
+        "titleFontSize": 16,
+        "titlePadding": 10   // And here as well
+      }
     },
     "color": {
-      "condition": {
-        "param": "hover",
-        "field": "Region",
-        "type": "nominal",
-        "legend": {"title": "Region", "labelColor": "white", "titleColor": "white"}
-      },
-      "value": "grey"
+      "field": "Region",
+      "type": "nominal",
+      "scale": {"scheme": "accent"},
+      "legend": {
+        "title": "Region",
+        "labelColor": "white",
+        "titleColor": "white",
+        "labelFontSize": 14,
+        "titleFontSize": 16
+      }
     },
     "opacity": {
       "condition": {"param": "hover", "value": 1},
@@ -92,13 +109,33 @@
           }
         }
       ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "Rapid EU expansion & cultural preservation efforts",
+        "dx": 400,
+        "dy": 20,
+        "fill": "white",
+        "fontSize": 14,
+        "fontWeight": "lighter"
+      },
+      "encoding": {
+        "x": {"datum": 2000},
+        "y": {"datum": 35}
+      }
     }
   ],
 
   "config": {
     "view": {"stroke": null},
-    "axis": {"tickColor": "white"},
-    "legend": {"labelColor": "white", "titleColor": "white"},
+    "axis": {"tickColor": "white", "grid": false},
+    "legend": {
+      "labelColor": "white",
+      "titleColor": "white",
+      "labelFontSize": 14,
+      "titleFontSize": 16
+    },
     "title": {"color": "white"}
   }
 }
