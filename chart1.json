@@ -71,11 +71,11 @@
           "field": "class_count",
           "type": "nominal",
           "scale": {
-            "domain": ["None", "1-10", "11-25", "26-40", "More than 40"],
+            "domain": ["None", "1 to 10", "11 to 25", "26 to 40", "More than 40"],
             "range": ["#ffffb2", "#fecc5c", "#fd8d3c", "#f03b20", "#bd0026"]
           },
           "legend": {
-            "title": "Heritage Site Classes",
+            "title": "Heritage Sites per Population",
             "labelFontSize": 14,
             "titleFontSize" : 16,
             "symbolType": "square",
